@@ -1,0 +1,25 @@
+package day0218;
+
+import java.util.Date;
+import java.util.Calendar;
+
+public class CalendarTest_09 {
+
+	public static void main(String[] args) {
+		
+		
+		Date date=new Date();      //date 라는 클래스 생성
+		
+		System.out.println("지금은"+(date.getYear()+1900)+"년도 입니다");
+		
+		Calendar cal=Calendar.getInstance();
+		
+		System.out.println("지금은 "+cal.get(cal.YEAR)+"년도 입니다");
+		System.out.println("지금은 "+(cal.get(cal.MONTH)+1)+"월 입니다");
+		System.out.println("지금은 "+cal.get(cal.DAY_OF_MONTH)+"일 입니다");
+		System.out.println("지금은 "+cal.get(cal.DATE)+"일 입니다");
+		System.out.println("지금은 "+cal.get(cal.HOUR_OF_DAY)+"시"+cal.get(cal.MINUTE)+"분입니다");
+		
+	}
+
+}

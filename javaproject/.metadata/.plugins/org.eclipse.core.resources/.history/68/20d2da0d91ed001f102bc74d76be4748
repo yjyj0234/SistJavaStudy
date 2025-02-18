@@ -1,0 +1,22 @@
+package day0218;
+
+public class ParseVar_02 {
+
+	public static void main(String[] args) {
+		//형변환 후 계산해보자
+		
+		String su1="5";
+		String su2="6";
+				
+		System.out.println("두수 더하기 : "+(su1+su2));
+		
+		//문자열 su1,su2를 정수타입 int로 변환후 계산
+		
+		int s1=Integer.parseInt(su1);
+		int s2=Integer.parseInt(su2);
+		
+		System.out.println("두수 더하기 : "+(s1+s2));
+
+	}
+
+}

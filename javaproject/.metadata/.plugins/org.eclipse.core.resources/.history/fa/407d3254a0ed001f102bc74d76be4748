@@ -1,0 +1,20 @@
+package day0218;
+
+public class DataType_07 {
+
+	public static void main(String[] args) {
+		// 아스키코드 A=65  a=97
+		// 묵시적 형변환 자동으로 결정되는 타입
+		/*String+int=String
+		 * double+int=double
+		 * long+short=long
+		 * char+int=int*/
+		
+		char a='A';
+		System.out.println(a);
+		System.out.println(a+32);  //65+32
+		System.out.println((char)(a+32));
+
+	}
+
+}
