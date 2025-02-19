@@ -29,15 +29,15 @@ public class QuizLast_13 {
 		
 				
 		System.out.println("당신의 이름은?");
-		name=sc.nextLine();
+		name=sc.nextLine();        //문자는 무조건 nextLine
 		System.out.println("당신의 출생년도는?");
-		birthY=Integer.parseInt(sc.nextLine());
+		birthY=Integer.parseInt(sc.nextLine());      //birthY=sc.nextInt(); 도 가능
 		System.out.println("당신의 직업은?");
 		job=sc.nextLine();
 		
 		int myAge=culYear-birthY;
 
-		System.out.println("==========================");
+		System.out.println("=============================================");
 		System.out.println(name+"님은 "+birthY+"년생이며 "+myAge+"세입니다. "+"직업은 "+job+"입니다");
 	}
 

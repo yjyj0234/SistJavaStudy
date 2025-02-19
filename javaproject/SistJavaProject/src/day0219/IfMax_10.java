@@ -1,0 +1,47 @@
+package day0219;
+
+import java.security.DrbgParameters.NextBytes;
+import java.util.Scanner;
+
+public class IfMax_10 {
+
+	public static void main(String[] args) {
+		/*
+		 * 3개의 수를 입력하시오(A&&B A B 모두 true 여야 true)
+		 * 5
+		 * 15
+		 * 8
+		 * ***if문***
+		 * max=15
+		 * ***삼항연산자***
+		 * max=15
+		 */
+		Scanner sc=new Scanner(System.in);
+		
+		int x,y,z;
+		System.out.println("수 입력");
+		x=sc.nextInt();
+		y=sc.nextInt();
+		z=sc.nextInt();
+		
+		int max;
+		{	
+		if(x>y&&y>z)         //x>y&&x>z 도 가능
+			max=x;
+		else if(y>x&&y>z)
+			max=y;
+		else
+			max=z;
+			
+			System.out.println("***if문***\nmax="+max);
+			
+	
+		max=x>y&&y>z?x:           //max=x>y&&x>z?x:
+			y>z&&y>x?y:z;         //    y>x&&y>z?y:z
+			
+			
+			System.out.println("***삼항연산자***\nmax="+max);
+		}
+	}
+
+}

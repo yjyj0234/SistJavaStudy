@@ -1,0 +1,37 @@
+package day0219;
+
+import java.util.Scanner;
+
+public class ReviewScan_01 {
+
+	public static void main(String[] args) {
+		/*
+		 * 이름과 키 몸무게를 입력하면 입력한 데이터와 함께
+		 * 표준몸무게(키-100)*0.9를 출력하시오
+		 * **손흥민님 입력정보**
+		 * 키:180cm
+		 * 몸무게:88kg
+		 * 권장표준몸무게: 소수점 1자리 kg으로 나타낼 것
+		 * 
+		 */
+		
+		Scanner sc=new Scanner(System.in);
+		
+		String name;
+		double height,weight;
+		
+		System.out.println("성함: ");
+		name=sc.nextLine();
+		System.out.println("키: ");
+		height=sc.nextDouble();
+		System.out.println("몸무게: ");
+		weight=sc.nextDouble();
+		
+		double bmi=(height-100)*0.9;
+		
+		System.out.printf("**"+name+"님 입력정보\n키: "+height+"cm\n"+"몸무게: "+weight+"kg\n"+"권장표준몸무게: %.1fkg",bmi);
+		
+		
+	}
+
+}
