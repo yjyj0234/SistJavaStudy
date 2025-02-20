@@ -1,0 +1,27 @@
+package day0220;
+
+public class ForWhileTest_07 {
+
+	public static void main(String[] args) {
+		// 1~10까지를 반복출력 while 문으로, 초기값, 증감식, 비교문
+		
+		int n=0;
+		
+		while(n<10)
+		{
+			n++;
+			System.out.printf("%4d",n);           //%4d : 4자리만큼 공간을 두겠다
+		}
+		
+		System.out.println();
+		
+		//다른방법
+		n=0;
+		while(n<10)
+		{
+			System.out.printf("%4d",n);
+		}
+
+	}
+
+}

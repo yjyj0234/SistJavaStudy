@@ -1,0 +1,17 @@
+package day0220;
+
+import java.util.Iterator;
+
+public class ForWhileTest_08 {
+
+	public static void main(String[] args) {
+		// 10 9 8 7 ....0
+		for(int i=10;i>=0;i--)
+		{
+			System.out.print(i+"  ");
+		}
+		
+
+	}
+
+}

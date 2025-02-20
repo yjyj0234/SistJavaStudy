@@ -1,0 +1,21 @@
+package day0220;
+
+public class ForTest_11 {
+
+	public static void main(String[] args) {
+		// 
+		int i;
+		for(i=1;i<=10;i++)
+		{
+			System.out.print(i+"  ");  //1~10
+		}
+		System.out.println("\n빠져나온후의 i값: "+i);
+		int a=10;
+		for(;a<=50;a+=5)   //초기값을 먼저 줘도 세미콜론(;)은 써주기
+		{
+			System.out.print(i+"  ");
+		}
+		System.out.println("\n빠져나온후의 a값: "+a);
+	}
+
+}

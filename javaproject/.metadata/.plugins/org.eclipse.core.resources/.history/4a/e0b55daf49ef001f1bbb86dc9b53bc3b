@@ -1,0 +1,23 @@
+package day0220;
+
+public class DoWhileTest_09 {
+
+	public static void main(String[] args) {
+		// 조건이 참일 동안 반복
+		
+		int i=1;
+		
+		System.out.println("While문 결과");
+		while(i<=5)
+		{
+			//출력 후 증가
+			System.out.print(i++ +"  ");
+			
+		}
+		System.out.println();
+		
+		System.out.println("do~While문 결과");
+
+	}
+
+}

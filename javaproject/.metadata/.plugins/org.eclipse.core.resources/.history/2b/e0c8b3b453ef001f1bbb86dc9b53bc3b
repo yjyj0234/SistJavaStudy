@@ -1,0 +1,45 @@
+package day0220;
+
+public class ForSum_12 {
+
+	public static void main(String[] args) {
+		// 1~10까지의 반복문으로 합구하기_for
+		
+		int sum=0;   //빈그릇에 누적이라서 =0 붙여줌
+		
+		for(int i=1;i<=10;i++)
+		{
+			sum+=i;  //sum=sum+i
+		}
+		System.out.println("1~10 까지의 합은 "+sum+"입니다");  //빠져나와서 계산
+		
+		//1~10까지의 반복문으로 합구하기_while
+		int tot=0;
+		int i=1;
+		while(i<=10)
+		{
+			//합계변수에 i를 누적
+			tot=tot+i;    //tot+=i;
+			i++;
+		}
+			System.out.println("1~10까지의 합은 "+tot+"입니다");
+		
+		//1~20까지의 합을 구하되 2씩 증가한다
+		int hap=0;
+		for(int x=1;x<=20;x+=2)
+		{
+			hap+=x;
+		}
+		System.out.println("1~20까지의 합(2씩 증가):"+hap);
+		
+		int tott=0;
+		int y=1;
+		while(y<=20)
+		{
+			tott=tott+y;
+					y+=2;
+		}
+		System.out.println();
+	}
+
+}

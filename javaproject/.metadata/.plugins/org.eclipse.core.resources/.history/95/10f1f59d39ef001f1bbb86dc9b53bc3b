@@ -1,0 +1,19 @@
+package day0220;
+
+public class ForWhileTest_07 {
+
+	public static void main(String[] args) {
+		// 1~10까지를 반복출력 while 문으로
+		
+		int n=0;
+		
+		while(n<10)
+		{
+			n++;
+			System.out.printf("%4d");
+		}
+		
+
+	}
+
+}

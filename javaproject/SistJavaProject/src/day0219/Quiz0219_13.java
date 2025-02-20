@@ -24,7 +24,7 @@ public class Quiz0219_13 {
 		System.out.println("================================");
 		
 		int tot=num*price;
-		System.out.println("아이폰 "+num+"개는 총 "+tot+"입니다\n(단 5개 이상은 10프로 DC 됩니다)\n=======================");
+		System.out.println(phone+" "+num+"개는 총 "+tot+"입니다\n(단 5개 이상은 10프로 DC 됩니다)\n=======================");
 		
 		/*NumberFormat f=NumberFormat.getInstance();
 		f.setGroupingUsed(false);
@@ -35,8 +35,8 @@ public class Quiz0219_13 {
 			finPrice=tot*0.9;
 		else
 			finPrice=tot;
-		System.out.println("dc된 최종금액: "+(tot*0.9)+"원");
-		System.out.println("dc된 최종금액: "+(num>=5?tot*0.9:tot)+"원");
+		System.out.printf("dc된 최종금액: %.0f원\n",finPrice);
+		System.out.println("dc된 최종금액: "+(num>=5?finPrice:tot)+"원");
 	}
 
 }

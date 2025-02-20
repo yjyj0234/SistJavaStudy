@@ -1,0 +1,11 @@
+package day0220;
+
+public class ForMul_13 {
+
+	public static void main(String[] args) {
+		// 팩토리얼 1! 2!=2
+		
+
+	}
+
+}

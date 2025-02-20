@@ -22,7 +22,18 @@ public class Quiz0219_12 {
 		
 		System.out.println("**삼항연산자**\n"+num+"은(는) "+(num%2==0?"짝수":"홀수"));
 		
+		//switch문으로
+		System.out.println("**switch문으로");
 		
+		switch(num%2)
+		{
+		case 0:
+			System.out.println("짝수");
+			break;
+		case 1:
+			System.out.println("홀수");
+			break;
+		}
 	}
 
 }
