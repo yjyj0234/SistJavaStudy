@@ -8,19 +8,20 @@ public class Quiz0220 {
 		
 		//짝수의 합:***
 		//홀수의 합:***
-		int n,zzac=0,hole=0;
-		for(n=2;n<=100;n+=2)
-			zzac+=n;
-			System.out.println("짝수의 합: "+zzac);
-		for(n=1;n<=100;n++)
-			{if(n%2==0)
+		int n,zzac=0,hole=0;                            
+		for(n=2;n<=100;n+=2)							 
+			zzac+=n;									
+			System.out.println("짝수의 합: "+zzac);		
+		for(n=1;n<=100;n++)								
+			{if(n%2==0)											
 				continue;
 			hole+=n;
 			}
 			System.out.println("홀수의 합: "+hole);
 			
 		System.out.println();
-		
+	}
+	/*  while문 써서
 		int x=1;
 		int zzacc=0;
 		while(x<=100)
@@ -31,7 +32,17 @@ public class Quiz0220 {
 		System.out.printf("홀수의 합: %d",zzacc);
 		System.out.println();
 	}
+	/*int n,zzac=0,hole=0;
 	
+	for(n=1;n<=100;n++)  -더 간단하게
+		if(n%2==0) 
+			zzac+=n;
+		else
+		    hole+=n;
+	
+	System.out.println("홀수의 합: "+hole);
+	System.out.println("짝수의 합: "+zzac);
+	*/
 	public static void quiz2() {
 		
 		//합계를 더할 숫자를 입력하시오
@@ -57,7 +68,7 @@ public class Quiz0220 {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		quiz1();
+		//quiz1();
 		quiz2();
 		
 	}

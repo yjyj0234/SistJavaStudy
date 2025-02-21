@@ -1,0 +1,11 @@
+package day0221;
+
+public class RandomSuMatch_13 {
+
+	public static void main(String[] args) {
+		// 랜덤 수 맞추기
+		
+		
+	}
+
+}

@@ -1,0 +1,16 @@
+package day0221;
+
+public class GuguGaro_11 {
+
+	public static void main(String[] args) {
+		/*
+		 * 구구단 콘솔창의 가로로 출력
+		 * [2단]		[3단]     -단일 for문		    
+		 * 2x1=2	3x1=3	  -다중 for문
+		 * 2x2=4	3x2=6
+		 */
+		
+
+	}
+
+}

@@ -1,0 +1,38 @@
+package day0221;
+
+import java.util.Scanner;
+
+public class ForScanSum_09 {
+
+	public static void main(String[] args) {
+		/*
+		 * 총 5개의 점수를 입력받아 1~100이 아닐 경우 다시 입력받을 것 
+		 * 1번점수:88
+		 * 2번점수:99
+		 * 3번 점수:110
+		 * 	잘못 입력했어요
+		 * 3번점수:77
+		 * 4번점수:44
+		 * 5번점수:-77
+		 * 	잘못입력했어요
+		 * ===============
+		 * 총점:****
+		 * 평균:**.**
+		 */
+		
+		Scanner sc=new Scanner(System.in);
+		int score,tot=0;
+			for(int cnt=1;cnt<=5;cnt++)
+			{
+				System.out.println("점수 입력");
+				score=sc.nextInt();
+				if(score<0||score>100)
+				{
+					System.out.println("잘못 입력했어요");
+				}
+			}
+		
+		
+	}
+
+}

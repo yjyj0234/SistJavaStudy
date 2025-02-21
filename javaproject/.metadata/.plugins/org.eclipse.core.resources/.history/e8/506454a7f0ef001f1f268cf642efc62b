@@ -1,0 +1,32 @@
+package day0221;
+
+import java.util.Scanner;
+
+public class WhileSumAvg_02 {
+
+	public static void main(String[] args) {
+		//임의의 숫자를 입력하여 합계,평균,입력한 개수를 구한다
+		//단 0을 입력하면 반복문을 빠져나간다
+		Scanner sc=new Scanner(System.in);
+		 
+		int x,score,sum=0;
+		double avg;
+		
+		System.out.println("점수를 입력");
+			score=sc.nextInt();
+			
+			while(true)
+			{
+				sum+=score;
+				if(score==0)
+					break;
+			}		
+			
+		System.out.println("합계: \n"+sum);
+		System.out.println("평균");
+		
+		
+
+	}
+
+}

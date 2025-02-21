@@ -1,0 +1,23 @@
+package day0221;
+
+import java.util.Scanner;
+
+public class StringText_03 {
+
+	public static void main(String[] args) {
+		// equals,startWith,endWith 사용
+		// 김씨가 몇명인지 이씨가 몇명인지
+		Scanner sc=new Scanner(System.in);
+		
+		String name;
+		int=cnt0;
+		 
+		while(true) {
+			System.out.println("이름을 입력하세요(종료=끝)");
+		    name=sc.nextLine();
+		}
+		
+		
+	}
+
+}

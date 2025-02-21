@@ -6,7 +6,7 @@ public class DataType_06 {
 		// TODO Auto-generated method stub
 
 		byte a=127; //-128~127
-		byte b=(byte)128; //더 작은 자료형으로의 변환(디모션)값손실
+		byte b=(byte)256; //더 작은 자료형으로의 변환(디모션)값손실
 		
 		System.out.println("a="+a);
 		System.out.println("b="+b); //틀린값이 출력된다
