@@ -82,8 +82,8 @@ public class Quiz0221 {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//quiz1();
-		quiz2();
+		quiz1();
+		//quiz2();
 	}
 
 }

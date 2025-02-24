@@ -7,7 +7,7 @@ public class RandomSuMatch_13 {
 	public static void main(String[] args) {
 		//숫자를 입력해서 랜덤 수 맞추기
 		Scanner sc=new Scanner(System.in);
-		int rnd=(int)(Math.random()*100)+1;
+		int rnd=(int)(Math.random()*1000)+1;
 		int su;//입력할 수
 		
 		while(true)

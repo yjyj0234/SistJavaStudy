@@ -1,0 +1,12 @@
+package day0224;
+
+public class ArrayIntTest_06 {
+
+	public static void main(String[] args) {
+		// 배열선언하면서 초기값들을 저장할 수 있다
+		
+		int [] arr= {};
+
+	}
+
+}

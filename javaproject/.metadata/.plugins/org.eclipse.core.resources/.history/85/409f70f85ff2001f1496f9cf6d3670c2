@@ -1,0 +1,21 @@
+package day0224;
+
+public class ArrayIntTest_06 {
+
+	public static void main(String[] args) {
+		// 배열선언하면서 초기값들을 저장할 수 있다
+		
+		int [] arr= {8,6,111,21,99,32,12,35,4,67,54,3};
+		
+		System.out.println("arr의 갯수: "+arr.length);
+		
+		System.out.println("**출력방법1_for**");  //0:8
+		for(int i=0;i<arr;i++)
+		
+		
+		System.out.println("===========");
+		System.out.println("**출력방법2_for~each**");  //8 6 ...
+		
+	}
+
+}

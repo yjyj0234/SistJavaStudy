@@ -1,0 +1,18 @@
+package day0224;
+
+public class ArrayStringTest_08 {
+
+	public static void main(String[] args) {
+		
+		// String 배열선언과 동시에 초기값
+		
+		String [] str1= {"피자","파스타","햄버거","쌀국수","분짜","비빔밥"};
+		String [] str2=new String[5];
+		
+		//str2에 문자열 초기화
+		str2[0]="레드";
+		
+		
+	}
+
+}
