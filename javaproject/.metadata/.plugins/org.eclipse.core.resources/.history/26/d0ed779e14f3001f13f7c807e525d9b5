@@ -1,0 +1,13 @@
+package day0225;
+
+public class ArrayIntIndex_01 {
+
+	public static void main(String[] args) {
+		// 숫자배열 중에서 내가 입력한 숫자가 있는지 있다면 몇번째에 있는지
+		
+		int [] nums= {};
+		
+		
+	}
+
+}

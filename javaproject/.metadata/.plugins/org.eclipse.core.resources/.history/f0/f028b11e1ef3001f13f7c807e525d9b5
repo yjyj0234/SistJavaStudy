@@ -1,0 +1,13 @@
+package day0225;
+
+public class ArrayIntTemp_03 {
+
+	public static void main(String[] args) {
+		// 정렬을 알기 전에 순서바꾸기가 먼저 연습 되어야함
+		
+		int a=10,b=20;
+		System.out.println("a="+a", b"=+b);
+
+	}
+
+}

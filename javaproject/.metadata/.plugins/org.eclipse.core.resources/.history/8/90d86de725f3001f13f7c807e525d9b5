@@ -1,0 +1,37 @@
+package day0225;
+
+public class ArrayIntTemp_04 {
+
+	public static void main(String[] args) {
+		// 배열안의 숫자 순서를 바꾸어 출력해보기
+		
+		int[] arr= {32,6,36,23,76,8,18,3,63,7,42,29,98};
+		
+		//출력
+		System.out.println("원래 순서 데이터");
+		for(int i=0;i<arr.length;i++)
+		{
+			System.out.print(arr[i]+"  ");
+		}
+		System.out.println();
+		
+		System.out.println("거꾸로 데이터 출력");
+		
+		//거꾸로 데이터 변경
+		for(int i=0;i<arr.length/2;i++)
+		{
+			int temp=arr[i];
+			//10개일 때 0번과 9번을 바꾸는 것
+			arr[i]=arr[arr.length-1-i];
+			arr[arr.length-1-i]=temp;
+		}
+		for(int i=0;i<arr.length;i++)
+		{
+			System.out.print(arr[i]+"  ");
+		}
+		
+		//오름차순(1,2,3....)
+		//선택정렬: 가장 작은 숫자를 앞으로 보내자
+	}
+
+}

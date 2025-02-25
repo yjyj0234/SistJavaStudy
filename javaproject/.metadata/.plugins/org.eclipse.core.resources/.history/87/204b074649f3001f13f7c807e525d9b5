@@ -1,0 +1,20 @@
+package day0225;
+
+import java.util.Scanner;
+
+public class QuizStartWithSearch_09 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			
+		String [] celeb= {"공유","신민아","이정재","손흥민","이강인","이효리","이진","손미나"};
+		int cnt;
+		
+		Scanner sc=new Scanner(System.in);
+		String search;//이름검색
+		
+		
+		
+	}
+
+}

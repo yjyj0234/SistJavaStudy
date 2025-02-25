@@ -1,0 +1,23 @@
+package day0225;
+
+import java.util.Scanner;
+
+public class QuizLottoBuy_08 {
+
+	public static void main(String[] args) {
+		/*
+		 * 로또 몇장 드릴까요?
+		 * 3
+		 * 
+		 * 1회: 2 13 22 32 44 45
+		 * 2회: 3 12 15 16 18 22 
+		 * 3회: 4 5 11 22 33 36
+		 */
+		Scanner sc=new Scanner(System.in);
+		
+		int [] lotto=new int[6];
+		
+		
+	}
+
+}

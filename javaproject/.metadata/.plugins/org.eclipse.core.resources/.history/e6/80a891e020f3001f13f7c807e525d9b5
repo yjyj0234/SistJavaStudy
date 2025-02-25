@@ -1,0 +1,19 @@
+package day0225;
+
+public class ArrayIntTemp_04 {
+
+	public static void main(String[] args) {
+		// 배열안의 숫자 순서를 바꾸어 출력해보기
+		
+		int[] arr= {32,6,36,23,76,8,18,3,63,7,42,29,98};
+		//출력
+		
+		for(int i:arr)
+		{
+			System.out.print(i+"  ");
+		}
+		
+
+	}
+
+}

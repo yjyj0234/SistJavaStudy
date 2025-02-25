@@ -1,0 +1,45 @@
+package day0225;
+
+import java.util.Scanner;
+
+public class QuizStartWithSearch_09 {
+
+	public static void main(String[] args) {
+		/*
+		 * 성을 입력 시 그 성씨를 가진 사람과 총 인원 수를 출력할 것!!!
+		 * 종료라고 입력 시 프로그램 종료
+		 * 
+		 * 검색할 성을 입력해주세요
+		 * 손
+		 * 3:손흥민
+		 * 7:손미나
+		 * 			총 2명 검색
+		 * 검색할 성을 입력해주세요
+		 * 전
+		 * 전 씨성을 가진 연예인은 없습니다
+		 * 종료
+		 * 검색을 종료합니다
+		 */
+			
+		String [] celeb= {"공유","신민아","이정재","손흥민","이강인","이효리","이진","손미나"};
+		int cnt;
+		
+		Scanner sc=new Scanner(System.in);
+		String search;//이름검색
+		
+		while(true)
+		{
+		 System.out.println("검색할 성을 입력해주세요");
+		 search=sc.nextLine();
+		 if(search.equals("종료"))
+		 	{
+			 	System.out.println("검색을 종료합니다");
+			 	break;
+		 	}
+		 	
+		}
+		 
+		
+	}
+
+}

@@ -1,0 +1,23 @@
+package day0225;
+
+public class ArrayStringTemp_07 {
+
+	public static void main(String[] args) {
+		
+		String [] names= {"이효리","유재석","하하","김영웅"};
+		int [] ages= {34,52,48,38};
+		
+		//이름의 오름차순
+		//정렬 for문 작성
+		
+		for(int i=0;i<names.length-1;i++)
+		{
+			for(int j=i+1;j<names.length;j++)
+			{
+				if(names[i].compareTo(names[j])>)
+					
+			}
+		}
+	}
+
+}

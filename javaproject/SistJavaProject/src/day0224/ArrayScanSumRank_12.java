@@ -22,7 +22,7 @@ public class ArrayScanSumRank_12 {
 		
 		System.out.println("인원수 입력");
 		inwon=Integer.parseInt(sc.nextLine());
-		
+
 		//인원수만큼 배열 갯수 할당
 		name=new String[inwon];
 		score=new int[inwon];
@@ -33,6 +33,7 @@ public class ArrayScanSumRank_12 {
 		{
 			System.out.println(i+1+"번지 이름?");
 			name[i]=sc.nextLine();
+
 			System.out.println(i+1+"번지 점수?");
 			score[i]=Integer.parseInt(sc.nextLine());
 			
@@ -61,7 +62,6 @@ public class ArrayScanSumRank_12 {
 		System.out.println("---------------------------");
 		System.out.println("총점: "+tot+"점");
 		System.out.printf("평균: %.2f점",avg);
-		
 		
 	}
 

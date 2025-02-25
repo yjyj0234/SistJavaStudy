@@ -1,0 +1,54 @@
+package day0225;
+
+import java.util.Scanner;
+
+public class QuizLottoBuy_08 {
+
+	public static void main(String[] args) {
+		/*
+		 * 로또 몇장 드릴까요?
+		 * 3
+		 * 
+		 * 1회: 2 13 22 32 44 45
+		 * 2회: 3 12 15 16 18 22 
+		 * 3회: 4 5 11 22 33 36
+		 */
+		Scanner sc=new Scanner(System.in);
+		int jang;
+		System.out.println("로또 몇장 드릴까요?");
+		jang=sc.nextInt();
+		
+		int [] lotto=new int[6];
+		for(int i=0;i<lotto.length;i++)
+		{
+			lotto[i]=((int)Math.random()*45)+1;
+			for(int j=0;j<i;j++)
+			{
+				if(lotto[i]==lotto[j])
+					j--;
+				break;
+			}
+		}
+		for(int i=1;i<=jang;i++)
+		{
+			System.out.println(i+"회: ");
+			for(int j=0;j<lotto.length;j++)
+			{
+				System.out.print(lotto[j]+"  ");
+			}
+		}
+		
+		
+		
+		/*for(int i=0;i<lotto.length;i++)
+		{	
+			for(int j=0;j<lotto.length;j++)
+			{
+				
+			}
+			
+		}
+		*/
+		}
+
+}
