@@ -1,0 +1,15 @@
+package day0226;
+
+public class Ex11Counter {
+	
+	int count=0;
+	
+	//생성자
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

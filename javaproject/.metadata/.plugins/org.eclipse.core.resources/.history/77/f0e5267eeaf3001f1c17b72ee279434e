@@ -1,0 +1,15 @@
+package day0226;
+
+public class ArrayDaChaScore_05 {
+
+	public static void main(String[] args) {
+		// 다차원 배열로 성적표 출력
+		/*
+		 * 이름 자바 오라클 총점
+		 * 이효리 88 77   **
+		 * 이상순 77 55   **
+		 */
+
+	}
+
+}

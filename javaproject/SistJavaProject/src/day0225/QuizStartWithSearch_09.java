@@ -36,23 +36,28 @@ public class QuizStartWithSearch_09 {
 			 	System.out.println("검색을 종료합니다");
 			 	break;
 		 	}
-		 cnt = 0;
+		 cnt = 0; 				// 초기값을 while문 밖에 설정해두면 입력할때마다 cnt 누적됨==>검색할 때마다 0으로 초기화 필요
 		 find=false;
 		 for(int i=0;i<celeb.length;i++)
 		 {
-			 if(celeb[i].startsWith((search)))
+			 if(celeb[i].startsWith((search)))         //if(celeb[i].startsWith((search))) celeb중에 search가 포함된 이름을 찾아라
 			 {
 				 find=true;
 				 cnt++;
 				 System.out.println(i+": "+celeb[i]);
-				 
 			 }
 		 }
+		 /*
 		 System.out.println("총 "+(cnt)+"명 검색");
 		 	
 		 	if(!find)
 		 		System.out.println(search+"씨성을 가진 연예인은 없습니다");
-		 		
+		 	*/
+		 if(cnt==0)
+			 System.out.println(search+"씨성을 가진 연예인은 없습니다");
+		 else
+			 System.out.println("\t"+cnt+"명 검색");
+		 System.out.println();
 		}		
 	}
 }

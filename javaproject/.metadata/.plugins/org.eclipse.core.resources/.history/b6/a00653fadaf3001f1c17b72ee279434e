@@ -1,0 +1,36 @@
+package day0226;
+
+public class SelectionSort_01 {
+
+	public static void main(String[] args) {
+		// 그냥 출력 먼저 하고 오름차순 정렬해서 출력해보세요
+		int [] data= {10,2,5,46,12,6,45,61,35,26,48};
+				
+		System.out.println("일반 출력");
+		for(int i=0;i<data.length;i++)
+		{
+			System.out.print(i+1+": "+data[i]+"\t");
+		}
+		
+		System.out.println();
+		System.out.println("오름차순 출력");
+		for(int i=0;i<data.length-1;i++)
+		{
+			for(int j=i+1;j<data.length;j++)
+			{
+				if(data[i]<data[j])
+				{
+					int temp=data[i];
+					data[i]=data[j];
+					data[j]=temp;
+				}
+			}
+		}
+		for(int i=0;i<data.length;i++)
+		System.out.print(data[i]+"\t");
+		
+		String [] nameFirst= {"이","손"};
+		if()
+	}
+
+}

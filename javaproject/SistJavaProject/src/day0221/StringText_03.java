@@ -19,7 +19,7 @@ public class StringText_03 {
 		    if(name.equals("끝"))  //이름 break
 		    	break;
 		    //조건
-		    if(name.startsWith("김"))
+		    if(name.startsWith("김"))              //name 중에 김씨가 포함된 친구를 찾아라
 		    	cnt++;
 		}
 		System.out.println("김씨 성을 가진 사람은 총 "+cnt+"명 입니다");

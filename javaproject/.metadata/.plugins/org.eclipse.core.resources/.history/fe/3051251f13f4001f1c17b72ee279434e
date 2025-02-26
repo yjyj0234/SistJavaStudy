@@ -1,0 +1,23 @@
+package day0226;
+
+public class Ex11Counter {
+	
+	static int count=0;  //static 변수는 메모리를 공유..메모리 효율이 높아진다
+	
+	//생성자(Constructor):클래스명과 동일
+	public Ex11Counter() {
+		count++;
+		System.out.println(count);
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Ex11Counter c1=new Ex11Counter();
+		Ex11Counter c2=new Ex11Counter();
+				
+	}
+
+}

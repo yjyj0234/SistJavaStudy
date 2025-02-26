@@ -1,0 +1,14 @@
+package day0226;
+
+public class SelectionSort_01 {
+
+	public static void main(String[] args) {
+		// 그냥 출력 먼저 하고 오름차순 정렬해서 출력해보세요
+		int [] data= {10,2,5,46,12,6,45,61,35,26,48}
+				
+		System.out.println("일반 출력");
+		
+
+	}
+
+}

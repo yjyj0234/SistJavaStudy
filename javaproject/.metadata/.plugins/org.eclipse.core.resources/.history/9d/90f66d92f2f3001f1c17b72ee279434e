@@ -1,0 +1,65 @@
+package day0226;
+
+import java.util.Scanner;
+
+public class BingoGame_07 {
+
+	public static void main(String[] args) {
+		// 반복문 안에서 엔터를 눌렀을 때 다음 난수가 나오도록 합니다(종료:Q or q)
+		/*
+		 * 3행 3열의 다차원 배열 생성 후 1~3사이의 난수 발생
+		 * 각각의 가로, 세로 대각선을 비교해서 같은값이 나오면 빙고:2개 출력
+		 * 없으면 꽝!!! 출력
+		 */
+		
+		Scanner sc=new Scanner(System.in);
+		
+		int [][] puzzle=new int[3][3];
+		int binngo;
+		while(true)
+		{
+			//2차원 배열에 1~3사이 난수 발생
+			for(int i=0;i<puzzle.length;i++)
+			{
+				for(int j=0;j<puzzle[i].length;j++)
+				{
+					puzzle[i][j]=(int)(Math.random()*3)+1;   //1~3
+				}
+			}
+		
+		
+		for(int i=0;i<puzzle.length;i++)
+		{
+			for(int j=0;j<puzzle[i].length;j++)
+			{
+				System.out.printf("%3d",puzzle[i][j]);
+			}
+			System.out.println();
+		}
+		
+		// 가로세로 대각선 비교해서 같은 숫자 나오면 빙고
+		// 없으면 꽝
+		for(int i=0;i<puzzle.length;i++)
+		{
+			
+		}
+		
+		//종료
+				System.out.println("엔터를 누르면 다음 난수가 나옵니다(종료:Q)");
+				/*String ans=sc.nextLine();
+				if(ans.equalsIgnoreCase("q"))
+				{
+					System.out.println("게임을 종료합니다");
+					break;
+				}
+				*/
+				if(sc.nextLine().equalsIgnoreCase("q"))
+					{
+						System.out.println("프로그램 종료!!");
+						break;
+					}
+		}
+		
+	}
+
+}

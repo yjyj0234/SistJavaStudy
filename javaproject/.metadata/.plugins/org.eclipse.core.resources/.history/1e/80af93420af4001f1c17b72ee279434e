@@ -1,0 +1,13 @@
+package day0226;
+
+public class EX8Object {
+
+		String name;   //인스턴스 멤버변수(앞에 static 안붙으면 무조건 멤버변수)
+		
+		
+	public static void main(String[] args) {
+		
+
+	}
+
+}

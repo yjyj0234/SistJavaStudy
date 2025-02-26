@@ -1,0 +1,11 @@
+package day0226;
+
+public class Ex9CardTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Ex9Card.width
+	}
+
+}

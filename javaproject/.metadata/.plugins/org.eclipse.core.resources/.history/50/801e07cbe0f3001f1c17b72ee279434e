@@ -1,0 +1,77 @@
+package day0226;
+
+import java.util.Scanner;
+
+public class ArrayScanSwitch_02 {
+
+	public static void main(String[] args) {
+		// 인원 수를 입력 후 인원수만큼 이름 자바,오라클 두점수 입력후
+		//총점, 평균, 순위, 등급을 구하시오
+		
+		Scanner sc=new Scanner(System.in);
+		
+		int inwon;
+		int [] java,oracle,sum,rank;
+		String [] name,grade;
+		double [] avg;
+		
+		System.out.println("성적을 입력할 인원 수 입력");
+		inwon=Integer.parseInt(sc.nextLine());               //integer 써야 라인 하나하나 넘겨가면서 입력 할수있음
+		
+		java=new int[inwon];
+		oracle=new int[inwon];
+		sum=new int[inwon];
+		rank=new int[inwon];
+		
+		name=new String[inwon];
+		grade=new String[inwon];
+		
+		avg=new double[inwon];
+		
+		//입력 시 총점,평균 구하기
+		for(int i=0;i<inwon;i++)          //inwon 자체가 length
+		{
+			System.out.println(i+"번째 이름 입력");
+			name[i]=sc.nextLine();
+			System.out.println("자바와 오라클 점수 입력");
+			java[i]=Integer.parseInt(sc.nextLine());
+			oracle[i]=Integer.parseInt(sc.nextLine());
+			
+			sum[i]=java[i]+oracle[i];
+			avg[i]=sum[i]/2.0;
+		}
+		//등수
+		for(int i=0;i<inwon;i++)
+		{
+			rank[i]=1;
+			for(int j=0;j<inwon;j++)
+			{
+				if(avg[i]<avg[j])
+					rank[i]++;
+			}
+		}
+		//등급
+		for(int i=0;i<inwon;i++)
+		{
+			switch((int)avg[i]/10)
+			{
+			/*
+			case 10: 
+			case 9:
+				grade[i]="전액장학생";
+				break;
+			case 8:
+				grade[i]="반액장학생";
+				break;
+			default:
+				grade[i]="장학금 해당없음";
+				break;
+				*/
+			//jdk 12에서 추가된 문법
+			
+			}
+		}
+		
+	}
+
+}

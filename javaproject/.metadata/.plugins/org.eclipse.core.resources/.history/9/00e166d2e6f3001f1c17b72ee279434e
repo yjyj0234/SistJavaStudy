@@ -1,0 +1,14 @@
+package day0226;
+
+public class ArrayDaCha_03 {
+
+	public static void main(String[] args) {
+		// 다차원배열 생성 초기화
+		
+		int [][] arr;
+		arr=new int[2][3];   //2행 3열 메모리에 할당
+		
+
+	}
+
+}

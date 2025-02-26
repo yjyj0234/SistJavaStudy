@@ -1,0 +1,19 @@
+package day0226;
+
+public class Ex9CardTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Ex9Card.width=10;
+		Ex9Card.height=20;
+		
+		System.out.println(Ex9Card.width);
+		System.out.println(Ex9Card.height);
+		
+		//인스턴스 변수생성
+		Ex9Card c1=new Ex9Card();s
+				
+	}
+
+}
