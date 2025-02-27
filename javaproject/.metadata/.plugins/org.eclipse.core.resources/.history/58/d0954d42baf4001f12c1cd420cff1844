@@ -1,0 +1,15 @@
+package day0227;
+
+class YourInfo{
+	
+	String myName;
+}
+/////////////////////////////////
+public class Ex7InfoTest {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

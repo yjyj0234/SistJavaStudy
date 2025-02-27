@@ -1,0 +1,13 @@
+package day0227;
+
+public class Ex1ObjectTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//static은 바로 사용 가능
+		System.out.println(Ex1Object.b); //int 초기화 안하면 자동 0
+		
+	}
+
+}

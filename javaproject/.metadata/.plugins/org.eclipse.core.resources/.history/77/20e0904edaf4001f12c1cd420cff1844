@@ -1,0 +1,17 @@
+package day0227;
+
+class Input{
+	
+	private String irum;
+	private String juso;
+}
+////////////////////////////////////
+
+public class Ex12ObjectTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

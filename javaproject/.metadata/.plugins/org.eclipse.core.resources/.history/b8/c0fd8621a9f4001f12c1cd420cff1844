@@ -1,0 +1,27 @@
+package day0227;
+
+//MyInfo에 내 정보 넣기
+class MyInfo{
+	private String name;                   
+	private int age;
+	
+	//setter 메서드
+	public void setName(String name)
+	{
+		this.name=name;
+	}
+	//getter 메서드
+
+}
+/////////////////////////////////////////////
+public class Ex3WorkerMethod {
+
+	public static void main(String[] args) {
+
+		MyInfo my1=new MyInfo();
+		my1.name="이수연";
+		System.out.println(my1.name);
+		
+	}
+
+}

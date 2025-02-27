@@ -35,10 +35,8 @@ public class QuizObjectTest {
 		String city1=stu1.getcity();
 		String hobby1=stu1.getHobby();
 		
-		stu2.setCity("서울");
+		stu2.setCity("서울");    //리턴값이 없으므로
 		stu2.setHobby("여행");
-		String city2=stu2.getcity();
-		String hobby2=stu2.getHobby();
 		
 		System.out.println("과정명: "+proName.processName);
 		System.out.println("==============================");
@@ -51,8 +49,9 @@ public class QuizObjectTest {
 		System.out.println("학생2 정보");
 		System.out.println("이름: "+stu2.stuName);
 		System.out.println("나이: "+stu2.age+"세");
-		System.out.println("지역: "+city2);
-		System.out.println("취미: "+hobby2);
+		System.out.println("지역: "+stu2.getcity());        
+		System.out.println("취미: "+stu2.getHobby());
+		
 	}
 
 }

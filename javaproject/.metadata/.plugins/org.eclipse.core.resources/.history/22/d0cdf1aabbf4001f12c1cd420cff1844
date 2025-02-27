@@ -1,0 +1,24 @@
+package day0227;
+
+class YourInfo{	
+	String myName;
+	static String Message;
+}
+public YourInfo(String myName)
+{
+	
+}
+public YourInfo(String Message)
+{
+	
+}
+/////////////////////////////////
+public class Ex7InfoTest {
+	
+	String city;  //사는 지역
+	int age; 
+	public static void main(String[] args) {
+
+	}
+
+}

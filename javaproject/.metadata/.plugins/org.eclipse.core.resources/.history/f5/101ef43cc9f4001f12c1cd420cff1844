@@ -1,0 +1,15 @@
+package day0227;
+
+class Happy{
+	
+}
+
+////////////////////////////////////////
+public class Ex8GetInstance {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

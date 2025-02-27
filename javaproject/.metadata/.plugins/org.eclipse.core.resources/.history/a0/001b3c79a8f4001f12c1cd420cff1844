@@ -1,0 +1,16 @@
+package day0227;
+
+//MyInfo에 내 정보 넣기
+class MyInfo{
+	String name;
+	int age;
+}
+/////////////////////////////////////////////
+public class Ex3WorkerMethod {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

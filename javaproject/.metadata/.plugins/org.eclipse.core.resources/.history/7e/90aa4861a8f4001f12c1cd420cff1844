@@ -1,0 +1,14 @@
+package day0227;
+
+class MyInfo{
+	
+}
+/////////////////////////////////////////////
+public class Ex3WorkerMethod {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

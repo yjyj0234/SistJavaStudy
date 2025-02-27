@@ -1,0 +1,8 @@
+package day0227;
+
+public class Ex11Member {
+
+	private String stuName;
+	private String gender;
+	private String addr;
+}

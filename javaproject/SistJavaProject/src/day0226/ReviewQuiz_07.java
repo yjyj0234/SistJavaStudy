@@ -87,8 +87,8 @@ public class ReviewQuiz_07 {
 
 	public static void main(String[] args) {
 		//quiz1();
-		//quiz2();
-		quiz3();
+		quiz2();
+		//quiz3();
 	}
 
 }

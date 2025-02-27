@@ -1,0 +1,33 @@
+package day0227;
+
+class YourInf{	
+	String myName;
+	String Message;    
+}
+
+/////////////////////////////////
+public class test {
+	
+	String city;  //사는 지역
+	int age; 
+	
+	public static void main(String[] args) {
+		
+		System.out.println("[주민정보]");
+		
+		YourInf you1=new YourInf();
+		you1.myName="김민기";
+				System.out.println("주민명: "+you1.myName);
+		YourInf.Message="행복하게 살자";
+		System.out.println("메세지: "+YourInf.Message);
+		
+		test in1=new test();
+		in1.city="대전";
+		System.out.println("지역: "+in1.city);
+		
+		in1.age=33;
+		System.out.println("나이: "+in1.age);
+			
+	}
+
+}

@@ -1,0 +1,12 @@
+package day0227;
+
+public class Ex1ObjectTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//static은 바로 사용 가능
+		Ex1Object.b
+	}
+
+}

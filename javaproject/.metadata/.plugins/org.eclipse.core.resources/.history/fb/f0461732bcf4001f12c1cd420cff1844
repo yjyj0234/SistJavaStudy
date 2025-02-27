@@ -1,0 +1,32 @@
+package day0227;
+
+class YourInfo{	
+	String myName;
+	static String Message;
+	
+	public String myName()
+	{
+		return myName;
+	}
+	public String Message()
+	{
+		return Message;
+	}
+}
+
+
+/////////////////////////////////
+public class Ex7InfoTest {
+	
+	String city;  //사는 지역
+	int age; 
+	public static void main(String[] args) {
+		
+		YourInfo you1=new YourInfo();
+		you1.myName="김민기";
+				System.out.println("주민명: "+you1.myName);
+			you1
+		
+	}
+
+}

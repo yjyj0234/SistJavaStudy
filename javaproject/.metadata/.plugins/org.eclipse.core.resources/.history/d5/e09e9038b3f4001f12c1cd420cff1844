@@ -1,0 +1,23 @@
+package day0227;
+
+public class Ex5ConstSetter {
+
+	String name;
+	int age;
+	
+	//생성자
+	public Ex5ConstSetter(String name) {
+		
+		
+	}
+	public Ex5ConstSetter(String name,int age) {
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

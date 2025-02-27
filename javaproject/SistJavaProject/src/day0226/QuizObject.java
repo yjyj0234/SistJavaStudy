@@ -8,6 +8,7 @@ public class QuizObject {
 	private String city; //사는 지역
 	private String hobby; //취미
 	
+	//setter
 	public void setCity(String city)
 	{
 		this.city=city;
@@ -17,11 +18,11 @@ public class QuizObject {
 		this.hobby=hobby;
 	}
 	
+	//getter
 	public String getcity()
 	{
 		return city;
 	}
-	
 	public String getHobby()
 	{
 		return hobby;

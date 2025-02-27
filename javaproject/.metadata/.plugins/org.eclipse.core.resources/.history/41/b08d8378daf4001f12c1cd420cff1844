@@ -1,0 +1,40 @@
+package day0227;
+
+class Input{
+	
+	private String irum;
+	private String juso;
+	private int nai;
+	
+	
+	public String getIrum() {
+		return irum;
+	}
+	public void setIrum(String irum) {
+		this.irum = irum;
+	}
+	public String getJuso() {
+		return juso;
+	}
+	public void setJuso(String juso) {
+		this.juso = juso;
+	}
+	public int getNai() {
+		return nai;
+	}
+	public void setNai(int nai) {
+		this.nai = nai;
+	}
+	
+}
+
+////////////////////////////////////
+
+public class Ex12ObjectTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
