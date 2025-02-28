@@ -1,0 +1,20 @@
+package day0228;
+
+class MyShop{
+	
+	private String sangName;
+	private int su;
+	private int dan;
+	
+	//생성자 인자3개
+	
+	//출력
+}
+public class Ex3ArrayConst {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

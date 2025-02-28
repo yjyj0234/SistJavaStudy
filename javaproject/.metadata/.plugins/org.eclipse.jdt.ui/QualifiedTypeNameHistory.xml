@@ -10,9 +10,6 @@
     <fullyQualifiedTypeName name="day0220.SubStringTest_06"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="double"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="day0226.EX8Object"/>
     <fullyQualifiedTypeName name="day0226.Ex9Card"/>
@@ -32,10 +29,20 @@
     <fullyQualifiedTypeName name="day0227.MyDate"/>
     <fullyQualifiedTypeName name="day0227.YourInfo"/>
     <fullyQualifiedTypeName name="day0227.Ex7InfoTest"/>
-    <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="day0227.Jungbo"/>
     <fullyQualifiedTypeName name="day0227.Ex11Member"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="day0227.Ex12ObjectTest"/>
     <fullyQualifiedTypeName name="day0227.QuizShop"/>
+    <fullyQualifiedTypeName name="java.util.Calendar"/>
+    <fullyQualifiedTypeName name="day0228.Coffee"/>
+    <fullyQualifiedTypeName name="day0228.Student"/>
+    <fullyQualifiedTypeName name="day0228.MyShop"/>
+    <fullyQualifiedTypeName name="day0228.Sangjum"/>
+    <fullyQualifiedTypeName name="day0228.StuInfos"/>
+    <fullyQualifiedTypeName name="day0228.Emp"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="day0228.StudentScore"/>
 </qualifiedTypeNameHistroy>

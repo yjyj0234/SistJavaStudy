@@ -1,0 +1,39 @@
+package day0228;
+
+class Coffee{
+	
+	private String americano;
+	private String tea;
+	private static String mes="Happy Day~~";
+	public String getAmericano() {
+		return americano;
+	}
+	public void setAmericano(String americano) {
+		this.americano = americano;
+	}
+	public String getTea() {
+		return tea;
+	}
+	public void setTea(String tea) {
+		this.tea = tea;
+	}
+	public static String getMes() {
+		return mes;
+	}
+	public static void setMes(String mes) {
+		Coffee.mes = mes;
+	}
+	
+	
+}
+
+////////////////////////////////
+public class Ex1ObjectTest {
+
+	//Coffee 클래스의 변수값을 출력하기 위한 메서드
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

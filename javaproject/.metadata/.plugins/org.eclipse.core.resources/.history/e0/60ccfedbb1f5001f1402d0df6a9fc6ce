@@ -1,0 +1,121 @@
+/*
+ * [객체생성 과제_02/28]
+
+1.멤버클래스 : StudentScore
+   변수명: 학생명(stuName),자바점수(java),html점수(html),mysql점수(mysql)
+   메서드명:  setters & getters , 
+                     세과목의 합계를 반환하는 getTotal
+                     세과목의 평균을 반환하는 getAverage
+       평균에 대해서 90점 이상이면 “장학생”, 80점 이상이면 “우수생”,나머지는 “재수강” 
+       반환하는 getPungga
+
+2. 메인클래스: StudentScoreResult
+
+출력완성
+
+이름     Java    Html   Mysql    총점     평균     평가
+
+***1. 자유롭게 하되 입력값으로 클래스 생성후 메서드로 출력할것!!!
+     2. 디폴트 생성자 명시적 생성자 상관없어요~~~
+
+학생인원수 입력후 이름,자바,html,mysql 입력후 위의 모양처럼 출력해주세요
+
+ */
+package day0228;
+
+import java.util.Scanner;
+
+class StudentScore{
+	private String stuName;
+	private int java;
+	private int html;
+	private int mysql;
+	
+	public String getStuName() {
+		return stuName;
+	}
+	public void setStuName(String stuName) {
+		this.stuName = stuName;
+	}
+	public int getJava() {
+		return java;
+	}
+	public void setJava(int java) {
+		this.java = java;
+	}
+	public int getHtml() {
+		return html;
+	}
+	public void setHtml(int html) {
+		this.html = html;
+	}
+	public int getMysql() {
+		return mysql;
+	}
+	public void setMysql(int mysql) {
+		this.mysql = mysql;
+	}
+	public int getTotal() {
+		int gt=getJava()+getHtml()+getMysql();
+		return gt;
+	}
+	public double getAverage() {
+		double ga=getTotal()/3.0;
+		return ga;
+	}
+	public String getPungga() {
+		String gp;
+		if(getAverage()>=90)
+			gp="장학생";
+		else if(getAverage()>=80)
+			gp="우수생";
+		else
+			gp="재수강";
+		return gp;
+	}
+	public static void showPyo() 
+	{
+		System.out.println("이름\tJava\tHtml\tMysql\t총점\t평균\t평가");
+		System.out.println("=============================================");
+	}
+}
+
+public class StudentScoreResult {
+	
+	//결과
+	public static void showScore(StudentScore [] ss) 
+	{
+		StudentScore.showPyo();
+		for(StudentScore s:ss)
+		{
+			System.out.println(s.getStuName()+"\t"+s.getJava()+"\t"+s.getHtml()+"\t"+
+					s.getMysql()+"\t"+s.getTotal()+"\t"+s.getAverage()+"\t"+s.getPungga());
+		}
+	}
+		
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		int stud;
+		
+		System.out.println("학생 인원 수: ");
+		stud=Integer.parseInt(sc.nextLine());
+		
+		StudentScore [] ss=new StudentScore[stud];
+		
+		for(int i=0;i<stud;i++)
+		{
+			System.out.println("학생 이름: ");
+			String stuName=sc.nextLine();
+			System.out.println("Java 점수: ");
+			int java=Integer.parseInt(sc.nextLine());
+			System.out.println("Html 점수: ");
+			int html=Integer.parseInt(sc.nextLine());
+			System.out.println("Mysql 점수: ");
+			int mysql=Integer.parseInt(sc.nextLine());
+			
+		}
+		
+	}
+
+}

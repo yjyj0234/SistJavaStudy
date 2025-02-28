@@ -1,0 +1,29 @@
+package day0228;
+
+class Sangjum
+{
+	private String sangpum;
+	private int price;
+	private String color;
+	
+	//생성자3개
+	
+	public Sangjum(String s,int p,String c) 
+	{
+		s=sangpum;
+		p=price;
+		c=color;
+	}
+	
+	//제목을 메서드
+	
+}
+
+public class Ex4ArrayConst {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

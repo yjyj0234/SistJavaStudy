@@ -1,0 +1,20 @@
+package day0228;
+
+class MyBag{
+	private String bagName;
+	private int bagPrice;
+	private String bagColor;
+}
+////////////////////////////////////////////
+public class Ex6CallByRef {
+	
+	public static void bagInfoIn() {
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

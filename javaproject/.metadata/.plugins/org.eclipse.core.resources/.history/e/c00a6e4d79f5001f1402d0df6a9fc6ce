@@ -1,0 +1,39 @@
+package day0228;
+
+class Sangjum
+{
+	private String sangpum;
+	private int price;
+	private String color;
+	
+	//생성자3개
+	
+	public Sangjum(String s,int p,String c) 
+	{
+		s=sangpum;
+		p=price;
+		c=color;
+	}
+	
+	//제목을 메서드
+	public static void showTitle() {
+		System.out.println("상품명\t단가\t색상");
+		System.out.println("========================");
+	}
+	//출력문
+	public void showSangpum() 
+	{
+		System.out.println(sangpum+"\t"+price+"원\t"+color);
+	}
+}
+
+public class Ex4ArrayConst {
+
+	public static void main(String[] args) {
+		
+		Sangjum [] sj=new Sangjum[4];		//4개를 생성할거란 주소만 할당되어있는 상태(초기값 모두 null)
+		
+		//4개의 상점배열에 생성자를 통해서 생성
+	}
+
+}

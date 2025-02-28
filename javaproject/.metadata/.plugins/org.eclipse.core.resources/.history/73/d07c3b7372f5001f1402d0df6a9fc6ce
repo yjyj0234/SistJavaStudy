@@ -1,0 +1,45 @@
+package day0228;
+
+class Student
+{
+	private String stuName;
+	private String hp;
+	private int score;
+	
+	//명시적생성자3개인자
+	public Student(String name,String hp,int score)
+	{
+		this.stuName=name;
+		this.hp=hp;
+		this.score=score;
+	}
+	//출력 메서드
+	public void writeData() 
+	{
+		System.out.println("이름: "+stuName);
+		System.out.println("핸드폰: "+hp);
+		System.out.println("점수: "+score);
+	}
+}
+///////////////////////////////////////////////
+public class Ex2ArrayConst {
+
+	public static void main(String[] args) {
+		// 생성을 배열로
+		Student [] stu1=new Student[3];
+		
+		//번지주소값에 따른 초기화
+		stu1[0]=new Student("홍길동", "01052435878", 75);
+		stu1[1]=new Student("이순신", "01011154651", 80);
+		stu1[2]=new Student("김민선", "060-3643-3451", 90)
+				
+		//for문으로 출력
+				for(int i=0;i<3;i++)
+				{
+					for(int j=0;j<3;j++)
+				}
+				
+
+	}
+
+}

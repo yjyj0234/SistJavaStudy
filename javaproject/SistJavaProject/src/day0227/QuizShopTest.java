@@ -1,12 +1,20 @@
 package day0227;
 
+import java.util.Calendar;
+
 public class QuizShopTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		Calendar cal=Calendar.getInstance();
 		
 		QuizShop pro1=new QuizShop();
 		QuizShop pro2=new QuizShop();
+		
+		int b=cal.get(Calendar.MONTH)+1;
+		
+		
+		System.out.println("[오늘의 입고상품("+cal.get(cal.YEAR)+"/"+b+"/"+cal.get(cal.DATE)+")]");
 		
 		QuizShop.martName="이마트 강동지점";
 		

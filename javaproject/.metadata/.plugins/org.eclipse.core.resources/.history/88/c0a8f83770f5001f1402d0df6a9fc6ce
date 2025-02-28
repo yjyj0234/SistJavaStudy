@@ -1,0 +1,14 @@
+package day0228;
+
+class student{
+	
+}
+
+public class Ex2ArrayConst {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

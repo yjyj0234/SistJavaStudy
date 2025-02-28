@@ -1,0 +1,54 @@
+package day0228;
+
+class StuInfos{
+	
+	private String stuName;
+	private String mbti;
+	private int age;
+	//3가지 인자 초기화 하는 명시적 생성자
+	public StuInfos(String stuName,String mbti,int age) 
+	{
+		this.stuName=stuName;
+		this.mbti=mbti;
+		this.age=age;
+	}
+	
+	//제목 메서드:showTitle 이름 mbti 나이
+	public static void showTitle()
+	{
+		System.out.println("이름\tMBTI\t나이");
+		System.out.println("-------------------------");
+	}
+	//출력 메서드:showInfo  이름 mbti 나이
+	public void showInfo() {
+		System.out.println("이름: "+stuName);
+		System.out.println("mbti: "+mbti);
+		System.out.println("나이: "+age);
+	}
+}
+public class Ex10ArrQuiz {
+
+	private static String showtitle;
+
+	public static void main(String[] args) {
+		// 클래스 배열로 생성과 동시에 3명이상 초기화(이름,mbti,나이 자유)
+		StuInfos [] stus=new StuInfos[5];
+		stus[0]= new StuInfos("손흥민", "infp", 33);
+		stus[1]= new StuInfos("김민재", "infj", 29);
+		stus[2]= new StuInfos("이강인", "enfp", 25);
+		stus[3]= new StuInfos("박지성", "entp", 36);
+		stus[4]= new StuInfos("김연아", "enfp", 32);
+		//총 5명의 정보를 출력합니다
+		System.out.println("총 "+stus.length+"명의 정보를 출력");
+		//타이틀호출
+		System.out.println(StuInfos.showTitle);
+		System.out.println("===========");
+		//출력문호출
+		for(int i=0;i<stus.length;i++)
+		{
+			stus[i].showInfo();
+			System.out.println("===========");
+		}
+	}
+
+}
