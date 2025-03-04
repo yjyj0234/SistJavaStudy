@@ -1,0 +1,9 @@
+package day0304;
+
+//인터페이스를 구현하는 클래스
+//class 가 class를 Extends
+//class가 Interface를 implement
+public class Ex11Food {
+	
+	
+}

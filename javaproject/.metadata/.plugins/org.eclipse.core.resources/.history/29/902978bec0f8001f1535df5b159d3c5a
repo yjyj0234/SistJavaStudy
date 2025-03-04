@@ -1,0 +1,28 @@
+package day0304;
+
+//추상클래스
+abstract class Board{
+	
+	public abstract void process(); //추상메서드
+}
+//자식 클래스 4개
+class List{
+	
+}
+class Write{
+	
+}
+class Update{
+	
+}
+class Delete{
+	
+}
+public class Ex10Abst {
+
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

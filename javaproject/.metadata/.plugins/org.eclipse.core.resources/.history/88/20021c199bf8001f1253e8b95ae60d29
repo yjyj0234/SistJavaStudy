@@ -1,0 +1,8 @@
+package day0304;
+
+//부모
+public class Ex2Employee {
+	
+	String sName;
+	int Salary;
+}

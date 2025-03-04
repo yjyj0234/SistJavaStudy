@@ -1,0 +1,24 @@
+package day0304;
+/*
+ * 메인에서 일반객체생성방법
+ * 다형성 객체생성방법 
+ */
+interface GameA{
+	
+	public void play();
+}
+interface GameB{
+	
+	public void stop();
+}
+class MyGame{
+	
+}
+public class Ex13InterMain {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

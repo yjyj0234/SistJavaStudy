@@ -1,0 +1,24 @@
+package day0304;
+
+interface InterA{
+	
+	public void play();
+	public void write();
+	
+}
+
+interface InterB{
+	
+	public void draw();
+}
+
+//2개의 인터페이스를 구현하는 클래스
+
+public class Ex12InterfaceMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

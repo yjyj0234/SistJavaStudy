@@ -1,0 +1,17 @@
+package day0304;
+
+//super 
+class Fruit{
+	
+	public static
+	
+}
+
+public class Ex9Abst {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

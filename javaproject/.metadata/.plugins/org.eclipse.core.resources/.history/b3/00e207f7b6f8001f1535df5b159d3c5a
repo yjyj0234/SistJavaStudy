@@ -1,0 +1,18 @@
+package day0304;
+
+//super
+class Color{
+	
+	public  void hello() {
+		System.out.println("Hello");
+	}
+}
+//sub
+public class Ex7InheritDa {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

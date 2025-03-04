@@ -1,0 +1,21 @@
+package day0304;
+
+//인터페이스를 구현하는 클래스
+//class 가 class를 Extends
+//class가 Interface를 implement
+public class Ex11Food implements Ex11FoodShop{
+
+	@Override
+	public void order() {
+		// TODO Auto-generated method stub
+		System.out.println(SHOPNAME);
+	}
+
+	@Override
+	public void bedal() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+}

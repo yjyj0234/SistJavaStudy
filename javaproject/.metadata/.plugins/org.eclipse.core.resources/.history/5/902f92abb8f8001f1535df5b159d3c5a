@@ -1,0 +1,63 @@
+package day0304;
+
+//super
+class Color{
+	
+	public  void hello() {
+		System.out.println("Hello");
+	}
+}
+//sub1
+class Red extends Color
+{
+	public void proc()
+	{
+		System.out.println("나는 빨강색을 좋아해");
+	}
+}
+//sub2
+class Yellow extends Color
+{
+	public void proc()
+	{
+		System.out.println("나는 노랑색을 좋아해");
+	}
+}
+//sub3
+class Green extends Color
+{
+	public void proc()
+	{
+		System.out.println("나는 초록색을 좋아해");
+	}
+}
+
+public class Ex7InheritDa {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("1. Red로 선언하고 Red로 생성한경우");
+		Red red=new Red();
+		Yellow yellow=new Yellow();
+		red.hello();
+		red.proc();
+		yellow.hello();
+		yellow.proc();
+		Green green=new Green();
+		
+		//Green green=new Green;
+		green.hello();
+		green.proc();
+		
+		//다형성_부모로 선언하고 자식으로 생성하는 경우
+		Color col1; //선언
+		col1=new Red(); //생성
+		
+		col1.hello();//부모가 가진 메소드 호출도 ok!!!
+		//메서드가 오버라이드 된 경우 호출 ok
+		//부모한테 없고 자식만 갖고있는 메서드는 호출x: proc 못불러옴
+		//col1.proc(x)
+	}
+
+}

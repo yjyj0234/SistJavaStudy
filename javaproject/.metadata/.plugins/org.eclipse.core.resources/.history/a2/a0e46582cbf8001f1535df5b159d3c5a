@@ -1,0 +1,14 @@
+package day0304;
+
+interface GameA{
+	
+}
+
+public class Ex13InterMain {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

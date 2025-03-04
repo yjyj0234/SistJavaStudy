@@ -1,0 +1,16 @@
+package day0304;
+
+class Work{
+	public void process() {
+		System.out.println("아무 작업도 하지않는다");
+	}
+}
+
+public class Ex8Inherit {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

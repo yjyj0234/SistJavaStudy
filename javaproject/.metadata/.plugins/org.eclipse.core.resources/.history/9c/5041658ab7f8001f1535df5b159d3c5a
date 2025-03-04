@@ -1,0 +1,44 @@
+package day0304;
+
+//super
+class Color{
+	
+	public  void hello() {
+		System.out.println("Hello");
+	}
+}
+//sub1
+class Red extends Color
+{
+	public void proc()
+	{
+		System.out.println("나는 빨강색을 좋아해");
+	}
+}
+//sub2
+class Yellow extends Color
+{
+	public void proc()
+	{
+		System.out.println("나는 노랑색을 좋아해");
+	}
+}
+//sub3
+class Green extends Color
+{
+	public void proc()
+	{
+		System.out.println("나는 초록색을 좋아해");
+	}
+}
+
+public class Ex7InheritDa {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("1. Red로 선언하고 Red로 생성한경우");
+		Red red=new Red;
+	}
+
+}

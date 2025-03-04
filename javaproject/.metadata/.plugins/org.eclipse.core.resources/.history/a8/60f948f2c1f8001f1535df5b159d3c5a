@@ -1,0 +1,75 @@
+package day0304;
+
+import java.util.Scanner;
+
+//추상클래스
+abstract class Board{
+	
+	public abstract void process(); //추상메서드
+}
+//자식 클래스 4개
+class List extends Board{
+
+	@Override
+	public void process() {
+		// TODO Auto-generated method stub
+		System.out.println("게시판을 출력합니다");
+	}
+	
+}
+class Write extends Board{
+
+	@Override
+	public void process() {
+		// TODO Auto-generated method stub
+		System.out.println("게시판을 입력합니다");
+	}
+	
+}
+class Update extends Board{
+
+	@Override
+	public void process() {
+		// TODO Auto-generated method stub
+		System.out.println("게시판을 수정합니다");
+	}
+	
+}
+class Delete extends Board{
+
+	@Override
+	public void process() {
+		// TODO Auto-generated method stub
+		System.out.println("게시판을 삭제합니다");
+	}
+	
+}
+public class Ex10Abst {
+
+	public static void main(String[] args) {
+		
+		//Board board=new board;  (x) 추상클래스는 new로 객체 생성 못함
+		/*Board board;
+		
+		board=new List();
+		board.process();
+		
+		board=new Write();
+		board.process();
+		
+		board=new Update();
+		board.process();
+		
+		board=new Delete();
+		board.process();
+		*/
+		
+		Scanner sc=new Scanner(System.in);
+		
+		int num;
+		
+		Board board;
+		
+	}
+
+}

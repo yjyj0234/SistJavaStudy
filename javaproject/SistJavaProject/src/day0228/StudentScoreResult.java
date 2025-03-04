@@ -55,10 +55,18 @@ class StudentScore{
 	public void setMysql(int mysql) {
 		this.mysql = mysql;
 	}
+	
+	//총점
 	public int getTotal() {
 		int gt=getJava()+getHtml()+getMysql();
 		return gt;
 	}
+	/*public int getTotal()
+	 * {
+	 * 		return java+html+mysql;
+	 * }
+	 */
+	
 	public double getAverage() {
 		double ga=getTotal()/3.0;
 		return ga;
@@ -76,23 +84,21 @@ class StudentScore{
 	public static void showPyo() 
 	{
 		System.out.println("이름\tJava\tHtml\tMysql\t총점\t평균\t평가");
-		System.out.println("=============================================");
+		System.out.println("=================================================");
 	}
 }
 
 public class StudentScoreResult {
 	
 	//결과
-	public static void showScore(StudentScore [] ss) 
+	public static void showScore(StudentScore s) 
 	{
 		StudentScore.showPyo();
-		for(StudentScore s:ss)
-		{
-			System.out.printf(s.getStuName()+"\t"+s.getJava()+"\t"+s.getHtml()+"\t"+
-					s.getMysql()+"\t"+s.getTotal()+"\t"+"%.2f"+"\t"+s.getPungga(),s.getAverage());
-		}
-	}
 		
+			System.out.printf(s.getStuName()+"\t"+s.getJava()+"\t"+s.getHtml()+"\t"+
+					s.getMysql()+"\t"+s.getTotal()+"\t"+"%.2f"+"\t"+s.getPungga()+"\n",s.getAverage());
+		
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
@@ -102,11 +108,10 @@ public class StudentScoreResult {
 		System.out.println("학생 인원 수: ");
 		stud=Integer.parseInt(sc.nextLine());
 		
-		ss=new StudentScore[stud];
+		ss=new StudentScore[stud];  //인원수 만큼 StudentScore클래스 배열할당
 		
 		for(int i=0;i<stud;i++)
 		{
-			ss[i]=new StudentScore();
 			System.out.println("학생 이름: ");
 			String stuName=sc.nextLine();
 			System.out.println("Java 점수: ");
@@ -116,12 +121,14 @@ public class StudentScoreResult {
 			System.out.println("Mysql 점수: ");
 			int mysql=Integer.parseInt(sc.nextLine());
 			
+			ss[i]=new StudentScore();       //입력된만큼 i번쨰 StudentScore 생성
 			ss[i].setStuName(stuName);
 			ss[i].setJava(java);
 			ss[i].setHtml(html);
 			ss[i].setMysql(mysql);
 		}
-		showScore(ss);
+		for(StudentScore s:ss)
+		showScore(s);
 	}
 
 }

@@ -1,0 +1,24 @@
+package day0304;
+
+class Shop{
+	
+	private String sangpum;
+	private int su;
+	
+	//디폴트 생성자(상품명=
+	public Shop
+	//명시적 생성자(상품명,수량)
+	
+}
+/////////////////////
+class Myget{
+	
+}
+public class Ex4Inherit {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

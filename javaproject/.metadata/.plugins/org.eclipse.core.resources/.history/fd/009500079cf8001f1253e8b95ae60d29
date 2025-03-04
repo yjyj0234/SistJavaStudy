@@ -1,0 +1,14 @@
+package day0304;
+
+//자식 클래스
+public class Ex2Mangager extends Ex2Employee{
+	
+	String dept; //부서
+	
+	public Ex2Mangager(String name, int sal,String d) {
+		super(name, sal);//부모생성자 호출
+		dept=d;
+	}
+
+	
+}

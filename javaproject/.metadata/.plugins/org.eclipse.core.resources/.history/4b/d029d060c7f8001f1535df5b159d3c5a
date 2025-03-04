@@ -1,0 +1,6 @@
+package day0304;
+
+public interface FoodShop {
+	//인터페이스에는 상수와 추상메서드만 선언가능하다
+	
+}

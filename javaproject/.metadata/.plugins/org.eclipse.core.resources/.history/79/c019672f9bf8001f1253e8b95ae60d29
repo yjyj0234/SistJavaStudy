@@ -1,0 +1,13 @@
+package day0304;
+
+//부모
+public class Ex2Employee {
+	
+	String sName;
+	int salary;
+	
+	//명시적 생성자
+		
+	
+	//출력메서드
+}
