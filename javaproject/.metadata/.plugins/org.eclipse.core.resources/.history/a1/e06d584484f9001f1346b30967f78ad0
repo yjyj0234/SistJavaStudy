@@ -1,0 +1,15 @@
+package day0305;
+
+import java.sql.Date;
+
+//널포인트 익셉션: 생성하지 않고 클래스의 메소드를 호출하는 경우
+public class Ex10NullPointException {
+	
+	Date
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

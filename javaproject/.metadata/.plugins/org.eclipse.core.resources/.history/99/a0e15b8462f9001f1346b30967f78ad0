@@ -1,0 +1,63 @@
+package day0305;
+
+//추상메서드를 하나롣 가지고 있으면 클래스도 추상으로 바꿔줌
+abstract class Game{
+	abstract void play();  //추상메서드
+	abstract void stop();
+}
+
+//////////////////////
+class YongHee extends Game{
+
+	@Override
+	void play() {
+		// TODO Auto-generated method stub
+		System.out.println("용희님이 게임을 시작합니다");
+	}
+
+	@Override
+	void stop() {
+		// TODO Auto-generated method stub
+		System.out.println("용희님이 게임을 중지합니다");
+	}
+	
+}
+class JooHee extends Game{
+
+	@Override
+	void play() {
+		// TODO Auto-generated method stub
+		System.out.println("주희님이 게임을 시작합니다");
+	}
+
+	@Override
+	void stop() {
+		// TODO Auto-generated method stub
+		System.out.println("주희님이 게임을 중지합니다");
+	}
+	
+}
+class HeaJee extends Game{
+
+	@Override
+	void play() {
+		// TODO Auto-generated method stub
+		System.out.println("혜지님이 게임을 시작합니다");
+
+	}
+
+	@Override
+	void stop() {
+		// TODO Auto-generated method stub
+		System.out.println("혜지님이 게임을 중지합니다");
+	}
+	
+}
+public class Ex3Abst {
+
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

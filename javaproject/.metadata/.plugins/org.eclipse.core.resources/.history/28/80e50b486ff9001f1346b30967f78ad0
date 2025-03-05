@@ -1,0 +1,19 @@
+package day0305;
+
+abstract class AbstEx{
+	
+	abstract public void show();
+	
+}
+
+///////////////////////////////
+class Outer
+
+public class Ex6Anonymous {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

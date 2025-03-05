@@ -1,0 +1,18 @@
+package day0305;
+
+public class Ex11ClassNotFound {
+
+	public static void main(String[] args) {
+		
+		//어떤 클래스파일의 위치를 알려줘
+		try {
+			Class cla=Class.forName("java.lang.String2");
+			System.out.println("클래스를 찾았습니다");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			
+		}    
+		
+	}
+}

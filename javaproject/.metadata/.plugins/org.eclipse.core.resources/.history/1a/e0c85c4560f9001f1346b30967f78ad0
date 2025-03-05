@@ -1,0 +1,26 @@
+package day0305;
+
+interface interWork{
+	
+	public void work();   //미완의 추상 메서드: () 구현부가 없음
+	
+}
+interface interFood{
+	
+	public void order();
+	public void bedal();
+	
+}
+
+//자바 클래스는 다중구현이 가능:implements
+class InterImpl implements interWork,interFood{
+	
+}
+public class Ex2Implements {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

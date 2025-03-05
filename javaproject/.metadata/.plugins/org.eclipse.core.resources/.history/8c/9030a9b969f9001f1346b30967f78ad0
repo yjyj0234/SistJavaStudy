@@ -1,0 +1,20 @@
+package day0305;
+
+class Outer{
+
+	class Inner1{
+		
+	}
+	class Inner2{
+		
+	}
+}
+
+public class Ex5InnerClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

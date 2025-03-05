@@ -1,8 +1,0 @@
-package day0226;
-
-public class Ex12Info {
-	
-	private String name;   //private:캡슐화(다른 클래스의 멤버에 접근할 때는 메서드로 접근하라)
-	private int age;
-	
-}

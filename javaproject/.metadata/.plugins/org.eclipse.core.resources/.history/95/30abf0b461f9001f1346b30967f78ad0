@@ -1,0 +1,16 @@
+package day0305;
+
+class Game{
+	void play();
+	void stop();
+	
+}
+
+public class Ex3Abst {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

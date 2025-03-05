@@ -1,0 +1,61 @@
+package day0304;
+
+import java.util.Scanner;
+
+/*
+ * 결과 출력
+ * 보너스는 개발부만 백만 나머지 부서는 50만원 특별지급
+ * 사원명?
+ * 홍길동
+ * 부서?
+ * 개발부
+ * 기본급?
+ * 2000000
+ * ===========================
+ * 사원명    부서      기본급     보너스       총급여
+ * 홍길동	   개발부    2000000    1000000    3000000
+ */
+class Sawon{
+	private String sawonName,buseo;
+	private int gibonPay;
+	
+	//명시적 생성자(3가지 인자 초기화하는 값 넘기기)
+	public Sawon(String sawonName, String buseo, int gibonPay)
+	{
+		this.sawonName=sawonName;
+		this.buseo=buseo;
+		this.gibonPay=gibonPay;
+	}
+	//메서드 _getBonus
+	public int getBonus()					//공식 기억 
+	{
+		int gB = 0;
+		if(buseo.equals("개발부"))
+		{
+			gibonPay+=1000000;
+		}
+		else
+			gibonPay+=500000;
+		return gB;
+	}
+	//최종급여출력
+	public static void writePyo() 
+	{
+		System.out.println("=========================================");
+		System.out.println("사원명\t부서\t기본급\t보너스\t총급여");
+	}
+	public void writeResult(Sawon s)
+	{
+		System.out.println(sawonName+"\t"+buseo+"\t"+gibonPay+"\t"+getBonus()+"\t"+(gibonPay+getBonus));
+	}
+}
+/////////////////////////////
+public class QuizSawon {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Sawon.writePyo();
+		
+	}
+
+}

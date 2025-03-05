@@ -1,0 +1,24 @@
+package day0305;
+
+import java.util.Scanner;
+
+//throws: 호출한 영역으로 예외처리를 던짐
+//throw: 강제로 예외를 발생시킬때
+
+public class Ex14Throws {
+	
+	public static void scoreInput() throws Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int score=0;
+		
+		//점수가 1~100점 사이가 아니면 익셉션 강제 발생
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

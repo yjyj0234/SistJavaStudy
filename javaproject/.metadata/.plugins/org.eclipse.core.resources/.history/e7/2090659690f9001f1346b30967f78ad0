@@ -1,0 +1,19 @@
+package day0305;
+
+class UserException
+{
+	
+}
+public class Ex15Throws {
+	
+	public static void process() 
+	{
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

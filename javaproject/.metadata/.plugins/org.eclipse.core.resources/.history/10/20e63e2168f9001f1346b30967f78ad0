@@ -1,0 +1,24 @@
+package day0305;
+
+class OuterObj{
+	
+	class InnerObj{
+		public void write()
+		{
+			System.out.println("내부 클래스의 메서드");
+		}
+	}
+	public void show() {
+		System.out.println("외부 클래스의 메서드");
+		System.out.println("외부에서 내부 클래스의 메서드 호출");
+	}
+}
+
+public class Ex4InnerClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

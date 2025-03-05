@@ -1,0 +1,8 @@
+package day0305;
+
+public class Ex11ClassNotFound {
+
+	public static void main(String[] args) {
+		
+	}
+}

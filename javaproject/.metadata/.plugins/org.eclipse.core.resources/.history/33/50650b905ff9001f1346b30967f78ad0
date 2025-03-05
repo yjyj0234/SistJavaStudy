@@ -1,0 +1,12 @@
+package day0305;
+
+interface interWork
+
+public class Ex2Implements {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

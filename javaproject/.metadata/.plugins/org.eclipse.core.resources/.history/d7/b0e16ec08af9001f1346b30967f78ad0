@@ -1,0 +1,27 @@
+package day0305;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+public class Ex12IoException {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		InputStream is=System.in;  //콘솔에서 입력받기 위한 노트스트림
+		int a=0;
+		
+		System.out.println("한글자를 입력: ");
+		try {
+			a=is.read();   //read()는 1바이트 ㅇ므로 한글 못읽음
+		} catch (IOException e) {
+			//e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+	
+		System.out.println("***30초 뒤에 출력합니다***");
+		
+		Thread.sleep(3000);  //3초
+	}
+
+}

@@ -1,0 +1,60 @@
+package day0305;
+
+//super
+class Car
+{
+	private String carName;
+	private String carColor;
+	//생성자
+	public Car(String name,String color)
+	{
+		
+	}
+	
+	
+	//setters & getters
+	public String getCarName() {
+		return carName;
+	}
+	public void setCarName(String carName) {
+		this.carName = carName;
+	}
+	public String getCarColor() {
+		return carColor;
+	}
+	public void setCarColor(String carColor) {
+		this.carColor = carColor;
+	}
+	//출력메서드
+	public void writeCar()
+	{
+		System.out.println("내 차는 "+carName+"이고 색상은 "+carColor+"입니다");
+	}
+}
+
+//sub
+class MyCar extends Car
+{
+	private int carPrice;
+	
+	//디폴트 생성자
+	public MyCar() {
+		//보이지는 않지만 super() 자동으로 있음
+	}
+	public int getCarPrice() {
+		return carPrice;
+	}
+
+	public void setCarPrice(int carPrice) {
+		this.carPrice = carPrice;
+	}
+}
+
+public class Ex1Extends {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

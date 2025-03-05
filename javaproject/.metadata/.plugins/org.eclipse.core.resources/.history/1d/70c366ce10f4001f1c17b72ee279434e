@@ -1,9 +1,0 @@
-package day0226;
-
-public class Ex10Student {
-	
-	String stuName;
-	int grade;//학년
-	static
-
-}
