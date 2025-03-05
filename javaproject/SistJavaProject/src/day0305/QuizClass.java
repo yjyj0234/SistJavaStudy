@@ -90,10 +90,10 @@ public class QuizClass {
 	//사원명		직급		기본급		직급수당		가족수당		세금		실수령액
 	
 	//한개의 사원 데이타 출력(writeSawon()) 
-	public static void writeSawon() {
-		Company cp=new Company();
-		System.out.println(cp.getStaff()+"\t"+cp.getPosition()+"\t"+cp.getGibonPay()+"\t"+cp.getSudangPay()
-							+"\t"+cp.getFamSudang()+"\t"+cp.getTax()+"\t"+cp.getNetPay());
+	public static void writeSawon(Company [] myCompany) {
+		for(Company cp:myCompany)
+		System.out.printf(cp.getStaff()+"\t"+cp.getPosition()+"\t"+"%.0f"+"\t"+cp.getSudangPay()
+							+"\t"+cp.getFamSudang()+"\t"+"%.0f"+"\t"+"%.0f",cp.getGibonPay(),cp.getTax(),cp.getNetPay());
 	}
 	
 	public static void main(String[] args) {
@@ -108,23 +108,27 @@ public class QuizClass {
 		//배열에 데이타를 입력후 생성자를 통해서 데이타 저장하기
 		myCompany=new Company[inwon];
 		
-		System.out.println("이름 입력: ");
-		String name=sc.nextLine();
-		System.out.println("직급 입력: ");
-		String jik=sc.nextLine();
-		System.out.println("가족 수 입력: ");
-		int gajok=Integer.parseInt(sc.nextLine());
+		
 		//제목출력
-		showTitle();
+		
 		//반복문 통해서 데이타 출력하는 메서드 호출
 		for(int i=0;i<inwon;i++)
 		{
+			System.out.println("이름 입력: ");
+			String name=sc.nextLine();
+			System.out.println("직급 입력: ");
+			String jik=sc.nextLine();
+			System.out.println("가족 수 입력: ");
+			int gajok=Integer.parseInt(sc.nextLine());
+			
 			myCompany[i]=new Company();
 			myCompany[i].setStaff(name);
 			myCompany[i].setPosition(jik);
 			myCompany[i].setFamSu(gajok);
+			
 		}
-		writeSawon();
+		showTitle();
+		writeSawon(myCompany);
 	}
 
 }
