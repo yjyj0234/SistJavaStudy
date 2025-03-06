@@ -1,0 +1,22 @@
+package day0306;
+
+import java.io.FileWriter;
+import java.util.Scanner;
+
+public class Ex9FWriter {
+
+	Scanner sc;
+	FileWriter fw;  //자동으로 null
+	static final String FILENAME="";
+	
+	public void dateWrite()
+	{
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

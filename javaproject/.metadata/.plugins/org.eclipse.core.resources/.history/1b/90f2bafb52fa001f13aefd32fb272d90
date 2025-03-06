@@ -1,0 +1,56 @@
+package day0306;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
+
+public class Ex8FileWriter {
+
+	public static void fileWriter() 
+	{
+		String fileName="C:\\sist0217\\work\\test1.txt";
+		FileWriter fw=null;  
+		
+		try {
+			fw=new FileWriter(fileName); //파일새로 생성(같은 이름이 있더라도 새로 생성)
+			
+			//파일에 내용 추가
+			fw.write("오늘 날씨 좋구나\r");
+			fw.write(new Date().toString());
+			
+			System.out.println("**파일 저장성공!!**");
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				fw.close();				//fw.close 하고 밑줄 그어지면 try catch
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	public static void fileWrite2() 
+	{
+		FileWriter fw=null;
+		String fileName="C:\\sist0217\\work\\test.txt";
+		
+		try {
+			fw=new FileWriter(fileName, true);   //true=추가모드
+			
+			fw.write("내이름은 손흥민!!!\n");
+			fw.write("========================");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}    
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		fileWriter();
+	}
+
+}

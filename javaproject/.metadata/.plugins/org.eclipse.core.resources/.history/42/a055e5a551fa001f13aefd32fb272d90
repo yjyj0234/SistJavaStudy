@@ -1,0 +1,19 @@
+package day0306;
+
+import java.io.FileWriter;
+
+public class Ex8FileWriter {
+
+	public static void fileWriter() 
+	{
+		String fileName="C:\\sist0217\\work\\test1.txt";
+		FileWriter fw=null;
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

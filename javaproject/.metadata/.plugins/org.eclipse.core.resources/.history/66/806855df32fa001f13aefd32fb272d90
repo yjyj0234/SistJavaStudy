@@ -1,0 +1,19 @@
+package day0306;
+
+public class Ex3Tokens {
+
+	public static void main(String[] args) {
+		// 문자열을 특정문자로 분리하는 방법
+		
+		String str="장비,백합,튤립,후리지아,수국,안개꽃"; //지금은 한덩어리
+		
+		System.out.println("String의 객체를 split을 이용한 분리");
+		String [] flowers=str.split(",");
+		System.out.println("총 "+flowers.length+"개");
+		System.out.print(flowers+"\t");
+		
+		System.out.println("String의 객체를 StringTokenizer를 이용한 분리");
+		
+	}
+
+}

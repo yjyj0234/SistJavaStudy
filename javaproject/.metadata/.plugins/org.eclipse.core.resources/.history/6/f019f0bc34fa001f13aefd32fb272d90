@@ -1,0 +1,46 @@
+package day0306;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Ex3FlowersRead {
+
+	public static void read() {
+		
+		String fileName="C:\\sist0217\\work\\flowers.txt";
+		FileReader fr=null;
+		BufferedReader br=null;
+		
+		try {
+			fr=new FileReader(fileName);
+			br=new BufferedReader(fr);
+			
+			System.out.println("**꽃말 및 가격 정보**");
+			System.out.println("꽃이름\t꽃말\t한단가격");
+			System.out.println("===========================================");
+			
+			while(true)
+			{
+				String s=br.readLine();
+				
+				//종료
+				if(s==null)
+					break;
+				//split로 분리
+				String [] data=s.split(",")
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			// TODO: handle exception
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

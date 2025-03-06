@@ -1,0 +1,28 @@
+package day0306;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Ex8FileWriter {
+
+	public static void fileWriter() 
+	{
+		String fileName="C:\\sist0217\\work\\test1.txt";
+		FileWriter fw=null;  
+		
+		try {
+			fw=new FileWriter(fileName); //파일새로 생성(같은 이름이 있더라도 새로 생성)
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

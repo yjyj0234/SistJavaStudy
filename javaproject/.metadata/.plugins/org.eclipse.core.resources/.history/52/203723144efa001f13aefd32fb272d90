@@ -1,0 +1,61 @@
+package day0306;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+public class Ex7SawonRead {
+
+	//번호	사원명	기본급	가족수	초과근무시간	가족수당	시간수당	총급여
+	//가족수당: 가족수*30000
+	//시간수당: 시간당*15000
+	public static void sawon() {
+		
+		String fileName="C:\\sist0217\\work\\Sawon.txt";
+		FileReader fr= null;
+		BufferedReader br=null;
+		
+		try {
+			System.out.println("번호\t사원명\t기본급\t가족수\t초과근무시간\t가족수당\t시간수당\t총급여");
+			fr=new FileReader(fileName);
+			br=new BufferedReader(fr);
+			
+			int n=0;
+			while(true)
+			{
+				String s=br.readLine();
+				StringTokenizer st=new StringTokenizer(s,",");
+				if(s==null)
+					break;
+				
+				String name=st.nextToken();
+				int gibon=Integer.parseInt(st.nextToken());
+				int fNum=Integer.parseInt(st.nextToken());
+				int choT=Integer.parseInt(st.nextToken());
+				
+				int fMoney=fNum*30000;
+				int choMoney=choT*15000;
+				int totMoney=gibon+fMoney+choMoney;
+				
+				System.out.println(++n+"\t"+name+"\t"+gibon+"\t"+fNum+"\t"+choT+"\t\t"+fMoney+"\t"+choMoney+"\t"+totMoney);
+				
+			}
+		} catch (FileNotFoundException e) {
+			// TODO: handle exception
+			e.printStackTrace(null);
+		}finally {
+		
+		}
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		sawon();
+	}
+
+}

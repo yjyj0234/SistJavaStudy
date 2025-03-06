@@ -1,0 +1,15 @@
+package day0306;
+
+public class ex1FileException {
+	
+	public static void read()
+	{
+		//경로표시 //
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

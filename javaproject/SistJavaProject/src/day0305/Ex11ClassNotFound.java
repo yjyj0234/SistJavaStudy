@@ -10,7 +10,8 @@ public class Ex11ClassNotFound {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			System.out.println("클래스를 찾을 수 없습니다");
+			System.out.println(e.getMessage());
+
 		} finally {
 			//예외 발생 여부 관계없이 수행할 문장
 			//혹은 자원을 사용했다면 반드시 여기서 반납
