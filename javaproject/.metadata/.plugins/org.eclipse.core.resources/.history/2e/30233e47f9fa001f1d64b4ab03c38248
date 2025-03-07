@@ -1,0 +1,16 @@
+package day0307;
+
+public class Ex1HashSet {
+	
+	//컬렉션 자료구조(Set,Vector,ArrayList,Map)
+	//제네릭_명시한 자료형
+	//(인터페이스) (인스터턴스변수명)=new (클래스명) <데이터형(자료형:String int)>
+	//(클래스명) (인스턴스변수명)=new (클래스명) <데이터형>;
+	
+	//List : 순서가 중요할때
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

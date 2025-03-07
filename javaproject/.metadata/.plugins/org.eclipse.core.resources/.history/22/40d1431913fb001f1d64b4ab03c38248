@@ -1,0 +1,28 @@
+package day0307;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Ex6Map {
+	
+	//key value로 이루어진 데이터 집합
+	//key로 구분
+	//순서는 유지되지 않는다
+	//key는 중복허용X
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Map<String, String> map=new HashMap<String, String>();
+		
+		map.put("name", "호준");
+		map.put("age", "26");
+		map.put("addr", "강남구 역삼동");
+		map.put("name", "수지");    
+		//이경우 같은 키(name)값이 있기 때문에 먼저 넣은 데이터("호준")가 없어짐
+		
+		System.out.println("size: "+map.size());
+		
+		//키값을 알면 정확하게 value 알 수 있다
+		System.out.println("이름: "+);
+	}
+
+}

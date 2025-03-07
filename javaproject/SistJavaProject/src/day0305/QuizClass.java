@@ -122,12 +122,13 @@ public class QuizClass {
 	
 	//한개의 사원 데이타 출력(writeSawon()) 
 	public static void writeSawon(Company [] myCompany) {
+
 		NumberFormat nf=NumberFormat.getInstance();           //천단위 콤마   //printf 콤마뒤에 있는 숫자는 안되는듯?
 		for(Company cp:myCompany)
 			
 		System.out.printf(cp.getStaff()+"\t"+cp.getPosition()+"\t"+"%.0f"+"\t"+nf.format(cp.getSudangPay())
 							+"\t"+cp.getFamSudang()+"\t"+"%.0f"+"\t"+"%.0f",cp.getGibonPay(),cp.getTax(),cp.getNetPay());
-		
+
 	}
 	
 	
@@ -144,6 +145,8 @@ public class QuizClass {
 		mC=new Company[inwon];   //입력하면 그 inwon 수 만큼 배열이 할당
 			
 		
+		//제목출력
+
 		//반복문 통해서 데이타 출력하는 메서드 호출
 		for(int i=0;i<inwon;i++)
 		{
@@ -154,9 +157,10 @@ public class QuizClass {
 			System.out.println("가족 수 입력: ");
 			int gajok=Integer.parseInt(sc.nextLine());
 			
+
 			/*사원생성_방법1
 			mC[i]=new Company();	//디폴트(초기값이 아무것도 들어가지 않은상태)
-			mC[i].setStaff(name);
+			mC[i].setStaff(1);
 			mC[i].setPosition(jik);
 			mC[i].setFamSu(gajok);
 			*/
@@ -168,5 +172,4 @@ public class QuizClass {
 
 		writeSawon(mC);
 	}
-
 }

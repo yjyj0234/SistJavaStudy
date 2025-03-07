@@ -1,0 +1,25 @@
+package day0307;
+
+@FunctionalInterface
+interface MySawon
+{
+	public void sawonAdd(String name);
+}
+interface Sales
+{
+	public void sangpumAdd(String sangpum,int su,int dan);
+}
+
+public class Ex9RamdaTest {
+	 MySawon sawon1=(name)->System.out.println(name+"사원을 추가함!!");
+	//			    괄호자리 name
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Ex9RamdaTest ex9=new Ex9RamdaTest();
+		
+		ex9.sawon1.sawonAdd("홍길동");
+		ex9.sawon1.sawonAdd("Jake");
+	}
+
+}

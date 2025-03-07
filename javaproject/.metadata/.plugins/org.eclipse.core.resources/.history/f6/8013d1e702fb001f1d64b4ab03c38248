@@ -1,0 +1,16 @@
+package day0307;
+
+import java.util.List;
+import java.util.Vector;
+
+public class Ex4List {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//List<String> list=new Vector<String>();
+		Vector<String> list=new Vector<String>();
+		
+		System.out.println("초기 할당갯수: "+list.capacity());
+	}
+
+}

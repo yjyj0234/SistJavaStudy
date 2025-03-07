@@ -1,0 +1,16 @@
+package day0307;
+
+@FunctionalInterface
+interface MySawon
+{
+	public void sawonAdd();
+}
+
+public class Ex9RamdaTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

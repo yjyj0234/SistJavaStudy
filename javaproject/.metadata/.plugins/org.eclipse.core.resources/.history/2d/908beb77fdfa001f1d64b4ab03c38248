@@ -1,0 +1,36 @@
+package day0307;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+public class Ex2Set {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//<>안에 int불가
+		Set<Integer> set1=new HashSet<Integer>();
+		
+		set1.add(5);
+		set1.add(11);
+		set1.add(11);
+		set1.add(29);
+		set1.add(22);
+		
+		System.out.println("데이터갯수");
+		System.out.println(set1.size());      //4(숫자도 중복 허용하지 않는다)
+		
+		//데이터 출력
+		System.out.println("출력 #1_for~each");
+		for(Integer s:set1){
+			System.out.println(s);
+		}
+		System.out.println();
+		
+		System.out.println("출력 #2_Iterator");
+		Iterator<Integer>=
+		
+	}
+
+}

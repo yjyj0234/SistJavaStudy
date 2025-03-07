@@ -1,0 +1,7 @@
+package day0307;
+
+public class Ex7Board {
+	
+	private String writer;
+	
+}
