@@ -1,0 +1,20 @@
+package day0310;
+
+import javax.swing.JFrame;
+
+//JFrame 상속 받기
+public class SwingEx1 extends JFrame{
+
+	//생성자
+	public SwingEx1(String title) {
+		super(title);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		
+	}
+
+}

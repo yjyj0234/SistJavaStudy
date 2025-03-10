@@ -1,0 +1,25 @@
+package day0310;
+
+//1번은 스레드를 상속받는 클래스로 구현
+public class ThreadEx2 extends Thread{
+
+	String name;
+	int num;
+	
+	public ThreadEx2(String name,int num) {
+		this.name=name;
+		this.num=num;
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		super.run();
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

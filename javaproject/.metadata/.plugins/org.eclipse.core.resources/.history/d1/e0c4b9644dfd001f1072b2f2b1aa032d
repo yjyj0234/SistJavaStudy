@@ -1,0 +1,26 @@
+package day0310;
+
+import javax.swing.JFrame;
+
+//JFrame 상속 받기
+public class SwingEx1 extends JFrame{
+
+	//생성자
+	public SwingEx1(String title) {
+		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
+		
+		//window 창을 하나 더띄우고 보여주게 하겠다
+		this.setBounds(0, 10, 900, 500);
+		
+		this.setVisible(true);
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		SwingEx1 sw1=new SwingEx1("스윙 기본 #1");
+		
+	}
+
+}

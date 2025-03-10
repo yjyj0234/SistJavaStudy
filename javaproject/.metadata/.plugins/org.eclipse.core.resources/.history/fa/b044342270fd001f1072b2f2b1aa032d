@@ -1,0 +1,67 @@
+package day0310;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+//ctrl+shift+o = 자동 import
+public class BtnArrayEvent7 extends JFrame implements ActionListener{
+
+	Container cp;
+	JButton [] btn=new JButton[7];
+	String [] btnLabel={"RED","YELLOW","BLUE","GREEN","BLACK","CYAN","PINK"};	//디자인
+	Color [] btnColor= {Color.red,Color.yellow,Color.blue,Color.green,Color.black,Color.cyan,Color.pink};//액션: event 에서 btnLabel 누르면 나오게
+	
+	//생성자
+	public BtnArrayEvent7(String title) {
+		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
+	
+		this.setBounds(0, 10, 900, 500);
+	
+		cp=this.getContentPane();
+		cp.setBackground(new Color(0,0,0));
+		initDesign();
+		this.setVisible(true);
+	}
+	
+	//디자인
+	public void initDesign() {
+		//Panel : 기본이 FlowLayout(수평으로 쫙 있음)
+		JPanel panel=new JPanel();
+		panel.setBackground(new Color(255,255,150));
+		
+		//panel을 상단에 배치
+		//방법1: this.add(panel, BorderLayout.NORTH);
+		this.add("North", panel);
+		
+		//버튼 생성
+		for(int i=0;i<btn.length;i++) {
+			btn[i]=new JButton(btnLabel[i]);
+			//버튼 추가
+			panel.add(btn[i]);
+			//각 버튼마다 이벤트 추가
+			
+		}
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		new BtnArrayEvent7("버튼 배열 이벤트 #7");
+		
+	}
+
+	
+	
+}

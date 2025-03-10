@@ -1,0 +1,63 @@
+package day0310;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.GridLayout;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class SwingIcon5 extends JFrame{
+
+	Container cp;
+	//각각의 이미지아이콘 (.GIF까지 써줘야함)
+	ImageIcon icon1=new ImageIcon("C:\\sist0217\\image\\swingimage\\LEFT.GIF");
+	ImageIcon icon2=new ImageIcon("C:\\sist0217\\image\\swingimage\\");
+	ImageIcon icon3=new ImageIcon("C:\\sist0217\\image\\swingimage\\ahiru_a001.gif");
+	ImageIcon icon4=new ImageIcon("C:\\sist0217\\image\\swingimage\\45-pandadog.gif");
+	ImageIcon icon5=new ImageIcon("C:\\sist0217\\image\\swingimage\\ahiru_a001.gif");
+	
+	JButton btn1,btn2,btn3,btn4,btn5;
+	
+	public SwingIcon5(String title) {
+		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
+		
+	
+		this.setBounds(0, 10, 900, 500);
+		
+	
+		cp=this.getContentPane();
+		cp.setBackground(new Color(0,0,0));
+
+		initDesign();  //디자인 보여주게
+		
+		//창을 보여주게 하겠다
+		this.setVisible(true);
+
+	}
+	
+	private void initDesign() {
+		// TODO Auto-generated method stub
+		//버튼 4개 새로 생성
+		this.setLayout(new GridLayout(2, 2));	//2행 2열
+		btn1=new JButton("hello", icon1);
+		this.add(btn1);
+		btn1.setHorizontalAlignment(JButton.CENTER);
+		
+		btn2=new JButton("bye");
+		this.add(btn2);
+		btn3=new JButton(icon3);
+		this.add(btn3);
+		btn4=new JButton(icon4);
+		this.add(btn4);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		new SwingIcon5("스윙 아이콘 #5");
+		
+	}
+}
+

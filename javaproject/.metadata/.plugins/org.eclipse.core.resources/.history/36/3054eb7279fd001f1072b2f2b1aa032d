@@ -1,0 +1,88 @@
+package day0310;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
+
+//두개의 라벨과 텍스트필드  그리고 버튼을 만든 후 
+//각각 숫자를 넣고 버튼을 클릭하면 라벨에 22+44=66 출력할 예정 
+public class LayoutNull8 extends JFrame{
+
+	Container cp;
+	JLabel lblresult,lblnum1,lblnum2;
+	JTextField tfSu1,tfSu2;  //한줄로 입력
+	JButton btnAdd;
+	
+	//생성자
+	public LayoutNull8(String title) {
+		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
+		
+		this.setBounds(100, 30, 900, 500);
+		
+		cp=this.getContentPane();
+		cp.setBackground(new Color(255,255,150));
+		
+		initDesign();
+		this.setVisible(true);
+	}
+	
+	public void initDesign() {
+		this.setLayout(null);
+		lblnum1=new JLabel("숫자1: ");
+		lblnum2=new JLabel("숫자2: ");
+		
+		
+		lblnum1.setBounds(20,30,50,50);
+		this.add(lblnum1);
+		
+		lblnum2.setBounds(20,100,50,50);
+		this.add(lblnum2);
+		
+		tfSu1=new JTextField();
+		tfSu1.setBounds(100, 30, 80, 50);
+		this.add(tfSu1);
+		
+		tfSu2=new JTextField();
+		tfSu2.setBounds(200, 200, 80, 50);
+		this.add(tfSu2);
+		
+		btnAdd=new JButton("숫자더하기");
+		btnAdd.setBounds(250,50,100,100);
+		this.add(btnAdd);
+		
+		//결과 나오는곳
+		lblresult=new JLabel("결과 나오는 곳");
+		lblresult.setBounds(100, 160, 200, 50);
+		lblresult.setBorder(new TitledBorder("결과확인"));
+		lblresult.setFont(new Font("", Font.BOLD, 20));
+		this.add(lblresult);
+		
+		//버튼 이벤트_익명 내부 클래스
+		btnAdd.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				//string 이라 형변환 해줘야함
+				int su1=Integer.parseInt(tfSu1.getText());
+			}
+		});
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		new LayoutNull8("레이아웃 #8");
+		
+	}
+}
+

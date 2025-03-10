@@ -1,0 +1,34 @@
+package day0310;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+
+public class BtnEventColor6 extends JFrame{
+
+	Container cp;   //컨트롤 쉬프트 o 누르면 빨간밑줄 없어짐
+	//생성자
+	public BtnEventColor6(String title) {
+		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
+		
+	
+		this.setBounds(0, 10, 900, 500);
+		
+	
+		cp=this.getContentPane();
+		cp.setBackground(new Color(0,0,0));
+		
+		//창을 보여주게 하겠다
+		this.setVisible(true);
+
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		new BtnEventColor6("버튼 이벤트 #6");
+		
+	}
+}

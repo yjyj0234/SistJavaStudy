@@ -1,0 +1,44 @@
+package day0310;
+
+//1번은 스레드를 상속받는 클래스로 구현
+public class ThreadEx3 implements Runnable{
+
+	String name;
+	int num;
+	
+	public ThreadEx3(String name,int num) {
+		this.name=name;
+		this.num=num;
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		for(int i=1;i<=num;i++) {
+			System.out.println(name+"==>"+i);
+			Thread.sleep(null);
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//new로 생성
+		ThreadEx3 th1=new ThreadEx3("하나", 300);
+		ThreadEx3 th2=new ThreadEx3("둘", 300);
+		ThreadEx3 th3=new ThreadEx3("셋", 300);
+		
+		//run메서드 호출_start
+		th1.start();		//runnable 상태에서 스케쥴러에 의해서 하나씩 Running 상태가 된다
+		th2.start();
+		th3.start();
+		
+	}
+
+
+
+
+	
+
+}

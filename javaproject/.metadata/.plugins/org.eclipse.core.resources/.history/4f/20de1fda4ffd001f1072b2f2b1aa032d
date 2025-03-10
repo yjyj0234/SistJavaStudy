@@ -1,0 +1,44 @@
+package day0310;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class SwingLayoutEx2 extends JFrame{
+
+	Container cp;
+	JButton btn1;
+	
+	//생성자
+	public SwingLayoutEx2(String title) {
+		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
+		
+		
+		this.setBounds(0, 10, 900, 500);
+		
+		cp=this.getContentPane();
+		cp.setBackground(new Color(255,0,255));
+		
+		//버튼 생성
+		btn1=new JButton("버튼1");
+		
+		//프레임에 버튼 추가..기본이 BorderLayout..이 경우 추가할때 위치 지정을 해줘야함
+		//this.add(btn1,BorderLayout.NORTH);
+		this.add(btn1,BorderLayout.SOUTH);
+		
+		//창을 보여주게 하겠다 (항상 마지막에 두기)
+		this.setVisible(true);
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		new SwingLayoutEx2("스윙기본 레이아웃 연습");
+		
+	}
+
+}

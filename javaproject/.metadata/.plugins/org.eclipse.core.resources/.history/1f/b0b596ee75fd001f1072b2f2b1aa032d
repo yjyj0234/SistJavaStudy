@@ -1,0 +1,35 @@
+package day0310;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+
+public class LayoutNull8 extends JFrame{
+
+	Container cp;
+	//생성자
+	public SwingLayoutButtonEvent03(String title) {
+		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
+		
+	
+		this.setBounds(0, 10, 900, 500);
+		
+	
+		cp=this.getContentPane();
+		cp.setBackground(new Color(0,0,0));
+		
+		//창을 보여주게 하겠다
+		this.setVisible(true);
+
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		new LayoutNull8("레이아웃 #8");
+		
+	}
+}
+

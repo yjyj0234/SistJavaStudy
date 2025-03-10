@@ -1,0 +1,37 @@
+package day0310;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+//ctrl+shift+o = 자동 import
+public class BtnArrayEvent7 extends JFrame{
+
+	Container cp;
+	JButton [] btn=new JButton[7];
+	JButton [] btnLabel={"RED","YELLOW","BLUE","GREEN","BLACK","CYAN","PINK"};
+	Color [] btnColor= {};
+	
+	//생성자
+	public BtnArrayEvent7(String title) {
+		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
+	
+		this.setBounds(0, 10, 900, 500);
+	
+		cp=this.getContentPane();
+		cp.setBackground(new Color(0,0,0));
+		
+		//창을 보여주게 하겠다
+		this.setVisible(true);
+	
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		new BtnArrayEvent7("버튼 배열 이벤트 #7");
+		
+	}
+}
