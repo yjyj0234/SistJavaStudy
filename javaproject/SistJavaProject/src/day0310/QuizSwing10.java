@@ -13,11 +13,15 @@ import javax.swing.JTextField;
 
 public class QuizSwing10 extends JFrame implements ActionListener{
 
+	//컨테이너: 창 띄울 떄의 창을 의미
 	Container cp;
+	
 	//숫자라벨 결과창 라벨
 	JLabel lblResult,lblnum1,lblnum2;
+	
 	//숫자 입력란
 	JTextField textNum1,textNum2;
+	
 	//사칙연산 버튼
 	JButton btnPlus,btnMinus,btnMultiple,btnDivide;
 	
@@ -26,57 +30,73 @@ public class QuizSwing10 extends JFrame implements ActionListener{
 		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
 
 		//창 크기
-		this.setBounds(0, 10, 400, 600);
+		this.setBounds(0, 10, 300, 500);
 		cp=this.getContentPane();
 		//창 색깔
 		cp.setBackground(Color.lightGray);
 		
-		initDesign();
+		initDesign();//디자인 구성한것 출력
+		
 		this.setVisible(true);
 
 	}
 	//디자인
 	public void initDesign() {
 		this.setLayout(null);
+		
+		//윈도우 창에 숫자1, 숫자2 보이게
 		lblnum1=new JLabel("숫자1 ");
 		lblnum2=new JLabel("숫자2 ");
 		
-		lblnum1.setBounds(5, 3, 50, 50);
+		//숫자1,2 크기
+		lblnum1.setBounds(5, 3, 200, 50);
 		this.add(lblnum1);
-		
-		lblnum2.setBounds(5, 45, 50, 50);
+		lblnum2.setBounds(5, 45, 200, 50);
 		this.add(lblnum2);
 		
+		//숫자1,2의 입력란
 		textNum1=new JTextField();
-		textNum1.setBounds(55, 5, 100, 30);
+		textNum1.setBounds(55, 5, 200, 30);
 		this.add(textNum1);
-		
 		textNum2=new JTextField();
-		textNum2.setBounds(55, 50, 100, 30);
+		textNum2.setBounds(55, 50, 200, 30);
 		this.add(textNum2);
 		
 		//버튼 더하기
 		btnPlus=new JButton("더하기");
-		btnPlus.setBounds(5, 110, 100, 30);
+		btnPlus.setBounds(5, 150, 270, 30);
+		btnPlus.setBackground(Color.gray);
 		this.add(btnPlus);
+		
 		//버튼 빼기
 		btnMinus=new JButton("빼기");
-		btnMinus.setBounds(5, 150, 100, 30);
+		btnMinus.setBounds(5, 190, 270, 30);
+		btnMinus.setBackground(Color.gray);
 		this.add(btnMinus);
+		
 		//버튼 곱하기
 		btnMultiple=new JButton("곱하기");
-		btnMultiple.setBounds(5, 190, 100, 30);
+		btnMultiple.setBounds(5, 230, 270, 30);
+		btnMultiple.setBackground(Color.gray);
 		this.add(btnMultiple);
+		
 		//버튼 나누기
 		btnDivide=new JButton("나누기");
-		btnDivide.setBounds(5, 230, 100, 30);
+		btnDivide.setBounds(5, 270, 270, 30);
+		btnDivide.setBackground(Color.gray);
 		this.add(btnDivide);
-		//결과나오는곳
+		
+		
 		lblResult=new JLabel("계산결과: ");
-		lblResult.setFont(new Font("",Font.BOLD,20));
+		//"계산결과"를 윈도우에 보이게
+		this.add(lblResult);
+		//계산결과의 글자 크기,색,위치
+		lblResult.setFont(new Font("",Font.BOLD,30));
 		lblResult.setForeground(Color.red);
 		lblResult.setBounds(5, 350, 150, 50);
-		this.add(lblResult);
+		
+		
+		//버튼 누르면 계산되게끔
 		btnPlus.addActionListener(this);
 		btnMinus.addActionListener(this);
 		btnMultiple.addActionListener(this);
@@ -94,7 +114,7 @@ public class QuizSwing10 extends JFrame implements ActionListener{
 		//빼기 수식
 		String minus=num1-num2+"";
 		String multi=num1*num2+"";
-		String divide=num1/num2+"";
+		String divide=(double)num1/num2+"";
 		
 		if(ob==btnPlus) {
 			lblResult.setText(sum);
@@ -112,9 +132,8 @@ public class QuizSwing10 extends JFrame implements ActionListener{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		new QuizSwing10("사칙연산 퀴즈");
+		new QuizSwing10("간단한 사칙연산");
 		
 	}
 	
 }
-
