@@ -11,6 +11,7 @@ package day0312;
 */
 
 import java.awt.BorderLayout;
+import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -30,9 +31,12 @@ public class QuizCheckRadio07 extends JFrame implements ActionListener{
 	Container cp;
 	//결과출력
 	JLabel lblMessage;
+	JLabel lblCountry;
 	//라디오버튼
 	JRadioButton [] radioButton=new JRadioButton[2];
 	JRadioButton [] radioButtonC=new JRadioButton[5];
+	
+	JCheckBox [] cbCountry=new JCheckBox[6];
 	
 	Color [] colors = {Color.red,Color.orange,Color.yellow,Color.blue,Color.gray}; 
 	
@@ -40,10 +44,10 @@ public class QuizCheckRadio07 extends JFrame implements ActionListener{
 	public QuizCheckRadio07(String title) {
 		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
 		
-		this.setBounds(0, 10, 900, 500);
+		this.setBounds(100, 100, 900, 1000);
 		
 		cp=this.getContentPane();
-		cp.setBackground(new Color(208,208,50));
+		cp.setBackground(new Color(255,255,255));
 		//메인프레임 종료
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//창을 보여주게 하겠다
@@ -53,28 +57,65 @@ public class QuizCheckRadio07 extends JFrame implements ActionListener{
 	public void initDesign() {
 		
 		ButtonGroup bg=new ButtonGroup();
-		
+		String [] country= {"일본","미국","태국","체코","싱가폴","영국"};
 		String [] str1= {"남자","여자"};
 		JPanel pTop=new JPanel();
+		pTop.setBounds(5, 5, 600, 200);
 		pTop.setBorder(new TitledBorder("성별"));
+		pTop.setOpaque(false);
 		this.add("North",pTop);
 		
+		JPanel pBottom=new JPanel();
+		pBottom.setBounds(100,100,100,100);
+		
+		lblCountry=new JLabel();
+		lblCountry.setBounds(100, 300, 700, 100);
+		lblCountry.setFont(new Font("", Font.BOLD, 20));
+		this.add("Center",lblCountry);
+		for(int i=0;i<cbCountry.length;i++) {
+			cbCountry[i]=new JCheckBox(country[i],i==1?true:false);
+			pBottom.add(cbCountry[i]);
+			bg.add(cbCountry[i]);
+			cbCountry[i].addActionListener(this);
+		}
+		
 		lblMessage=new JLabel();
-		lblMessage.setFont(new Font("",Font.BOLD,20));
+		lblMessage.setBounds(100, 300, 600, 100);
+		lblMessage.setFont(new Font("",Font.ITALIC,20));
 		this.add("South",lblMessage);
 		for(int i=0;i<radioButton.length;i++) {
 			radioButton[i]=new JRadioButton(str1[i],i==1?true:false);
 			pTop.add(radioButton[i]);
 			bg.add(radioButton[i]);
 			radioButton[i].addActionListener(this);
+			
 		}
-		JPanel pWest=new JPanel();
+		//색상 패널
 		String [] str2= {"빨강","오렌지","노랑","파랑","회색"};
-		pTop.setBorder(new TitledBorder("색상"));
+		JPanel pWest=new JPanel();
+		pWest.setBorder(new TitledBorder("색상"));
+		pWest.setBounds(300, 10, 150, 400);
 		this.add("West",pWest);
 		
+		ButtonGroup bg2=new ButtonGroup();
+		int yPosition=100;
 		for(int i=0;i<radioButtonC.length;i++) {
-			
+			radioButtonC[i]=new JRadioButton(str2[i],i==1?true:false);
+			radioButtonC[i].setBounds(10, yPosition, 150, 20);
+			pWest.add(radioButtonC[i]);
+			bg.add(radioButtonC[i]);
+			yPosition+=25;
+			radioButtonC[i].addActionListener(this);
+		}	
+		
+		int xPosition=80;
+		for(int i=0;i<cbCountry.length;i++) {
+			cbCountry[i]=new JCheckBox(country[i]);
+			cbCountry[i].setBounds(xPosition, 400, 100, 20);
+			this.add(cbCountry[i]);
+			xPosition+=100;
+			cbCountry[i].addActionListener(this);
+			cbCountry[i].setOpaque(false);
 		}
 	}
 	
@@ -83,14 +124,36 @@ public class QuizCheckRadio07 extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		Object ob=e.getSource();
+		for(int i=0;i<radioButtonC.length;i++) {
+			if(ob==radioButtonC[i]) {
+				lblMessage.setForeground(colors[i]);
+			}
+		}
 		
 		String msg="저는 ";
 		for(int i=0;i<radioButton.length;i++) {
 			if(radioButton[i].isSelected()==true) {
 				msg+=radioButton[i].getText()+"입니다";
 			}
+			
 			lblMessage.setText(msg);
 		}
+		String s="가본 나라는 ";
+		int select=0;
+		for(int i=0;i<cbCountry.length;i++) {
+			if(cbCountry[i].isSelected()==true) {
+				select++;
+				s+=cbCountry[i].getText()+" ";
+			}
+		}
+			if(select==0) {
+				s="아직 가본 나라가 없습니다";
+			}
+			else
+				s+="";
+				
+		
+		lblCountry.setText(s);
 		
 		
 	}
