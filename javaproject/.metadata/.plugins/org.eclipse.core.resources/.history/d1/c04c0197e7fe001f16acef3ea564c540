@@ -1,0 +1,100 @@
+package day0312;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.border.LineBorder;
+
+public class CheckRadio02 extends JFrame implements ActionListener,ItemListener{
+
+	Container cp;
+	JCheckBox cbDriverLic,cbBold;  //운전면허 있음/없음, 글자 굵기
+	JCheckBox [] cbHobby=new JCheckBox[5];
+	JButton btnHobby;
+	JLabel lblResult;
+	
+	//생성자
+	public CheckRadio02(String title) {
+		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
+	
+		this.setBounds(0, 10, 900, 500);
+	
+		cp=this.getContentPane();
+		cp.setBackground(new Color(255,255,120));
+		//메인프레임 종료
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		initDesign();
+		//창을 보여주게 하겠다
+		this.setVisible(true);
+
+		
+	}
+	public void initDesign() {
+		this.setLayout(null);
+		
+		cbDriverLic=new JCheckBox("운전면허");
+		cbDriverLic.setBounds(100, 50, 100, 100);
+		cbDriverLic.setOpaque(false); //운전면허 박스 투명도
+		cbDriverLic.addItemListener(this);//아이템 대상임을 표기
+		this.add(cbDriverLic);
+		
+		//굵게할지에 관한 체크박스
+		cbBold=new JCheckBox("라벨을 굵게 표시");
+		cbBold.setBounds(100,80,200,100);
+		cbBold.setOpaque(false);
+		cbBold.addItemListener(this);
+		this.add(cbBold);
+		
+		//취미체크박스
+		String [] hobby= {"게임","음악감상","여행","헬스","유튜브시청"};
+
+		int xPosition=100; 		//위치 설정
+		for(int i=0;i<cbHobby.length;i++) {
+			cbHobby[i]=new JCheckBox(hobby[i]);
+			cbHobby[i].setBounds(xPosition, 200, 100, 100);
+			this.add(cbHobby[i]);
+			xPosition+=100;
+			cbHobby[i].setOpaque(false);
+		}
+		
+		//결과 라벨
+		lblResult=new JLabel("안녕 체크앤 라디오 연습중",JLabel.CENTER);
+		lblResult.setBounds(100, 300, 600, 100);
+		lblResult.setBorder(new LineBorder(Color.GREEN,3));
+		this.add(lblResult);
+		
+		//버튼
+		btnHobby=new JButton("나의 취미 알아보기");
+		btnHobby.setBounds(100, 180, 200, 30);
+		this.add(btnHobby);
+		btnHobby.addActionListener(this);
+	}
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// 체크박스을 눌렀을 때 라벨에 출력
+		Object ob=new Object();
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// 버튼을 눌렀을 때 라벨 출력
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		new CheckRadio02("스윙 기본 #3");
+		
+	}
+	
+}
+

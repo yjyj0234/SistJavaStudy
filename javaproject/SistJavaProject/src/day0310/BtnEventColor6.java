@@ -24,7 +24,8 @@ public class BtnEventColor6 extends JFrame{
 	
 		cp=this.getContentPane();
 		cp.setBackground(new Color(0,0,0));
-		
+		//메인프레임 종료
+				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initDesign();
 		this.setVisible(true);
 

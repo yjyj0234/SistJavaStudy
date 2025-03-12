@@ -1,0 +1,104 @@
+package day0312;
+
+import java.awt.Checkbox;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+
+public class RadioCheck01 extends JFrame implements ActionListener{
+
+	Container cp;
+	//라디오 버튼 4개를 만들고 그중 하나를 선택
+	JRadioButton [] rb=new JRadioButton[4];
+	
+	//체크버튼: 다중 선택가능
+	JCheckBox [] cb= new JCheckBox [5];
+	
+	//결과 출력할 곳
+	JLabel lblMessage; 
+	
+	//컬러 색 배열
+	Color [] colors= {Color.red,Color.green,Color.magenta,Color.blue};
+	
+	//생성자
+	public RadioCheck01(String title) {
+		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
+		
+	
+		this.setBounds(50, 10, 1500, 700);
+		
+	
+		cp=this.getContentPane();
+		cp.setBackground(new Color(255,255,125));
+		
+		//메인프레임 종료
+				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//창을 보여주게 하겠다
+		initDesign();
+		this.setVisible(true);
+
+	}
+	public void initDesign() {
+		//상단 패널에 보더로 감싼 4개의 라디오버튼을 만들기
+		String [] str1= {"빨강","초록","마젠타","파랑"};
+		JPanel pTop=new JPanel();
+		pTop.setBorder(new TitledBorder("글자색 선택"));
+		this.add("North",pTop);
+		
+		//라디오버튼을 하나만 선택되도록 하려면 그룹을 지어줘야함
+		ButtonGroup bg=new ButtonGroup();
+		
+		for(int i=0;i<rb.length;i++) {
+			rb[i]=new JRadioButton(str1[i], i==1?true:false);  //라디오버튼 생성
+			pTop.add(rb[i]);  //탑패널에 4개의 라디오버튼 추가
+			bg.add(rb[i]);		//버튼그룹에 4개의 라디오버튼 추가(4개중 하나만 선택되게)
+			
+			rb[i].addActionListener(this); //각각의 버튼(this)에 누를때마다 액션추가
+		}
+		//결과 출력
+		ImageIcon icon=new ImageIcon("C:\\sist0217\\image\\swingimage\\chick.GIF");
+		lblMessage=new JLabel("오늘은 즐거운 수요일",icon, JLabel.CENTER);
+		lblMessage.setHorizontalTextPosition(JLabel.LEFT);
+		lblMessage.setBorder(new LineBorder(Color.red,1));  //라인 색, 굵기
+		this.add("Center",lblMessage);	  //Center 대문자 주의
+		
+		//하단패널에 보더로 감싼 5개의 checkbox버튼 만들기
+		JPanel pBottom=new JPanel();
+		pBottom.setBorder(new TitledBorder("가본 지역은?"));
+		this.add("South",pBottom);
+		String [] str2={"제주","전주","춘천","인천","대전"};
+		
+		//체크박스의 길이만큼 배열
+		for(int i=0;i<cb.length;i++) {
+			cb[i]=new JCheckBox(str2[i]);
+			pBottom.add(cb[i]);
+		}
+	
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		new RadioCheck01("스윙 Radio&Check #1");
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		Object ob=e.getSource();
+		
+		//라디오버튼처리, 메세지 컬러별로 출력
+		
+	}
+}
+

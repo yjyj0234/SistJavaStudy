@@ -1,8 +1,0 @@
-package day0304;
-
-public class Ex1SuperObj {
-	
-	protected String name;
-	protected int age;
-	
-}

@@ -31,6 +31,8 @@ public class LayoutNull8 extends JFrame{
 		cp.setBackground(new Color(255,255,150));
 		
 		initDesign();
+		//메인프레임 종료
+				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
 	
