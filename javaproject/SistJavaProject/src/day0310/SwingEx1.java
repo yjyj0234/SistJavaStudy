@@ -29,7 +29,10 @@ public class SwingEx1 extends JFrame{
 		
 		//cp를 통해 색깔 얻어오기
 		cp=this.getContentPane();
-		cp.setBackground(new Color(255,0,255));
+		cp.setBackground(new Color(255,150,255));
+		
+		//메인프레임 종료
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//창을 보여주게 하겠다
 		this.setVisible(true);

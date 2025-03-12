@@ -31,7 +31,8 @@ public class SwingIcon5 extends JFrame{
 		cp.setBackground(new Color(0,0,0));
 
 		initDesign();  //디자인 보여주게
-		
+		//메인프레임 종료
+				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//창을 보여주게 하겠다
 		this.setVisible(true);
 

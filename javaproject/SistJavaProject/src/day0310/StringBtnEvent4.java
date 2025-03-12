@@ -25,7 +25,8 @@ public class StringBtnEvent4 extends JFrame implements ActionListener{
 		cp.setBackground(new Color(0,0,0));
 		
 		initDesign();
-		
+		//메인프레임 종료
+				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	
 	}

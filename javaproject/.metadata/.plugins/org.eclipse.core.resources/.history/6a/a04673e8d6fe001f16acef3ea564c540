@@ -1,0 +1,67 @@
+package day0310;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class BtnEventColor6 extends JFrame{
+
+	Container cp;   //컨트롤 쉬프트 o 누르면 빨간밑줄 없어짐
+	JButton btn1;
+	JButton btn2;
+	//생성자
+	public BtnEventColor6(String title) {
+		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
+		
+	
+		this.setBounds(0, 10, 900, 500);
+		
+	
+		cp=this.getContentPane();
+		cp.setBackground(new Color(0,0,0));
+		
+		initDesign();
+		this.setVisible(true);
+
+	}
+	public void initDesign() {
+		this.setLayout(new FlowLayout());
+		btn1=new JButton("배경색을 흰색으로 변경");
+		this.add(btn1);
+		
+		//익명내부클래스로 이벤트 주기
+		btn1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				cp.setBackground(Color.white);   //cp로 수정
+				
+			}
+		});
+		
+		btn2=new JButton("배경색을 회색으로 변경");
+		this.add(btn2);
+		
+		btn2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				cp.setBackground(Color.GRAY);
+			}
+		});
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		new BtnEventColor6("버튼 이벤트 #6");
+		
+	}
+}

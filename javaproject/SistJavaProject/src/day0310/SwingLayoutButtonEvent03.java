@@ -24,7 +24,8 @@ public class SwingLayoutButtonEvent03 extends JFrame implements ActionListener{
 		cp.setBackground(new Color(0,0,0));
 		
 		setDesign();
-	
+		//메인프레임 종료
+				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
 	

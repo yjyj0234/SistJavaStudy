@@ -3,11 +3,11 @@ import java.awt.Container;
 
 import javax.swing.JFrame;
 
-public class SwingLayoutButtonEvent03 extends JFrame{
+public class RadioCheck01 extends JFrame{
 
 	Container cp;
 	//생성자
-	public SwingLayoutButtonEvent03(String title) {
+	public RadioCheck01(String title) {
 		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
 		
 	
@@ -16,7 +16,8 @@ public class SwingLayoutButtonEvent03 extends JFrame{
 	
 		cp=this.getContentPane();
 		cp.setBackground(new Color(0,0,0));
-		
+		//메인프레임 종료
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//창을 보여주게 하겠다
 		this.setVisible(true);
 
@@ -26,7 +27,7 @@ public class SwingLayoutButtonEvent03 extends JFrame{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		SwingEx1 sw1=new SwingEx1("스윙 기본 #3");
+		new RadioCheck01("스윙 기본 #3");
 		
 	}
 }

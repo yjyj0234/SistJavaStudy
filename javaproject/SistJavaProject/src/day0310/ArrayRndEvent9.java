@@ -32,6 +32,8 @@ public class ArrayRndEvent9 extends JFrame{
 		
 		//창을 보여주게 하겠다
 		initDesign();
+		//메인프레임 종료
+				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
 	
