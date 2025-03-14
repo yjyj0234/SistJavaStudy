@@ -1,0 +1,113 @@
+--between,in,and,or
+--급여가 1200~2000 사이의 이름,급여,보너스를 구하시오(AND)
+select ename 사원명, sal 급여, comm 보너스 from emp where sal>=1200 and sal<=2000;
+--급여가 1200~2000 사이의 이름, 급여,보너스를 구하시오(Between)
+select ename 사원명, sal 급여, comm 보너스 from emp where sal between 1200 and 2000;
+
+--job이 MANAGER,SALESMAN인 사람의 이름과 직업을 구하시오(or)
+select ename 사원명, job 직업 from emp where job='MANAGER' or job='SALESMAN';
+--job 이 MANAGER,SALESMAN인 사람의 이름과 직업을 구하시오(IN)
+select ename 사원명, job 직업 from emp where job in('MANAGER','SALESMAN');
+
+
+--union 두 결과값에서 중복된 값 제거 후 출력
+--unionall 중복값 까지 출력
+select name from student where deptno1=103 union select name from student where deptno2=203;
+select name from student where deptno1=103 union all select name from student where deptno2=203;
+
+--교집합 
+select name from student where deptno1=101 INTERSECT select name from student where deptno2=201;
+
+--단일함수
+--Count  (count(*)=모든열 조회)count(hpage)는 null값 제외
+select count(*),count(hpage) from professor;
+
+--sum
+select count(bonus), sum(bonus) from professor;
+
+--avg
+select count(bonus),sum(bonus),avg(bonus) from professor;
+
+--max,min
+select max(sal), min(sal) from emp;
+select max(hiredate),min(hiredate) from emp;
+
+--그룹함수
+--emp의 전체갯수
+select count(*) from emp;
+--급여의 평균
+select avg(sal) from emp;
+--급여의 평균 소수점 2자리까지
+select round(avg(sal),2) from emp;
+--급여의 평균 소수점 1자리까지
+select round(avg(sal),1) from emp;
+--소수점없이 반올림
+select round(avg(sal),0) from emp;
+
+--10단위
+select round(avg(sal),-1) from emp;
+--100단위
+select round(avg(sal),-2) from emp;
+
+--TO_CHAR ..date형 Number형을 varchar2로 바꿔준다
+
+--현재날짜를 콘솔에 출력: sysdate
+select sysdate from dual;
+
+--내일날짜를 콘솔에 출력: sysdate
+select sysdate+1 from dual;
+--일주일 뒤날짜를 콘솔에 출력: sysdate
+select sysdate+7 from dual;
+
+--날짜에서 월만 추출 3월(문자열로 일단 바꿔줘야함), 대소문자 가리지 않음
+select to_char(sysdate,'month') from dual;
+
+--날짜에서 월만 추출 03, 대소문자 가리지 않음
+select to_char(sysdate,'mm') from dual;
+
+--날짜와 시간 출력(hh24는 13시 14시 이런식)
+alter session set time_zone='Asia/Seoul'; --한국시간으로
+select to_char(sysdate,'yyyy-mm-dd hh24-mi-ss')from dual;
+select to_char(current_timestamp,'yyyy-mm-dd hh-mi-ss') from dual;
+
+--to_char number형 숫자에도 적용가능
+select to_char(4578952,'999,999,999')from dual;
+select to_char(54.9,'99999.00')from dual; --9는 값이 없으면 공백으로 나온다
+
+--오전복습문제
+--1. 표현식을 이용하여 SMITH(CLERK)로 조회하시오
+select ename||'('||job||')' from emp where ename = 'SMITH';
+--2. professor -이름, 급여, 보너스, 총급여로 조회하시오
+select name,pay,bonus,pay*12+bonus 총급여 from professor;
+--3. 고객테이블에서 포인트가 50만 이상인 사람의 이름 주민번호 포인트 조회하시오
+select gname 이름, jumin 주민번호, point 포인트 from gogak where point>=500000;
+--4. 학생테이블에서 서진수의 학년 전화번호 출력하시오
+select name,grade,tel from student where name='서진수';
+--5. 고객테이블에서 포인트가 30만~50만 사이인 사람의 이름과 포인트를 출력하고 포인트가 높은 순으로 조회하시오
+select gname,point from gogak where point between 300000 and 500000 order by point desc;
+--6. 성이 김씨이거나 이씨인학생의 학번, 학생명,학년을 조회하시오
+select studno 학번, name 학생명, grade 학년 from student where name like '이%' or name like '김%';
+--7. 4학년 중에서 키가 170보다 작거나 몸무게가 60보다 많은 학생의 이름,학년,키,몸무게를 조회하시오
+select name 이름, grade 학년, height 키, weight 몸무게 from student where grade=4 and height<170 or grade=4 and weight>60;
+--8. emp-직업이 MABAGER인 사람의 이름 보너스를 구하되 널값은 0으로 바꾸시오
+select ename 이름,nvl(comm,0) 보너스 from emp where job='MANAGER';
+--9. emp-이름,급여,연봉(급여*12), 보너스, 총연봉(연봉+보너스)로 출력하되 직업의 오름차순 연봉의 내림자순으로 조회할 것
+select ename 이름, sal 급여, sal*12 연봉, comm 보너스, sal*12+comm 총연봉 from emp order by job,sal*12 desc;
+--10. student -3학년 이름과 키를 출력 단 이름은 오름차순
+select name 이름, height 키 from student where grade=3 order by name;
+--11. emp-입사일이 5월인 사람만 사원명,입사일 출력하시오 ??
+select ename 사원명, hiredate 입사일 from emp where to_char(hiredate,'mm')='05'; 
+
+--12. student-이름에 '미'를 포함하고 있는 사람의 학생명, 학년을 조회하시오
+select name 학생명, grade 학년 from student where name like '%미%';
+
+--13. emp-사원명 중에 대소문자 관계 없이 'N'을 포함하고 있는 데이터 출력(사원명, 직업, 급여)
+select ename, job, sal from emp where lower(ename) like '%n%';
+
+--(복습)
+--emp-comm이 null이 아닌사람 중에서 sal이 1500이상인 사람 출력(사원명,급여,커미션)
+select ename,sal,comm from emp where comm is not null and sal>=1500;
+--emp_입사일이 1985/01/01 이후에 입사한 사람만 조회
+select ename, hiredate, sal from emp where hiredate>='1985/01/01'; --문자로 바꿔서
+--emp에서 이름, 급여, 보너스, 총급여(급여+보너스)
+select ename, sal, nvl(comm,0), sal+nvl(comm,0) from emp;
