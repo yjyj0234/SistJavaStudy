@@ -1,0 +1,26 @@
+--과제테이블 만들기
+--1.sequence : seqshop(1부터 2씩 증가 캐쉬없음)
+
+--2.테이블:Myshop
+--no number(5) 기본키(시퀀스)
+--sangpum varchar2(30)
+--su number(10)
+--price number(10)
+--size varchar2(30)
+--ipgoday date (오늘날짜)
+--최소5개 이상 insert 해볼것!!!
+
+create sequence seqshop start with 1 increment by 2 nocache;
+drop sequence seqshop;
+
+create table Myshop(no number(5) primary key, sangpum varchar2(30),su number(10),price number(10),"SIZE" varchar2(30),ipgoday date);
+select * from Myshop;
+--myshop항목 삭제
+delete from myshop;
+
+insert into Myshop values(seqshop.nextval,'청소기',10,98000,'대형',sysdate);
+insert into Myshop values(seqshop.nextval,'세탁기',20,229000,'소형',sysdate);
+insert into Myshop values(seqshop.nextval,'건조기',5,87800,'중형',sysdate);
+insert into Myshop values(seqshop.nextval,'선풍기',20,49800,'소형',sysdate);
+insert into Myshop values(seqshop.nextval,'에어컨',10,129800,'소형',sysdate);
+insert into Myshop values(seqshop.nextval,'서랍장',8,43000,'중형',sysdate);
