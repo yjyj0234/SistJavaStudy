@@ -45,7 +45,7 @@ public class QuizCheckRadio07 extends JFrame implements ActionListener{
 	public QuizCheckRadio07(String title) {
 		super(title);  //JFrame 부모생성자를 통해서 창제목을 통해서 제목을 볼수 있게한다
 		
-		this.setBounds(100, 100, 900, 900);
+		this.setBounds(100, 100, 900, 1000);
 		
 		cp=this.getContentPane();
 		cp.setBackground(new Color(255,255,255));
@@ -80,10 +80,10 @@ public class QuizCheckRadio07 extends JFrame implements ActionListener{
 			cbCountry[i].addActionListener(this);
 		}
 		
-		lblGender=new JLabel();
-		lblGender.setBounds(100, 300, 600, 100);
-		lblGender.setFont(new Font("",Font.ITALIC,20));
-		this.add("South",lblGender);
+		lblMessage=new JLabel();
+		lblMessage.setBounds(100, 300, 600, 100);
+		lblMessage.setFont(new Font("",Font.ITALIC,20));
+		this.add("South",lblMessage);
 		for(int i=0;i<radioButton.length;i++) {
 			radioButton[i]=new JRadioButton(str1[i],i==1?true:false);
 			pTop.add(radioButton[i]);
@@ -92,21 +92,19 @@ public class QuizCheckRadio07 extends JFrame implements ActionListener{
 			
 		}
 		//색상 패널
-		
+		String [] str2= {"빨강","오렌지","노랑","파랑","회색"};
 		JPanel pWest=new JPanel();
 		pWest.setBorder(new TitledBorder("색상"));
 		pWest.setBounds(300, 10, 150, 400);
 		this.add("West",pWest);
 		
-		
 		ButtonGroup bg2=new ButtonGroup();
 		int yPosition=100;
 		for(int i=0;i<radioButtonC.length;i++) {
-			String [] str2= {"빨강","오렌지","노랑","파랑","회색"};
 			radioButtonC[i]=new JRadioButton(str2[i],i==1?true:false);
 			radioButtonC[i].setBounds(10, yPosition, 150, 20);
 			pWest.add(radioButtonC[i]);
-			bg2.add(radioButtonC[i]);
+			bg.add(radioButtonC[i]);
 			yPosition+=25;
 			radioButtonC[i].addActionListener(this);
 		}	
@@ -127,20 +125,20 @@ public class QuizCheckRadio07 extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		Object ob=e.getSource();
+		for(int i=0;i<radioButtonC.length;i++) {
+			if(ob==radioButtonC[i]) {
+				lblMessage.setForeground(colors[i]);
+			}
+		}
+		
 		String msg="저는 ";
 		for(int i=0;i<radioButton.length;i++) {
 			if(radioButton[i].isSelected()==true) {
 				msg+=radioButton[i].getText()+"입니다";
 			}
-			lblGender.setText(msg);
+			
+			lblMessage.setText(msg);
 		}
-		for(int i=0;i<radioButtonC.length;i++) {
-			if(ob==radioButtonC[i]) {
-				lblGender.setForeground(colors[i]);
-			}
-		}
-		
-		
 		String s="가본 나라는 ";
 		int select=0;
 		for(int i=0;i<cbCountry.length;i++) {
@@ -154,6 +152,8 @@ public class QuizCheckRadio07 extends JFrame implements ActionListener{
 			}
 			else
 				s+="";
+				
+		
 		lblCountry.setText(s);
 		
 		

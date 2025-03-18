@@ -13,7 +13,7 @@
 create sequence seqshop start with 1 increment by 2 nocache;
 drop sequence seqshop;
 
-create table Myshop(no number(5) primary key, sangpum varchar2(30),su number(10),price number(10),"SIZE" varchar2(30),ipgoday date);
+create table Myshop(no number(5)primary key, sangpum varchar2(30),su number(10),price number(10),"SIZE" varchar2(30),ipgoday date);
 select * from Myshop;
 --myshop항목 삭제
 delete from myshop;
