@@ -1,0 +1,17 @@
+package day0319;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DbConnect {
+	static final String URL="jdbc:oracle:thin:@localhost:1521:XE";
+	
+	public Connection getConnection() {
+		Connection conn=null;
+		
+		conn=DriverManager.getConnection(URL, "yjyj0234", "a1234");
+		return conn;
+	}
+	
+	
+}

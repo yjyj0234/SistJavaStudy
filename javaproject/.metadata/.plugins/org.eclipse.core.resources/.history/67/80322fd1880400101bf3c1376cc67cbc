@@ -1,0 +1,14 @@
+package day0319;
+
+import java.sql.Connection;
+
+public class DbConnect {
+	static final String URL="jdbc:oracle:thin:@localhost:1521:XE";
+	
+	public Connection getConnection() {
+		Connection conn=null;
+		return conn;
+	}
+		
+	
+}

@@ -1,0 +1,6 @@
+package day0319;
+
+public class DbConnect {
+	static final String URL="jdbc:oracle:thin:@localhost:1521:XE";
+	
+}

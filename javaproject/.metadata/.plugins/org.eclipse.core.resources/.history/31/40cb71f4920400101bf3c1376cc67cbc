@@ -1,0 +1,91 @@
+package day0319;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class DBCrudTest {
+	DbConnect db=new DbConnect();
+	
+	public void insert() {
+		Scanner sc=new Scanner(System.in);
+	
+		String name,addr;
+		String sql="";
+		System.out.println("이름입력");
+		name=sc.nextLine();
+		System.out.println("주소입력");
+		addr=sc.nextLine();
+															
+															//따옴표 주의
+		sql="insert into hello values(seq_test.nextval,'"+name+"','"+addr+"',sysdate)";
+		System.out.println(sql);
+		
+		Connection conn=null;
+		Statement stmt=null;
+		//1.db 연결
+		conn=db.getConnection();
+		try {
+			stmt=conn.createStatement();
+			stmt.execute(sql);  //boolean 반환 할지 int로 저장할지
+			
+			System.out.println("**추가됨**");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(stmt, conn);
+		}
+	}
+	public void select() {
+		
+		String name,addr;
+		String sql="select * from hello order by num";
+		Connection conn=db.getConnection();
+		//exequteQuery 메서드를 이용해서 결과를 ResultSet 객체로 얻는다
+		
+		//2개이상일 때는 while, 하나일 떄는 if
+		
+		try {
+			conn=DriverManager.getConnection(URL, "yjyj0234", "a1234");
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			System.out.println("이름\t주소");
+		while(rs.next()) {
+			System.out.println(rs.getString("name")+"\t"+rs.getString("addr"));
+		}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		DBCrudTest db=new DBCrudTest();
+		
+		Scanner sc=new Scanner(System.in);
+		int n;
+		while(true) {
+			System.out.println("1.insert 2.select 3.update 4.delete 9.exit");
+			n=Integer.parseInt(sc.nextLine());
+			
+			if(n==1) {
+				db.insert();
+			}
+			if(n==2) {
+				db.select();
+			}
+			else if(n==9) {
+				System.out.println("db를 종료합니다");
+				break;
+			}
+		}
+		
+	}
+
+}

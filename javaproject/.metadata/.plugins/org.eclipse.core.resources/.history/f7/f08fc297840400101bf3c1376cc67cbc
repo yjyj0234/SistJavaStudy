@@ -1,0 +1,11 @@
+package day0319;
+
+public class ConnectTestEx3 {
+	static final String URL="jdbc:oracle:thin:@localhost:1521:XE";
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

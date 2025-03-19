@@ -1,0 +1,97 @@
+package day0319;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class ConnectTestEx1 {
+
+	//오라클 db=변하지않아서final
+	static final String URL="jdbc:oracle:thin:@localhost:1521:XE";
+	
+	public void connectSawon() {
+		Connection conn=null;
+		Statement stmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from sawon order by num";//사원테이블을 num의 오름차순 정렬하여 조회
+		
+		try {
+			conn=DriverManager.getConnection(URL, "yjyj0234", "a1234");  //커넥션으로 연결
+			System.out.println("오라클서버에 연결 성공!!!");
+			stmt=conn.createStatement();			//연결된 계정을 통해서 sql문에 전달
+			rs=stmt.executeQuery(sql);		//전달된 sql문을 result 객체를 통해 읽음
+			
+			while(rs.next()) //true일 때 까지 반환(rs객체를 통해 하나 하나 읽기?)
+			{
+				//db로부터 데이터 가져오기
+				int num= rs.getInt("num");   //1열도 가능
+				String name=rs.getString("name");
+				String gender=rs.getString("gender");
+				String buseo=rs.getString("buseo");
+				int pay=rs.getInt("pay");
+				
+				System.out.println(num+"\t"+name+"\t"+gender+"\t"+buseo+"\t"+pay);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("오라클서버에 연결 실패!!!");
+		}finally {
+			try {
+				if(rs!=null) rs.close();        //사용후 자원을 해제
+				if(stmt!=null) stmt.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	//음식명의 오름차순 정렬
+	public void connectFoodMenu() {
+		Connection conn=null;
+		Statement stmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from FOODMENU order by food_name";
+		try {
+			conn=DriverManager.getConnection(URL, "yjyj0234", "a1234");
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			System.out.println("배달 가능한 양식점");
+			System.out.println("===========================================================================");
+			System.out.println("주문번호\t음식명\t\t가격\t\t음식점명\t위치");
+			while(rs.next()) {
+				int num=rs.getInt("fno");
+				String Fname=rs.getString("food_name");
+				int price=rs.getInt("price");
+				String shopname=rs.getString("shop_name");
+				String local=rs.getString("loc");
+				System.out.println(num+"\t"+Fname+"\t"+price+"\t"+shopname+"\t\t"+local);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(stmt!=null) stmt.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ConnectTestEx1 ct=new ConnectTestEx1();
+		//ct.connectSawon();
+		ct.connectFoodMenu();
+	}
+
+}

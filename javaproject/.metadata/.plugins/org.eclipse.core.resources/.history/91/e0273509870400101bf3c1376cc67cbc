@@ -1,0 +1,44 @@
+package day0319;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class ConnectTestEx3 {
+	static final String URL="jdbc:oracle:thin:@localhost:1521:XE";
+	//shop+cart
+	//카트 담긴 일련번호 idx,상품명,색상,갯수,구입한 날짜
+	public void shopCart() {
+		Connection conn=null;
+		Statement stmt=null;
+		ResultSet rs=null;
+		String sql="select c.idx idx,s.sangpum sangpum,s.color color,c.cnt,guipday from shop s,cart1 c where s.num=c.num";
+		try {
+			conn=DriverManager.getConnection(URL, "yjyj0234", "a1234");
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			System.out.println("일련번호(idx)\t상품명\t색상\t갯수\t구입한 날짜");
+			while(rs.next()) {
+				int idx=rs.getInt("idx");
+				String sangpum=rs.getString("sangpum");
+				String color=rs.getString("color");
+				int cnt=rs.getInt("c.cnt");
+				
+				
+				System.out.println(idx+"\t"+sangpum+"\t"+color+"\t"+cnt+"\t"+rs.getDate("c.guipday"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+		 System.out.println("오라클 연결 실패");
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ConnectTestEx3 cn3=new ConnectTestEx3();
+		cn3.shopCart();
+	}
+
+}
