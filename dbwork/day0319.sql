@@ -36,3 +36,8 @@ select * from answer;
 --bno(글번호) writer(작성자) subject(제목) nickname(댓글단사람) content(댓글 내용) writerday(원글 올린 날짜)
 select b.bno 글번호,writer 작성자,subject 제목, nickname 댓글단사람, content 댓글내용,writerday 원글올린날짜
 from board b,answer a where b.bno=a.bno;
+
+select buseo, to_char(avg(pay),'L999,999,999') avgpay, to_char(max(pay),'l999,999,999'),to_char(min(pay),'l999,999,999')
+						from sawon group by buseo;
+                        
+select c.idx idx,s.sangpum sangpum,s.color color,c.cnt,c.guipday from shop s,cart1 c where s.num=c.num;
