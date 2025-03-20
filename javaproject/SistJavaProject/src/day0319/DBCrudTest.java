@@ -99,6 +99,82 @@ public class DBCrudTest {
 			db.dbClose(stmt, conn);
 		}
 	}
+	
+	//수정할 하나의 데이터 조회
+	public boolean isData(int num) {
+		//num에 해당하는 데이타가 있으면 true,없으면 false 반환
+		
+		boolean flag=false;
+		
+		String sql="select * from hello where num="+num;
+		Connection conn=db.getConnection();
+		Statement stmt=null;
+		ResultSet rs=null;
+		
+		try {
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			
+			//1개일 경우 if문
+			if(rs.next()) //데이터가 있는경우
+			{
+				flag=true;
+			}
+			else		  //데이터가 없는경우
+				flag=false;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, stmt, conn);
+		}
+		
+		return flag;
+	}
+	
+	
+	public void update() {
+		Scanner sc=new Scanner(System.in);
+		String name,addr;
+		int num;
+		
+		System.out.println("수정할 번호를 입력하시오");
+		num=Integer.parseInt(sc.nextLine());
+		//번호가 없는경우 (! 붙임)
+		if(!this.isData(num))
+		{
+			System.out.println("해당번호는 존재하지 않습니다");
+			return; //메서드 종료
+		}
+		System.out.println("수정할 이름을 선택하시오");
+		name=sc.nextLine();
+		System.out.println("수정할 주소를 선택하시오");
+		addr=sc.nextLine();
+		
+		String sql="update hello set name='"+name+"',addr='"+addr+"' where num="+num;
+		System.out.println(sql);
+		
+		//db연결
+		Connection conn=db.getConnection();
+		Statement stmt=null;
+		try {
+			stmt=conn.createStatement();
+			//rs가 없으므로 그냥 execute
+			int a=stmt.executeUpdate(sql);
+			if(a==0) {
+				System.out.println("수정할 데이터가 존재하지 않습니다");
+			}
+			else
+				System.out.println("수정이 완료되었습니다");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(stmt, conn);
+		}
+	
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		DBCrudTest db=new DBCrudTest();
@@ -119,8 +195,13 @@ public class DBCrudTest {
 				System.out.println("db를 종료합니다");
 				break;
 			}
-			else if(n==4)
+			else if(n==3) {
+				db.update();
+			}
+			else if(n==4) {
 				db.delete();
+			}
+			
 		}
 		
 	}

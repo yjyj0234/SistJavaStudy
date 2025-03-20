@@ -1,0 +1,157 @@
+package day0319;
+
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class MyCludCrud {
+	DbConnect db=new DbConnect();
+	Scanner sc = new Scanner(System.in);
+	public void insertClub() {
+		System.out.println("이름 입력");
+		String name=sc.nextLine();
+		System.out.println("주소 입력");
+		String address=sc.nextLine();
+		System.out.println("현재 직급");
+		String position=sc.nextLine();
+		
+		System.out.println("전화번호");
+		String chp=sc.nextLine();
+		System.out.println("회비");
+		int cfee=Integer.parseInt(sc.nextLine());
+		
+		String sql="insert into myclub values(seq_club.nextval,'"+name+"','"+address+"','"+position+"','"+chp+"',"+cfee+",sysdate)";
+		System.out.println(sql);
+		
+		Connection conn=db.getConnection();
+		Statement stmt=null;
+		
+		try {
+			stmt=conn.createStatement();
+			stmt.executeUpdate(sql);
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			System.out.println("가입에 성공하셨습니다.");
+			db.dbClose(stmt, conn);
+		}
+	}
+	
+	public void clubList() {
+		String sql="select cno, cname, caddress, cposition, chp, to_char(cfee,'999,999,999') cfee,to_char(gaipday, 'yyyy-mm-dd') gaipday from myclub order by cno";
+		
+		Connection conn=db.getConnection();
+		Statement stmt=null;
+		ResultSet rs=null;
+		
+		try {
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			while(rs.next()) {
+				System.out.printf("%d\t%s \t %s \t %s \t %s \t %s \t %s\n",rs.getInt("cno"),rs.getString("cname"),rs.getString("caddress"),rs.getString("cposition"),rs.getString("chp"),
+						rs.getString("cfee"),rs.getString("gaipday"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, stmt, conn);
+		}
+	}
+	public void updateClub() {
+		int num;
+		System.out.println("시퀀스 입력");
+		num=Integer.parseInt(sc.nextLine());
+		
+		System.out.println("수정할 이름");
+		String name=sc.nextLine();
+		System.out.println("수정할 주소");
+		String address=sc.nextLine();
+		System.out.println("수정할 직급");
+		String position=sc.nextLine();
+		System.out.println("수정할 전화번호");
+		String chp=sc.nextLine();
+		System.out.println("수정할 회비");
+		int fee=Integer.parseInt(sc.nextLine());
+		
+		String sql="update myclub set cname='"+name+"',caddress='"+address+"',cposition='"+position+"',chp='"+chp+"',CFEE='"+fee+"' where cno="+num;
+		Connection conn=db.getConnection();
+		Statement stmt=null;
+		
+		try {
+			stmt=conn.createStatement();
+			int a=stmt.executeUpdate(sql);
+			if(a==0) {
+				System.out.println("수정할 데이터 존재하지 않음");
+				return;
+			}
+			else {
+				System.out.println("수정 완료");
+			}
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(stmt, conn);
+		}
+		
+	}
+	public void deleteClub() {
+		int num;
+		System.out.println("삭제할 시퀀스 입력");
+		num=Integer.parseInt(sc.nextLine());
+		String sql="delete from myclub where cno="+num;
+		Connection conn=db.getConnection();
+		Statement stmt=null;
+		try {
+			stmt=conn.createStatement();
+			int a=stmt.executeUpdate(sql);
+			if(a==0)
+			{
+				System.out.println("없는 시퀀스 번호 입니다");		
+			}else
+			{
+				System.out.println("삭제되었습니다");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}db.dbClose(stmt, conn);
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		MyCludCrud club=new MyCludCrud();
+		while(true) {
+		System.out.println("메뉴선택창: 1. 회원가입  2. 전체회원출력  3. 회원정보수정  4. 회원삭제  5. 종료");
+		int n=Integer.parseInt(sc.nextLine());
+		
+		if(n==1) {
+			club.insertClub();
+			System.out.println("회원가입란");
+		}
+		if(n==2) {
+			System.out.println("번호\t이름\t 주소\t\t 직급\t 전화번호\t\t회비\t가입일");
+			club.clubList();
+		}
+		if(n==3) {
+			club.updateClub();
+		}
+		if(n==4) {
+			club.deleteClub();
+		}
+		if(n==5) {
+			System.out.println("메뉴를 닫습니다.");
+			break;
+		}
+		}
+	}
+
+}

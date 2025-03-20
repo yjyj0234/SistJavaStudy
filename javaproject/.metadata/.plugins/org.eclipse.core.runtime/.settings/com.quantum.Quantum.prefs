@@ -1,0 +1,10 @@
+com.quantum.actions.BookmarkSelectionUtil.bookmark=yjyj0345
+com.quantum.log.QuantumLog.logLevel=info
+eclipse.preferences.version=1
+quantum.SQLEditorPreferences.ignoredWords=;
+quantum.background.color=255,255,255
+quantum.comment.color=128,255,255
+quantum.dialogs.bookmarkwizard.path=C\:\\sist0217\\util\\ojdbc11.jar
+quantum.keyword.color=255,255,0
+quantum.string.color=0,255,0
+quantum.text.color=255,255,255
