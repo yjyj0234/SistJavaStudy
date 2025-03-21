@@ -1,0 +1,235 @@
+package day0321;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import day0319.DbConnect;
+
+public class ShopTest {
+	
+	DbConnect db=new DbConnect();
+	Scanner sc = new Scanner(System.in);
+	
+	public void insertSangpum() {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		System.out.println("타입(음료 or 과자)?");
+		String type=sc.nextLine();
+		System.out.println("상품명");
+		String sname=sc.nextLine();
+		System.out.println("수량");
+		int su= Integer.parseInt(sc.nextLine());
+		System.out.println("단가");
+		int dan=Integer.parseInt(sc.nextLine());
+		
+		//PrepareStatement 객체는 미완의 sql문을 작성할 수 있다
+		//변수를 ?로 표시 후 나중에 바인딩 시켜줌
+		String sql="insert into sales values(seq_test.nextval,?,?,?,?,sysdate)";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			//? 순서대로 바인딩 후 업데이트
+			
+			pstmt.setString(1, type); //첫번째 ?는 타입               
+			//or pstmt.setString(1, type==1?"음료":"과자");
+			pstmt.setString(2, sname);	//두번쨰 ?는 상품명
+			pstmt.setInt(3, su);
+			pstmt.setInt(4, dan);
+			
+			int n=pstmt.executeUpdate();
+			if(n==1)  //인서트 성공시
+			{
+				System.out.println("인서트 성공");
+			}
+			else {
+				System.out.println("인서트 실패");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+
+	}
+	public void listSangpum() {
+		Connection conn=db.getConnection();  //계정,url 연결
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select num,type,sangpum,su,dan,to_char(ipgoday,'yyyy-mm-dd') ipgoday from sales";
+		int num;
+		String type,name;
+		try {
+			pstmt=conn.prepareStatement(sql);  //그냥 statement와 달리 여기서 sql문 전달
+			rs=pstmt.executeQuery();
+			System.out.println("시퀀스\t종류\t상품명\t\t수량\t단가\t입고날짜");
+			while(rs.next()) {
+				System.out.println(rs.getInt("num")+"\t"+rs.getString("type")+"\t"+rs.getString("sangpum")+"\t"+rs.getInt("su")+"\t"+rs.getInt("dan")+"\t"+rs.getString("ipgoday"));
+			}
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+	}
+	public void deleteSangpum() {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		System.out.println("삭제할 시퀀스는?");
+		int num=Integer.parseInt(sc.nextLine());
+		
+		String sql="delete from sales where num=?"; //statement 와의 차이점
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			//바인딩
+			pstmt.setInt(1, num);
+			int n=pstmt.executeUpdate();
+			if(n==1) {
+				System.out.println("삭제 성공");
+			}else {
+				System.out.println("삭제 실패");
+			}
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}db.dbClose(pstmt, conn);
+	}
+	//수정...메서드 2개 1.num을 인자로 받아서 있는지 없는지 반환  2. 수정
+	public boolean isOneData(int num)  //있는지 없는지 확인(int num을 쓴 이유:sql문에다 조건을 주려고)
+	{
+		boolean b=false;
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from sales where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs=pstmt.executeQuery();
+					
+			//if_ 1개만 조회할경우 사용
+			if(rs.next())  //데이터가 있으면
+				b=true;
+			else			//데이터가 없으면
+				b=false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return b;
+	}
+	public void updateSangpum() {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		System.out.println("수정할 시퀀스 번호는?");
+		int num=Integer.parseInt(sc.nextLine());
+		//여기에서 isOneData 호출해서 찾기
+		if(!this.isOneData(num))
+		{
+			System.out.println("해당 번호는 존재하지 않습니다");
+			return; //메서드 종료
+		}
+		System.out.println("수정할 타입은?(1. 음료 2. 과자)");
+		int type=Integer.parseInt(sc.nextLine());
+		System.out.println("수정할 상품명은?");
+		String name=sc.nextLine();
+		System.out.println("수량");
+		int su=Integer.parseInt(sc.nextLine());
+		
+		System.out.println("단가");
+		int dan=Integer.parseInt(sc.nextLine());
+		
+		String sql="update sales set type=?,sangpum=?,su=?,dan=? where num=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			// ? 5개 순서대로 바인딩
+			pstmt.setString(1, type==1?"음료":"과자");
+			pstmt.setString(2, name);
+			pstmt.setInt(3, su);
+			pstmt.setInt(4, dan);
+			pstmt.setInt(5, num);
+			
+			//업데이트
+			int n=pstmt.executeUpdate();
+			if(n==1){
+				System.out.println("상품수정 성공!");
+			}else{
+				System.out.println("실패");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+		
+	}
+	//상품명의 일부를 검색해서 찾기(상품명이 어디든 포함되면)
+	public void searchSangpum() {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		System.out.println("검색할 상품명?(일부도 가능)");
+		String name=sc.nextLine();
+		
+		String sql="select name from sales where name like '?'";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+			System.out.println("시퀀스\t종류\t상품명\t\t수량\t단가\t입고날짜");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ShopTest sh = new ShopTest();
+		Scanner sc=new Scanner(System.in);
+		int n;
+		
+		while(true) {
+			System.out.println("**상품입고**");
+			System.out.println("1. 상품추가  2. 상품삭제  3. 상품수정  4. 재고출력  9. 종료");
+			n=Integer.parseInt(sc.nextLine());
+			
+			if(n==1) {
+				sh.insertSangpum();
+			}
+			if(n==2) {
+				sh.deleteSangpum();
+			}
+			if(n==3) {
+				sh.updateSangpum();
+			}
+			if(n==4) {
+				sh.listSangpum();
+			}
+			if(n==9) {
+				System.out.println("종료");
+				break;
+			}
+		}
+		
+	}
+
+}

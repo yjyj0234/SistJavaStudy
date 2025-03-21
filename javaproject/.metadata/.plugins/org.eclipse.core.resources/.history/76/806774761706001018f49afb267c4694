@@ -1,0 +1,89 @@
+package day0321;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import day0319.DbConnect;
+
+public class SungjukDB {
+	DbConnect db= new DbConnect();
+	Scanner sc= new Scanner(System.in);
+	
+	public void insertSungjuk() {
+		System.out.println("학생명");
+		String name=sc.nextLine();
+		System.out.println("자바 점수");
+		int java=Integer.parseInt(sc.nextLine());
+		System.out.println("오라클 점수");
+		int oracle=Integer.parseInt(sc.nextLine());
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="insert into sungjuk (num, name,java,oracle) values (seq_sungjuk.nextval,?,?,?)";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			//?순서대로 바인딩
+			pstmt.setString(1, name);
+			pstmt.setInt(2, java);
+			pstmt.setInt(3, oracle);
+			
+			//업데이트
+			pstmt.execute();
+			
+			System.out.println("추가되었습니다");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+	public void selectAllSungjuk() {
+		
+	}
+	public void deleteSungjuk() {
+		System.out.println("삭제할 번호");
+		int num=Integer.parseInt(sc.nextLine());
+		
+		Connection conn=db.getConnection();
+		
+	}
+	public void updateSungjuk() {
+		
+	}
+	public void process() {
+		while(true) {
+			System.out.println("1. 성적추가  2. 성적정보삭제  3. 성적수정  4. 전체성적조회  5~: 종료");
+			int num=Integer.parseInt(sc.nextLine());
+			
+			switch(num) {
+			case 1:
+				this.insertSungjuk();
+				break;
+			case 2:
+				this.deleteSungjuk();
+				break;
+			case 3:
+				this.updateSungjuk();
+				break;
+			case 4:
+				this.selectAllSungjuk();
+				break;
+			default:
+				System.out.println("성적 프로그램 종료");
+				System.exit(0);
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+	}
+
+}

@@ -1,0 +1,217 @@
+package day0321;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import day0319.DbConnect;
+//라디오버튼 제어할 itemlistener 추가 삭제 버튼제어할 actionlistener
+public class SawonDbSwing extends JFrame implements ItemListener, ActionListener{
+
+	Container cp;
+	JTable table;
+	DefaultTableModel model;  //추가삭제 가능한 테이블
+	JRadioButton [] rb=new JRadioButton[6];  //부서 3개( 2개면 5)
+	JButton btnAdd,btnDel;
+	DbConnect db=new DbConnect();
+	Connection conn=db.getConnection();
+	
+	//생성자
+	public SawonDbSwing(String title) {
+		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
+		
+		//위치 너비
+		this.setBounds(100, 100, 700, 700);
+		
+		cp=this.getContentPane();
+		cp.setBackground(Color.white);
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		initDesign();
+		
+		//테이블 생성후 db로부터 데이터 가져오기(1번 누르면 전체출력)
+		this.sawonTableSelect(1);
+		
+		this.setVisible(true);
+	}
+	public void initDesign() {
+		this.setLayout(null);
+		
+		//table 추가
+		//일련번호(시퀀스x)
+		String [] title= {"번호","ID","사원명","성별","부서명","월급"};
+		model=new DefaultTableModel(title, 0);   //제목만 넣고 행갯수는 0으로 추가
+		table=new JTable(model);
+		
+		//셀 너비 조절
+		table.getColumnModel().getColumn(0).setPreferredWidth(10); //0열 너비 10
+		table.getColumnModel().getColumn(1).setPreferredWidth(10); //1열 너비 10
+		
+		JScrollPane js=new JScrollPane(table); //테이블 스크롤
+		js.setBounds(10, 150, 670, 400);
+		this.add(js);
+		
+		//라디오 버튼 추가
+		ButtonGroup bg=new ButtonGroup();
+		//전체 남자 여자 홍보부 개발부 디자인부
+		
+		String [] rb_label= {"전체","남자","여자","홍보부","개발부","디자인부"};
+		int xpos=10;
+		for(int i=0;i<rb.length;i++) {
+			//라디오버튼 생성
+			rb[i]=new JRadioButton(rb_label[i], i==0?true:false);
+			rb[i].setBounds(xpos, 110, 90, 50);
+			xpos+=100;
+			rb[i].setOpaque(false);
+			//이벤트 추가1
+			rb[i].addItemListener(this);
+			
+			//버튼그룹 만들기
+			bg.add(rb[i]);
+			this.add(rb[i]);
+		}
+		//삭제 버튼
+		btnDel=new JButton("사원 삭제");
+		btnDel.setBounds(10, 10, 100, 30);
+		btnDel.addActionListener(this);  //이벤트추가(액션리스너)
+		this.add(btnDel);
+		
+		btnAdd=new JButton("사원 추가");
+		btnAdd.setBounds(150, 10, 100, 30);
+		btnAdd.addActionListener(this);  //이벤트추가(액션리스너)
+		this.add(btnAdd);
+	}
+	
+	//db데이터 가져와서 사원테이블에 추가("전체","남자","여자","홍보부","개발부","디자인부")
+	public void sawonTableSelect(int select) {
+		//int select로 선택(1번 눌러서)
+		String sql="";
+		
+		if(select==1)  //rownum = 행번호
+			sql="select ROWNUM no, num id, name, gender, buseo, to_char(pay,'l999,999,999') pay from sawon";
+		else if(select==2) {
+			sql="select ROWNUM no, num id, name, gender, buseo, to_char(pay,'l999,999,999') pay from sawon where gender='남자'";
+		}
+		else if(select==3) {
+			sql="select ROWNUM no, num id, name, gender, buseo, to_char(pay,'l999,999,999') pay from sawon where gender='여자'";
+		}
+		else if(select==4) {
+			sql="select ROWNUM no, num id, name, gender, buseo, to_char(pay,'l999,999,999') pay from sawon where buseo='홍보부'";
+		}
+		else if(select==5) {
+			sql="select ROWNUM no, num id, name, gender, buseo, to_char(pay,'l999,999,999') pay from sawon where buseo='개발부'";
+		}
+		else if(select==6) {
+			sql="select ROWNUM no, num id, name, gender, buseo, to_char(pay,'l999,999,999') pay from sawon where buseo='디자인부'";
+		}
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+		
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			//기존의 데이터 삭제 후 가져오기
+			model.setRowCount(0);
+			
+			while(rs.next()) {
+				//테이블에 추가할 벡터 선언후 데이터 추가
+				Vector<String> data=new Vector<String>();
+				//string으로 선언해서 string으로만 담음
+				data.add(rs.getString("no"));
+				data.add(rs.getString("id"));
+				data.add(rs.getString("name"));
+				data.add(rs.getString("gender"));
+				data.add(rs.getString("buseo"));
+				data.add(rs.getString("pay"));
+				
+				//벡터의 데이타를 행으로 추가
+				model.addRow(data);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+    
+		new SawonDbSwing("사원테이블 DB");
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		//추가버튼,삭제버튼
+		Object ob=e.getSource();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		String sql="";
+		
+		if(ob==btnDel) {
+			
+			
+		}else if(ob==btnAdd) {//옵션창 띄우기
+			String name =JOptionPane.showInputDialog("사원명을 입력해주세요");
+			String gender=JOptionPane.showInputDialog("성별을 입력해주세요(남자/여자)");
+			String buseo =JOptionPane.showInputDialog("부서를 입력해주세요(개발부/홍보부/디자인부)");
+			String pay =JOptionPane.showInputDialog("급여를 입력해주세요");
+			
+			sql="insert into sawon values (seq_sawon.nextval,?,?,?,?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, name);
+				pstmt.setString(2, gender);
+				pstmt.setString(3, buseo);
+				pstmt.setString(4, pay);
+				pstmt.executeUpdate();
+				
+				//테이블 다시 호출
+				this.sawonTableSelect(1);
+				
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		}
+			
+				
+				
+	}
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		//라디오버튼 제어
+		
+		Object ob=e.getSource();
+		for(int i=0;i<rb.length;i++) {
+			if(rb[i]==ob) {
+				this.sawonTableSelect(i+1);
+			}
+		}
+	}
+
+}

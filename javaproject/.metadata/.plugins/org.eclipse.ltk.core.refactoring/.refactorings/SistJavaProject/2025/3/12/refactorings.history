@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;day0321.SawonDBSwing.java&apos; to &apos;SawonDbSwing.java&apos;&#x0D;&#x0A;- Original project: &apos;SistJavaProject&apos;&#x0D;&#x0A;- Original element: &apos;day0321.SawonDBSwing.java&apos;&#x0D;&#x0A;- Renamed element: &apos;day0321.SawonDbSwing.java&apos;" description="Rename compilation unit &apos;SawonDBSwing.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;day0321{SawonDBSwing.java" name="SawonDbSwing.java" references="false" stamp="1742538701757" version="1.0"/>
+</session>

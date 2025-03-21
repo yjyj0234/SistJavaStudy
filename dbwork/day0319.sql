@@ -41,3 +41,4 @@ select buseo, to_char(avg(pay),'L999,999,999') avgpay, to_char(max(pay),'l999,99
 						from sawon group by buseo;
                         
 select c.idx idx,s.sangpum sangpum,s.color color,c.cnt,c.guipday from shop s,cart1 c where s.num=c.num;
+
