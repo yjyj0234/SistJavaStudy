@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;AddScore.java&apos; to &apos;day0324.SwingScoreDB.java&apos;&#x0D;&#x0A;- Original project: &apos;SistJavaProject&apos;&#x0D;&#x0A;- Destination element: &apos;day0324.SwingScoreDB.java&apos;&#x0D;&#x0A;- Original element: &apos;day0324.AddScore.java&apos;" description="Copy compilation unit" destination="/src&lt;day0324{SwingScoreDB.java" element1="/src&lt;day0324{AddScore.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1742796510145" units="1" version="1.0"/>
+</session>

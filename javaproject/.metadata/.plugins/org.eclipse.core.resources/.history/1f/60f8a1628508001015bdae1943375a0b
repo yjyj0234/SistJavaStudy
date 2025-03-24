@@ -1,0 +1,30 @@
+package day0324;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+
+public class Test extends JFrame{
+
+	Container cp;
+	//생성자
+	public test(String title) {
+		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
+		
+		//위치 너비
+		this.setBounds(2500, 100, 700, 500);
+		
+		cp=this.getContentPane();
+	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		cp.setBackground(Color.white);
+		
+		this.setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+    
+		new SawonDbSwing("사원테이블 DB");
+	}
+

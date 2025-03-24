@@ -21,7 +21,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import day0319.DbConnect;
-//라디오버튼 제어할 itemlistener 추가 삭제 버튼제어할 actionlistener
+//라디오버튼 제어할 itemlistener(누르자마자 바로 반영됨) 추가 삭제 버튼제어할 actionlistener
 public class SawonDbSwing extends JFrame implements ItemListener, ActionListener{
 
 	Container cp;
@@ -170,25 +170,37 @@ public class SawonDbSwing extends JFrame implements ItemListener, ActionListener
 		String sql="";
 		
 		if(ob==btnDel) {
-			String id=JOptionPane.showInputDialog("삭제할 아이디 입력");
-			sql="delete from sawon where num=?";
-			
-			try {
-				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, id);
-				
-				int n=pstmt.executeUpdate();
-				if(n==0) {
-					JOptionPane.showMessageDialog(null, "없는 번호입니다");
-				}else {
-					JOptionPane.showMessageDialog(null, "삭제되었습니다");
-				}
-				this.sawonTableSelect(1);
-				
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			//행번호 얻기
+				int row=table.getSelectedRow();
+				System.out.println(row);
+				//선택 안했을 경우
+				if(row==-1) {
+					JOptionPane.showMessageDialog(this, "삭제할 행을 머저 선택해주세요");
+					return; //메서드 종료
 			}
+				//선택한 행의 id(num)얻기
+				//getValueAt
+				String num=(String)model.getValueAt(row, 1);
+				System.out.println(num);
+				
+				//db데이터 삭제 테이블 다시 출력(전체)
+				sql="delete from sawon where num=?";
+				
+				try {
+					pstmt=conn.prepareStatement(sql);
+					//num바인딩
+					pstmt.setString(1, num);
+					
+					//실행
+					pstmt.execute();
+					//전체 데이터 다시 불러오기
+					this.sawonTableSelect(1);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			
 			
 		}else if(ob==btnAdd) {//옵션창 띄우기
 			String name =JOptionPane.showInputDialog("사원명을 입력해주세요");
@@ -216,7 +228,6 @@ public class SawonDbSwing extends JFrame implements ItemListener, ActionListener
 			
 		}
 			
-				
 				
 	}
 	@Override
