@@ -25,7 +25,7 @@ public class JTableEx1 extends JFrame{
 		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
 
 		//위치 너비
-		this.setBounds(2500, 100, 700, 600);
+		this.setBounds(100, 100, 700, 600);
 		cp=this.getContentPane();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		cp.setBackground(Color.white);
@@ -112,9 +112,7 @@ public class JTableEx1 extends JFrame{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 		new JTableEx1("JTable연습 #1");
 	}
-
 
 }
