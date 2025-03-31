@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="SchemaObject" objectID="E0646FF4-FD9E-C840-A99F-29555950C950" name="YJYJ0345" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.SchemaObject" propertyParentId="EAB610DD-7BDC-C0DE-EDF8-BB9015FE3B5B" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Table" objectID="D9BA6D9B-C3C9-3238-7BCD-4573EFEAE89C" name="CAR" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="EAB610DD-7BDC-C0DE-EDF8-BB9015FE3B5B" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Table" objectID="14623B35-0328-7392-C4A7-333E05177180" name="ORDERER" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="EAB610DD-7BDC-C0DE-EDF8-BB9015FE3B5B" propertySourceId="" propertyTargetId=""/>
+   <object objectType="FKIndexAssociation" objectID="6B12DE9E-73C6-F446-A368-CC4B3E440FAD" name="ORDERER_FK_CAR_NO" seqName="seg_0" containerID="14623B35-0328-7392-C4A7-333E05177180" refContainerID="D9BA6D9B-C3C9-3238-7BCD-4573EFEAE89C" propertyClassName="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" propertyParentId="EAB610DD-7BDC-C0DE-EDF8-BB9015FE3B5B" propertySourceId="D9BA6D9B-C3C9-3238-7BCD-4573EFEAE89C" propertyTargetId="14623B35-0328-7392-C4A7-333E05177180"/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Myeongjo&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        span{
+            font-family: 'Gowun Dodum';
+            font-size: 30px;
+        }
+        .happy{    /*hppy라는 클래스를 가진 전체 태그 적용*/
+            color: #ffccff;
+            font-size: 30pt;
+            font-family: 'sunflower';
+        }
+        b.nice{  /*b태그에 있는 nice 만 적용*/
+            color: blue;
+            text-decoration: underline;
+            text-shadow: 5px 5px 5px gray;
+        }
+        img.imga{
+            width: 200px;
+            border: 10px inset pink;  /*테두리*/
+            margin-left: 200px;
+            margin-bottom: 100px;
+        }
+        img.imgb{
+            width: 200px;
+            height: 200px;
+            box-shadow: 10px 10px 10px gray; /*박스 그림자*/
+            border-radius: 40px;   /*사진 꼭짓점 동그랗게*/
+        }
+    </style>
+</head>
+<body>
+    <span style="color: magenta; font-size: 2em;">spanTag!!!</span><br>
+    <span style="background-color: purple; color: white;">안녕하세요 지금은 class를 이용해서 css적용중 입니다</span><br>
+    <div class="happy nice">
+        Div tag1!!!
+    </div>
+    <div class="happy">
+        Div tag2!!!
+    </div>
+    <b class="happy nice">B Tag!!!_굵게 속성 태그</b>
+    <br>
+    <img src="../연예인사진/12.jpg" alt="보영이 없다" title="나는 박보영이다" class="imga">
+    <br>
+    <img src="../Food/2.jpg" alt="순두부라면 없음" title="순두부라면" class="imgb">
+</body>
+</html>
