@@ -1,5 +1,6 @@
 package day0307;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
@@ -46,7 +47,7 @@ class MyShop{
 //////////////////////////////////////
 public class QuizList {
 	
-	List<MyShop> list=new Vector<MyShop>();   //ArrayList 와 차이 없음
+	List<MyShop> list=new ArrayList<MyShop>();   //ArrayList 와 차이 없음
 	
 	//상품 입력
 	public void putProduct() {

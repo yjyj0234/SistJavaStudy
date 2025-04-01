@@ -1,0 +1,17 @@
+div.lotto{
+    width: 100px;
+    height: 100px;
+    margin-left: 50px;
+    margin-top: 50px;
+    border: solid 3px #0044ff;
+    background-color: #ffff60;
+    font-size: 40pt;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    line-height: 100px;
+    color: skyblue;
+
+    box-shadow: 10px 10px 10px gray;
+    border-radius: 100px;
+}

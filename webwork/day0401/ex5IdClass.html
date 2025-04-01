@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 클래스는 동시에 여러군데 사용한다(.으로 만듬) 
+        아이디는 #으로 만드는데 딱 한군데서만 사용가능*/
+        .nice{
+            color: magenta;
+        }
+        div.nice{
+            background-color: aquamarine;
+            border: 2px dotted pink;
+        }
+        #sist{
+            position: absolute;  /*절대 고정위치*/
+            top: 400px;
+            left: 200px;
+            width: 200px;
+            height: 100px;
+            border: 2px solid gray;
+            padding-top: 30px;
+            padding-left: 20px;
+        }
+        .hello{
+            height: 50px;
+            background-color: brown;
+            color: white;
+        }
+        /*빨강색 박스에 하얀글씨로 나타나게 글씨는 가로세로 정가운데*/
+        #box{
+            position:absolute;
+            top:550px;
+            left: 200px;
+            width: 300px;
+            height:100px;
+            border:5px solid gray;
+            text-align: center;
+            line-height: 100px;
+            background-color: brown;
+            color: white;
+        }
+        .boxall{
+            position: absolute;
+            top: 700px;
+            left: 100pt;
+            width: 50%;
+        }
+        #boxa{
+            /* float 속성은 left,right,none가 있다
+            요소를 분리시킬 수 있는데 중심속성이 없다
+            중심으로 분리시킬때는 margin:auto */
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: chocolate;
+        }
+        #boxb{
+            /* float 속성은 left,right,none가 있다
+            요소를 분리시킬 수 있는데 중심속성이 없다
+            중심으로 분리시킬때는 margin:auto */
+            float: right;
+            width: 200px;
+            height: 200px;
+            background-color: chartreuse;
+        }
+        #boxc{
+            /* float 속성은 left,right,none가 있다
+            요소를 분리시킬 수 있는데 중심속성이 없다
+            중심으로 분리시킬때는 margin:auto */
+            margin:auto;
+            width: 200px;
+            height: 200px;
+            background-color: #d50b56;
+        }
+    </style>
+</head>
+<body>
+    <div class="nice hello">안녕하세요</div>
+    <div class="nice">오늘은 화요일</div>
+    <div class="hello">Hello</div>
+    <div class="nice">Nice Day</div>
+    <b class="nice"> 나는 b태그</b>
+    <div id="sist">쌍용교육센터 입니다</div>
+    <div id="box">박스 입니다</div>
+    <div class="boxall">
+        <div id="boxa">박스a</div>
+        <div id="boxb">박스b</div>
+        <div id="boxc">박스c</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+div{
+    width: 400px;
+    height: 250px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+    margin-left: 100px;
+    background-size: 50px 70px;  /*가로 세로 사이즈*/
+}
+div.a{
+    /* 이미지 줄때 */
+    background-image: url("../flower_ani/f18.png");
+}
+
+div.b{
+    background-image: url(../flower_ani/f3.png);
+    background-repeat: repeat-x;  /*x방향 축으로만 가득차게*/
+}
+div.c{
+    background-image: url(../flower_ani/f14.png);
+    background-repeat: repeat-y;
+}
+div.d{
+    background-image: url(../flower_ani/f19.png);
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+body{
+    background-image: url("../Food/8.jpg");
+    background-repeat: no-repeat;
+    background-position: 800px 200px;
+}
+.bg{background-color: #fff342;}

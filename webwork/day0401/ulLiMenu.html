@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Myeongjo&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        ul.menu li{
+             list-style: none;  /* 점찍히는거 없앰*/
+             float: left;
+             width: 200px;
+             height: 60px;
+             border:1px solid gray;
+             text-align: center;
+             line-height: 60px;  /*칸에 있는 글 높이(칸 높이랑 같게하면 중간에 옴)*/
+             margin-right: 10px;  /*칸 사이 간격*/
+             background-color: skyblue;
+             font-size: 18px;
+             font-family:  'gowun dodum';
+             border-radius: 10px;
+             box-shadow: 10px 5px 5px gray;
+        }
+        /*버튼 갖다 댔을때*/
+        ul.menu li:hover{
+            background-color: brown;
+            color: white;
+            box-shadow: 5px 5px 5px gray;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h3>ul을 이용한 간단메뉴 만들기</h3>
+
+    <br>
+    <ul class="menu">
+        <li>Home</li>
+        <li>샵 소개</li>
+        <li>방명록</li>
+        <li>고객 게시판</li>
+        <li>오시는 길</li>
+    </ul>
+</body>
+</html>
