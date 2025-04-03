@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Myeongjo&family=Sunflower:wght@300&display=swap" rel="stylesheet');
+
+body * {
+    font-family: 'Gowun Dodum';
+}
+
+.btn{
+    width: 120px;
+    height: 35px;
+    font-family: 'Gowun Dodum';
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.btn-green{
+    background-color: green;
+    color: white;
+}
+
+.btn-pink{
+    background-color: pink;
+    color: black;
+}
+
+.btn-purple{
+    background-color: purple;
+    color: white;
+}
