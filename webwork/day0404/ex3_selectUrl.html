@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function moveToUrl(url){
+            document.location.href=url;
+        }
+    </script>
+</head>
+<body>
+    <!-- action='#' :현재 아무의미 없는 기능.
+      action=''으로 바꿔도 됨-->
+    <form action="#" name="frm" method="post">
+        <select name="list" onchange="location=document.frm.list.value">
+            <!-- document 안에 있는 frm 리스트중의 value값을 가진것 -->
+            <option value="">선택하세요</option>
+            <option value="select1.html">페이지이동1</option>
+            <option value="select2.html">페이지이동2</option>
+            <option value="select3.html">페이지이동3</option>
+        </select>
+    </form>
+    <!-- <form name="myform">
+        <select name="url" onchange="location=document.myform.url.value">
+            <option>선택</option>
+            <option value="http://www.naver.com">네이버</option>
+            <option value="http://www.google.com">구글</option>
+            <option value="http://www.youtube.com">유튜브</option>
+        </select>
+    </form> -->
+    <form name="myform">
+        <!-- this.value 자기자신이 가지고 있는 value -->
+        <select name="url" onchange="moveToUrl(this.value)">
+            <option>선택</option>
+            <option value="http://www.naver.com">네이버</option>
+            <option value="http://www.google.com">구글</option>
+            <option value="http://www.youtube.com">유튜브</option>
+        </select>
+    </form>
+</body>
+</html>

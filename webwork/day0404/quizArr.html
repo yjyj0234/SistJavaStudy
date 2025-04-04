@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/buttonStyle.css" rel="stylesheet">
+    <title>Document</title>
+    <script>
+         var arr=new Array(5);
+            arr[0]='<img src="../만화이미지/15.png">';
+            arr[1]='<img src="../flower_ani/s9.jpg">';
+            arr[2]='<img src="../image/Q_80,0.jpg">';
+            arr[3]='<img src="../jquery_img/c2.png">';
+            arr[4]='<img src="../쇼핑몰사진/30.jpg">';
+        
+       function showImage(){
+            var a=document.getElementById("btnImg");
+            a.onclick=function(){
+                var number= prompt("출력할 이미지의 인덱스 번호를 입력하세요");
+                if(number<=arr[number]){
+                    document.getElementById("result").innerHTML=arr[number];
+                }else
+                    alert("해당번호의 이미지는 없습니다.");
+            }                
+        }
+    </script>
+</head>
+<body>
+    <!-- 문제
+     1. 총 5개의 이미지를 배열형태로 넣어놓기(폴더형태로)
+     2. prompt로 "출력할 이미지의 인덱스 번호를 입력하세요" 라고 출력 0번을 입력하면 0번이미지 출력
+     3. 없는 인덱스 번호 쓰면 "해당번호의 이미지는 없습니다"-->
+     
+    <button id="btnImg" class="btn btn-green" type="button" onclick="showImage()">이미지출력</button>
+    <hr>
+    <div id="result">이미지 출력하는곳.....
+        
+    </div>
+    
+</body>
+    
+</html>

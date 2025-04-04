@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+            border: 1px solid saddlebrown;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h3>배열 초기값으로 지정</h3>
+    <script>
+        var arr1=[
+            "../연예인사진/5.jpg",
+            "../쇼핑몰사진/29.jpg",
+            "../Food/8.jpg",
+            "../만화이미지/05.png",
+            "../Food/7.jpg"
+            ];
+            var s="배열갯수: "+arr1.length+"<br>";
+            for(var i=0;i<arr1.length;i++){
+                s+="<img src='"+arr1[i]+"'>";
+            }
+            document.write(s);
+    </script>
+    <h3>배열_new Array로 선언</h3>
+    <script>
+        var arr2=new Array(4);
+
+        arr2[0]="../연예인사진/10.jpg";
+        arr2[1]="..//쇼핑몰사진/27.jpg";
+        arr2[2]="../Food/9.jpg";
+        arr2[3]="../만화이미지/06.png";
+
+        var s="배열 갯수는: "+arr2.length+"<br>";
+        for(var i=0;i<arr2.length;i++){
+            s+=("<img src='"+arr2[i]+"'>");
+        }
+        document.write(s);
+    </script>
+    <h3>배열_new Array로 선언_push</h3>
+    <script>
+        var arr3=new Array();
+        arr3.push("../연예인사진/8.jpg");
+        arr3.push("../연예인사진/10.jpg");
+        arr3.push("../연예인사진/11.jpg");
+        arr3.push("../연예인사진/12.jpg");
+        arr3.push("../연예인사진/16.jpg");
+        arr3.push("../연예인사진/17.jpg");
+        var s="배열 갯수는: "+arr3.length+"<br>";
+        for(var i=0; i<arr3.length;i++){
+            s+="<img src='"+arr3[i]+"'>";
+        }
+        document.write(s);
+    </script>
+    <h3>arr3에서 2개만 pop()한 후 출력</h3>
+    <script>
+        arr3.pop();  //마지막 사진 꺼내서 없앤다
+        arr3.pop();
+        var s="배열 갯수는: "+arr3.length+"<br>";
+        for(var i=0; i<arr3.length;i++){
+            s+="<img src='"+arr3[i]+"'>";
+        }
+        document.write(s);
+    </script>
+
+</body>
+</html>
