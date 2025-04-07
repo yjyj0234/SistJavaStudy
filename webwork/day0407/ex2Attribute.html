@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- attribute:속성 -->
+     <img src="../div_img/oneday01.jpg" width="100" id="myimg">
+     <hr>
+     <button type="button" onclick="test()">사이즈 알아보기</button>
+     <script>
+        function test(){
+            var photo=document.getElementById("myimg");
+        
+            //photo태그의 속성값 가져오기
+            var w=photo.getAttribute("width");  //width width속성 가져옴
+            var src=photo.getAttribute("src"); //이미지경로 가져옴
+        
+            alert(w+"\n"+src);  //alert에 br태그 안됨
+        }
+     </script>
+</body>
+</html>

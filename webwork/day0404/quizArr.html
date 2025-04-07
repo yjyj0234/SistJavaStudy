@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/buttonStyle.css" rel="stylesheet">
     <title>Document</title>
+    <style>
+        #result{
+            width: 400px;
+            font-size: 30px;
+        }
+    </style>
     <script>
          var arr=new Array(5);
             arr[0]='<img src="../만화이미지/15.png">';
@@ -12,7 +18,9 @@
             arr[2]='<img src="../image/Q_80,0.jpg">';
             arr[3]='<img src="../jquery_img/c2.png">';
             arr[4]='<img src="../쇼핑몰사진/30.jpg">';
-        
+        //혹은
+        //arr.push("../쇼핑몰사진/30.jpg"); 로도 가능
+
        function showImage(){
             var a=document.getElementById("btnImg");
             a.onclick=function(){
@@ -20,8 +28,16 @@
                 if(number<=arr[number]){
                     document.getElementById("result").innerHTML=arr[number];
                 }else
-                    alert("해당번호의 이미지는 없습니다.");
+                document.getElementById("result").innerHTML=("해당번호의 이미지는 없습니다.");
             }                
+            /*
+            var r=document.getElementById("result");
+            var id=prompt("출력할 이미지 인덱스 번호");
+            if(idx<0||idx>4){
+            r.innerHTML"해당 번호의 이미지는 없습니다";
+        }else{
+        r.innerHTML="<img src='"+arr[idx]+"'>";
+        }*/
         }
     </script>
 </head>

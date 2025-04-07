@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #main_photo{
+        position: absolute;
+            left: 550px;
+            top: 150px;
+    }
+    #large_photo{
+        width: 400px;
+        height: 500px;
+        border: 5px groove gray;
+    }
+    #photo_small{
+        position: absolute;
+        left: 50px;
+        top: 100px;
+        width: 400px;
+        height: 600px;
+        border: 2px solid gray;
+        padding: 10px 10px;
+    }
+    img{
+        width:80px;
+        height:82px;
+    }
+</style>
+<body>
+    <h3>문제: 쇼핑몰 사진에 마우스 올리면(onmouseover) 큰사진이 바뀌는 이벤트 만들기
+        작은이미지 접근은 querySelectoryAll or getElementByClassName 가능
+    </h3>
+    <div id="photo_small">
+        <!-- 사진 35개 for문으로 출력 이미지에 class 두면 접근가능-->
+        <!-- n번사진을 가져올때마다 메인사진 바뀌게 -->
+         <script>
+            var arr=new Array();
+            for(var i=1;i<=35;i++){
+            arr[i]="../쇼핑몰사진/"+i+".jpg";
+            document.write("<img src='"+arr[i]+"' class='img' onmouseover=photo(this)>");
+            }
+         </script>
+    </div>
+
+    <div id="main_photo">
+        <img src="../div_img/actor1.jpg" id="large_photo">
+    </div>
+    <script>
+        var image=document.querySelectorAll(".img");
+        var large=document.querySelector("#large_photo");
+    
+        function photo(e){
+            for(var i=0;i<image.length;i++){
+                large.setAttribute("src",e.src);
+            }
+        }
+        //현재 이미지의 사진을 얻어서 큰이미지에 적용
+    </script>
+    
+</body>
+</html>

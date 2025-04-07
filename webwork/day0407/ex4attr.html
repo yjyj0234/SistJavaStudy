@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Myeongjo&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <script>
+        // 점점작게,점점크게는 3px씩 증가 감소하도록
+        //8보다 작아지면 경고(더이상 줄일수 없다)
+        // 60보다 커지면 경고 후 종료
+        // 2개의 버튼클릭시 마다 현재 글꼴사이즈를 fsize에 출력
+        window.onload=function(){
+            var fsize=document.getElementById("fsize");
+            var out=document.getElementById("out");
+
+            fsize.innerHTML="현재 글꼴 사이즈는 40px입니다";
+
+            // btn1이벤트
+            document.getElementById("btn1").onclick=function(){
+                // 정수 표기법으로(10진수) 하겠다
+                var outsize=parseInt(out.style.fontSize,10);
+                //alert(outsize);
+                outsize-=3;
+                
+                if(outsize<8){
+                    alert("더 이상 줄일 수 없습니다");
+                    return; //메서드 종료
+                }
+                // outsize가 px이 아닌 숫자로 표기되있어서 px크기는 줄어들지 않음
+                // 아래 px가 달린 코드 추가
+                out.style.fontSize=outsize+"px";
+                fsize.innerHTML="현재 글꼴 사이즈는 "+outsize+"px입니다.";
+            }
+            document.getElementById("btn2").onclick=function(){
+                var outsize=parseInt(out.style.fontSize,10);
+                outsize+=3;
+
+                if(outsize>60){
+                    alert("더 이상 커질 수 없습니다")
+                    return;
+                }
+                out.style.fontSize=outsize+"px";
+                fsize.innerHTML="현재 글꼴 사이즈는 "+outsize+"px입니다.";
+            }
+            //글자색 선택
+           document.getElementById("mycolor").onchange=function(){
+            //alert(this.value);
+            out.style.color=this.value;
+            }
+            //테두리선 굵기 선택
+            document.getElementById("selwidth").onchange=function(){
+                //alert(this.value);
+                out.style.border=this.value+"px solid";
+                out.style.width="550px";
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <button type="button" id="btn1">점점 작게</button>
+    <button type="button" id="btn2">점점 크게</button>
+    <hr>
+    <div id="fsize"></div>
+    <b>글자색 선택: </b>
+    <input type="color" id="mycolor" value="#ff56ff">
+    <br><br>
+    <b>테두리선 굵기선택: </b>
+    <br><br>
+    <!-- select가 가지고있는 option의 value값 -->
+     <select id="selwidth">
+        <!-- value가 있을 때는 value값이 우선한다. 없을 경우 option 사이값을 읽는다 -->
+        <option value="0">없음</option>
+        <option>1</option>
+        <option>3</option>
+        <option>5</option>
+        <option>9</option>
+     </select>
+
+    <div id="out" style="font-size: 40px; ">오늘은 즐거운 월요일입니다</div>
+</body>
+</html>

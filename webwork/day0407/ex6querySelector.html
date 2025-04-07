@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 50px;
+            margin: 3px;
+            text-align: center;
+            line-height: 50px;
+            background-color: brown;
+            color: white;
+        }
+        #pink{
+            color:black;
+            background-color: pink;
+        }
+
+    
+    </style>
+</head>
+<body>
+    
+    <div class="box" id="pink"></div>
+    <div class="box blue"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <script>
+        // getElementByTagName : 태그네임
+          var divAll=document.getElementsByTagName('div');
+          for(var i=0;i<divAll.length;i++){
+            divAll[i].style.border='5px solid gray';
+          }
+        // getElementByClassName : 클래스 네임
+          var boxAll=document.getElementsByClassName('box');
+          for(var i=0;i<boxAll.length;i++){
+            boxAll[i].innerText='item';
+          }
+        // getElementById (ID는 "")
+          var pinkID=document.getElementById("pink");
+          pinkID.innerText='핑크아이템';
+        // querySelector:id를 찾을 때 주로 사용
+        // 하나만 찾는데 보통 첫번째 div만 찾음
+          var qs=document.querySelector('div');
+          qs.style.backgroundColor='cyan';
+
+        // querySelectorAll: 여러개의 복수 엘리먼트 적용시 선택
+        var qsa= document.querySelectorAll('div');
+          for(var i=0;i<qsa.length;i++){
+            qsa[i].innerText='안녕하세요';
+          }
+    </script>
+</body>
+</html>
