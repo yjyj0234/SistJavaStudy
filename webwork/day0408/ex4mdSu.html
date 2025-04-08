@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #out{
+            position:absolute;
+            top: 50px;
+            left: 50px;
+            border: 2px solid gray;
+            width: 300px;
+            height: 200px;
+            padding: 20px 20px;
+            background-color: wheat;
+        }
+        #rimg{
+            position: absolute;
+            top: 100px;
+            left: 380px;
+        }
+    </style>
+    <script>
+        var cnt=0;
+        var rnd;
+        // window.onload에 난수설정
+        // window.onload에 rnd두기: 
+        // 랜덤 숫자 설정이 페이지가 완전히 로드된 이후에 안전하게 이루어지기 위함 
+       
+        window.onload=function(){
+            //1~100까지의 랜덤수 발생
+            
+            rnd=parseInt(Math.random()*100)+1;
+        }
+        function check(su){
+            
+            if(su<=0||su>100){
+                alert("잘못입력했어요");
+                return;
+            }
+            //난수와 숫자비교해서 결과 출력
+           cnt++;
+            if(su>rnd){
+                document.getElementById("out").innerHTML+=cnt+": "+su+"보다 작습니다<br>";
+            }else if(su<rnd){
+                document.getElementById("out").innerHTML+=cnt+": "+su+"보다 큽니다<br>";
+            }else{
+                out.innerHTML="<h4>축하합니다 정답은 "+rnd+"입니다!!<h4>";
+                imgResult.src="../flower_ani/s6.jpg";
+            }
+            // 횟수제한해서 실패시 실패이미지..초기화
+            if(cnt>10){
+                out.innerHTML="<h5>추리에 실패했습니다. 정답은"+rnd+"입니다<h5>";
+                    imgResult.src="../flower_ani/s8.jpg";
+                    // 초기화
+                    frm.num.value='';
+            }
+        }
+   
+    </script>
+</head>
+
+<body>
+<!-- onsubmit= return true 무조건 전송(의미x) <->return false 그대로 전송 하지 않겠다 -->
+    <form name="frm" action="#" onsubmit="return false">
+        <b>숫자입력: </b>
+        <!-- 숫자입력후 엔터 누르면 함수호출하면서 값 전달 -->
+         <input type="text" name="num" onkeydown="if(event.keyCode==13) check(value)">
+    </form>
+    <div id="out"></div>
+    <div id="rimg">
+        <img src="" name="imgResult">
+    </div>
+</body>
+</html>

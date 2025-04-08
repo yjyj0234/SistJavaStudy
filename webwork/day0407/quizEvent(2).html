@@ -25,9 +25,13 @@
         border: 2px solid gray;
         padding: 10px 10px;
     }
-    img{
-        width:80px;
-        height:82px;
+    .sphoto{
+        width:60px;
+        height:60px;
+        border:1px solid gray;
+        margin:5px 5px;
+        /* 커서 갖다대면 포인터 변경 */
+        cursor:pointer; 
     }
 </style>
 <body>
@@ -38,10 +42,8 @@
         <!-- 사진 35개 for문으로 출력 이미지에 class 두면 접근가능-->
         <!-- n번사진을 가져올때마다 메인사진 바뀌게 -->
          <script>
-            var arr=new Array();
             for(var i=1;i<=35;i++){
-            arr[i]="../쇼핑몰사진/"+i+".jpg";
-            document.write("<img src='"+arr[i]+"' class='img' onmouseover=photo(this)>");
+            document.write("<img src='../쇼핑몰사진/"+i+".jpg' class='sphoto'>");
             }
          </script>
     </div>
@@ -50,15 +52,22 @@
         <img src="../div_img/actor1.jpg" id="large_photo">
     </div>
     <script>
-    
-        var large=document.querySelector("#large_photo");
+        // class를 배열 얻기
+        // 방법 1
+        // var sphoto=document.querySelectorAll(".sphoto");
+        // 방법2(ClassName이라 . 안붙여도 됨)
+        var sphoto=document.getElementsByClassName("sphoto") 
         
-        function photo(e){
-            
-                large.setAttribute("src",e.src);
-            
-        }
         //현재 이미지의 사진을 얻어서 큰이미지에 적용
+        for(var i=0; i<sphoto.length;i++){
+            // 현재 이벤트의 사진 얻기
+            sphoto[i].onmouseover=function(){
+                var selimg=this.getAttribute("src");
+
+                // 위의 사진을 id가 large_photo인 이미지에 적용
+                document.getElementById("large_photo").setAttribute("src",selimg);
+            }
+        }
     </script>
     
 </body>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/buttonStyle.css" rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+        #result{
+            width: 500px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            border:2px solid gray;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            /* repeat가 기본이라 no repeat넣어줌 */
+            background: url("../만화이미지/06.png") no-repeat right bottom;
+            background-size: 50px 60px;
+            font-size: 30px;
+        }
+        #imgseleb{
+            border:5px groove tomato;
+            margin-left: 20px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            // div요소값
+            var r=document.getElementById("result");
+            var photo=document.getElementById("imgseleb");
+            // 버튼1
+            document.getElementById("btn1").onclick=function(){
+                var name=prompt("당신의 이름은?")
+                if(name==null){
+                //text여서 u태그 그대로 표시
+                    r.innerText="<u>취소를 눌렀네요~!!</u>"; 
+                }else
+                //html이어서 태그가 적용
+                    r.innerHTML="<u>당신의 이름은 "+name+"이시네요!!</u>";
+            }
+            // 버튼2(크기변경)
+            document.getElementById("btn2").onclick=function(){
+                //현재사진의 width값 얻기
+                var width=photo.getAttribute("width");
+                
+                var new_width=prompt("이미지의 너비를 입력해주세요",0);
+                //취소시 메세지
+                if(new_width==null){
+                    alert("이미지 너비를 변경하지 않았습니다");
+                }else{
+                    photo.setAttribute("width",new_width);
+                }
+            }
+            //버튼3(prompt 창에 번호를 입력하면 해당 사진으로 변경)
+            document.getElementById("btn3").onclick=function(){
+                
+                var seleb=prompt("새로운 셀럽이미지 번호는?",1);//초기값 1넣기(오류 방지)
+                
+                if(seleb==null){
+                    alert("이미지를 변경하지 않았습니다");
+                }if(seleb<1||seleb>20){
+                    alert("1~20번 사이로 입력하세요~");
+                    return;//함수 종료
+                }else{
+                    
+                    photo.setAttribute("src","../연예인사진/"+seleb+".jpg");
+                    alert(photo.getAttribute("src"));
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <!-- innerHTML:html을 넣는다 -->
+    <!-- innerText:text를 넣는다 -->
+    <!-- setAttribute("속성","값"):속성을 해당값으로 변경 -->
+    <!-- getAttribute("속성"):속성의 현재값 반환 -->
+
+    <button type="button" class="btn btn-green" id="btn1">이벤트 #1</button>
+    <button type="button" class="btn btn-pink" id="btn2">이벤트 #2</button>
+    <button type="button" class="btn btn-purple" id="btn3">이벤트 #3</button>
+
+    <div id="result">테스트</div>
+    <img src="../연예인사진/12.jpg" width="300" id="imgseleb">
+
+</body>
+</html>
