@@ -19,8 +19,11 @@
     <script>
         window.onload=function(){
             var result=document.getElementById("img_result");
-            document.getElementById("gallery_div").onclick=function(){
-                
+            var logoImg=document.getElementById("gallery_div").getElementsByTagName("img");
+            for(var i=0;i<logoImg.length;i++){
+                logoImg[i].onclick=function(){
+                    result.setAttribute("src",this.src);
+                }
             }
         }
     </script>

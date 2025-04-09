@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/myScript.js"></script>
+    <style>
+        img.mycar{
+            width: 200px;
+        }
+        .happy{
+            border:10px groove purple;
+            /* transform rotate : 회전*/
+            transform: rotate(45deg);
+        }
+        .cars img{
+            border:2px solid gray;
+            height: 150px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <img src="../mycar/mycar11.png" class="mycar">
+    <img src="../mycar/mycar13.png" class="mycar">
+    <img src="../mycar/mycar15.png" class="mycar">
+    <hr>
+    <div class="cars">
+        <script>
+            var carimg=document.getElementsByClassName("cars");
+            for(var i=1;i<=15;i++){
+                //document.write("<img src='../mycar/mycar"+(i+1)+".png' style width='200'>");
+                // 2. 리터럴 방식 (1 왼쪽의 ` 사용)
+                document.write(`<img src="../mycar/mycar${i}.png">`);
+            }
+        </script>
+    </div>
+    <script>
+        //자동차에 마우스 올리면 다른이미지로 바뀌고 벗어나면 다시 원래이미지로
+        //올리면 샌드위치 사진 내리면 원래 이미지
+        var carinfo=document.querySelectorAll(".cars img");
+        console.log(carinfo.length);
+        for(let i=0;i<carinfo.length;i++){
+            //[object HTMLImageElement]만 뜸
+            //해결 방법:let oldphoto="";
+            let oldphoto="";
+            carinfo[i].onmouseover=function(){ 
+                oldphoto=carinfo[i].getAttribute("src");
+                carinfo[i].setAttribute("src","../Food/1.jpg");
+            }
+            carinfo[i].onmouseout=function(){
+                carinfo[i].setAttribute("src",oldphoto);
+            }
+        }
+    </script>
+</body>
+</html>
