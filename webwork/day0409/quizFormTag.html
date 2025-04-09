@@ -25,18 +25,29 @@
                 color.style.backgroundColor=this.value;
             }
             //4번
+            var check=document.querySelector('.d');     
             var nara=document.getElementsByName("nara");
-            var result=" ";
-            
+            var result="";
             for(var i=0;i<nara.length;i++){
-                    if(nara[i].checked){
-                        result+=nara[i].value;
-                        alert(document.write(nara[i]));
-                    }
-                }
-                var naralist=document.querySelector('.d');
-                    naralist.innerHTML="가본 나라: "+(result.length==0?"없음":result);
+                
+                    nara[i].onclick=function(){     
+                       result+=this.value;
+                       
+                    }        
+            }
+             check.innerHTML="가본나라: "+result;
+            
+            //5번
+           var color=document.getElementsByName("tcolor");
+           var radio=document.querySelector('.e');
+
+           for(let i=0;i<color.length;i++){
+            color[i].onclick=function(){
+                radio.style.color=color[i].value;
+                
+            }
         }
+    }
     </script>
 </head>
 <body>
