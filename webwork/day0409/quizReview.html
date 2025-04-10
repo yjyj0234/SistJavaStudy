@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #img1{
+            width: 200px;
+            height: 200px;
+        }
+    </style>   
+</head>
+<body>
+    <h3>1. Food 이미지 1~12번까지 반복문 이용해서 body에 출력하기</h3>
+    <script>
+        
+        for(var i=1;i<=12;i++){
+            var imgname="../Food/"+i+".jpg";
+            var s="<img src='"+imgname+"' width='200' height='150'>";
+            document.write(s);
+        }
+    </script>
+    <h3>2. Food 이미지 1.jpg를 img태그로 나타낸후 id를 img1을 주고 그 id로 이벤트주기
+        사진에 마우스 올리면 3.jpg로 바뀌고 마우스 벗어나면 다시 원래대로 돌아오기
+    </h3>
+    <img src="../Food/1.jpg" id="img1">
+    <script>
+        var food=document.getElementById("img1");
+        var fooded="";
+        food.onmouseover=function(){
+            fooded=food.getAttribute("src") ;
+            food.setAttribute("src","../Food/3.jpg");
+        }
+        food.onmouseout=function(){
+            food.setAttribute("src",fooded);
+        }
+    </script> 
+    <h3>3. 연예인사진 10번을 이미지로 만들고 너비200 높이240으로 지정한다
+        그아래 div태그를 만들고 그안에 위의이미지의 각종 정보를 출력할것(src,width,height)
+    </h3>
+    <img src="../연예인사진/10.jpg" width='200' height='240' id="img2">
+    <hr>
+    <div id="info">정보<br></div>
+    <script>
+        var info=document.getElementById("info");
+        var img2=document.getElementById("img2");
+        img2.onclick=function(){
+            var s=img2.getAttribute("src");
+            var w=img2.getAttribute("width");
+            var h=img2.getAttribute("height");
+            var result="src:"+s+"<br>width:"+w+"<br>height:"+h;
+            info.innerHTML=result;
+        }
+        //info.innerHTML="src : "+img2.src+"<br>width : "+img2.width+"px<br>height : "+img2.height+"px";
+        //console.log(img2.src);
+    </script>
+
+    <h3>4.버튼 하나 만들고 id를 btn1으로 한다 버튼을 누르면 prompt로 이름을 입력받아서 그아래 div(id 는 out)에
+        내이름은 XXX입니다 라고 출력합니다
+    </h3>
+   
+    <button type="button" id="btn1">이름</button>
+    <div id="out">
+
+    </div>
+    <script>
+        var btn=document.getElementById("btn1");
+        btn.onclick=function(){
+            var name=prompt("이름을 입력하세요");
+            document.getElementById("out").innerHTML="<h1>내 이름은 "+name+"입니다</h1>";
+        }
+    </script>
+</body>
+</html>

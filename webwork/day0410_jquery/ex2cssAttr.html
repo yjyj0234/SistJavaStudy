@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Myeongjo&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            // id가 good1 배경색을 노랑색 글자색을 파랑색으로 바꿔주세요
+            $("#good1").css({
+                "background-color":"yellow",
+                "color":"blue",
+                "width":"200px",
+                "border":"5px inset coral"
+            });
+            // 변경항목이 많을때 {}가 편하다
+            //$("#good1").css("backgroundColor","yellow").css("color","blue");
+
+            // div hello 아래있는 div_글꼴크기, 글자색,굵기
+            // selector가 2군데 이상 적용
+            $("div.hello>div").css({
+                
+                "fontSize":"17px",
+                "color":"cornflowerblue",
+                "font-weight":"bold"
+            });
+
+            // good1의 배경색을 얻어서 div.hello 의 글자색으로 적용해봅니다
+            $("div.hello").css("color",$("#good1").css("background-color"));
+
+            // bts아래에 있는 이미지의 너비를 150px로 변경
+            $("div.bts>img").css("width","200px");
+
+            //body아래 모두
+            $("body*").css("font-family","Sunflower").css("font-size","2em");
+
+            // bts div 속성 변경
+            $("div.bts").css({
+                "position":"absolute",
+                "left":"250px",
+                "top":"50px",
+                "width":"400px",
+                "height":"150px",
+                "border":"5px dotted orange"
+            });
+            // 모든 b태그의 글자색 변경
+            $("b").css("color","magenta");
+            // b태그 중에 1번 인덱스 변경
+            $("b:eq(1)").css("background-color","orange");
+            // 2번 인덱스 변경(방법2)
+            $("b").eq(2).css("background-color","orange");
+
+            // 전체 b태그 중에 첫번째, 마지막 보더 변경
+            $("b:first").css("border","5px dotted cyan");
+            $("b:last").css("border","5px dotted green");
+
+            // gt(3) :3번 이후,  lt(3):3번 이전
+            $("b:gt(1)").css("font-size","60px"); //2번인덱스 부터 모두 변경
+            $("b:lt(1)").css("background-color","gray"); //0번 인덱스만 변경
+        });
+    </script>
+</head>
+<body>
+    <h2 id="good1">h2Tag id good1</h2>
+    <h3 class="good2">h3 class good2</h3>
+    <div class="hello">
+        div class hello
+        <div>
+            div hello 아래 div1
+        </div>
+        <div>
+            div hello 아래 div2
+        </div>
+    </div>
+    <div class="bts">
+        <b>div class bts 아래 b태그#1</b>
+        <span> div bts 아래 span 태그#2</span>
+        <img src="../만화이미지/03.png" width="50">
+        
+    </div>
+    <div class="iyou">
+        <b>div class bts 아래 b태그#1</b>
+        <span> div bts 아래 span 태그#2</span>
+        <img src="../image/Q_80,0.jpg" width="80">
+    </div>
+    <b>단독 b태그 #1</b><b>단독 b태그 #2</b><b>단독 b태그 #3</b><b>단독 b태그 #4</b>
+</body>
+</html>

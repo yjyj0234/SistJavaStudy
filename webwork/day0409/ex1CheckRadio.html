@@ -7,7 +7,7 @@
     <style>
         table{
             border: 2px solid gray;
-            width: 600px;
+            width: 800px;
             border-collapse: collapse;
         }
         tr,th,td{
@@ -19,8 +19,34 @@
         //function goSelect(name){
           //  document.getElementById("perout").innerText=name;
         //}
+       window.onload=function(){
+        gradenum=document.getElementsByName("grade");
+        for(let i=0;i<gradenum.length;i++){
+                gradenum[i].onclick=function(){
+                document.getElementById("gradeout").innerHTML="현재 "+gradenum[i].value;
+            }
+            }
+        var lang=document.getElementsByName("lang");
+        for(var i=0;i<lang.length;i++){
+            lang[i].onclick=function(){
+               var langList="";
+               var count=0;
+                lang.forEach(element => {
+                    if(element.checked){
+                        langList+="["+element.value+"]";
+                        count++;
+                    }
+                });
+                document.getElementById("langout").innerHTML="나는 "+langList+"총 "+count+"가지 가능";
+            }
+        }
+       }
+
         function goSelect(){
-            document.getElementById("perout").innerHTML=frm.person.value;
+            document.getElementById("perout").innerHTML="같이할 사람:"+frm.person.value;
+        }
+        function goHeight(height_num){
+            document.getElementById("heightout").innerHTML=height_num;
         }
         function goWeight(weight_num){
             document.getElementById("weightout").innerText=weight_num;
@@ -31,6 +57,9 @@
         function goDate(){
             document.getElementById("dateout").innerText="날짜 : "+frm.day.value;
         }
+  
+        
+           
     </script>
 </head>
 <body>
@@ -40,11 +69,12 @@
         <tr>
            <td>
             <b>현재 수업중인 강의장</b>
-            <!-- radio는 name이 동일해야 한다 단일선택택-->
+            <!-- radio는 name이 동일해야 한다 단일선택-->
               <input type="radio" name="grade" value="1강의장">1강의장&nbsp;
               <input type="radio" name="grade" value="2강의장">2강의장&nbsp;
               <input type="radio" name="grade" value="3강의장">3강의장&nbsp;
               <input type="radio" name="grade" value="4강의장">4강의장&nbsp;
+              <span id="gradeout"></span>
            </td> 
         </tr>
 
@@ -57,13 +87,15 @@
                 <input type="checkbox" name="lang" value="ORACLE">ORACLE&nbsp;
                 <input type="checkbox" name="lang" value="HTML">HTML&nbsp;
                 <input type="checkbox" name="lang" value="MYSQL">MYSQL&nbsp;
+                <span id="langout"></span>
             </td>
         </tr>
 
         <tr>
             <td>
                 <b>좋아하는 이미지</b>
-                <input type="file">
+                <input type="file" id="file">
+                <span id="imgout">여기 업로드</span>
             </td>
         </tr>
 
@@ -87,7 +119,7 @@
             <td>
                 <b>당신의 신장은 몇 cm입니까?</b>
                 <input type="number" name="height" min="150" max="210" step="2"
-                value="150">Cm
+                value="150" onchange="goHeight(this.value)"><span id="heightout">0</span>cm
             </td>
         </tr>
 

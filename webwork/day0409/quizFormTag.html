@@ -27,24 +27,26 @@
             //4번
             var check=document.querySelector('.d');     
             var nara=document.getElementsByName("nara");
-            var result="";
             for(var i=0;i<nara.length;i++){
-                
                     nara[i].onclick=function(){     
-                       result+=this.value;
-                       
+                        var result="";
+                        // forEach:nara에 있는 배열값들을 모두 불러오고 새 매개변수 e에 대입
+                        nara.forEach(e=>{
+                            if(e.checked){
+                                result+="["+e.value+"]";
+                            }
+                        })
+                        check.innerHTML="가본나라: "+result;
                     }        
             }
-             check.innerHTML="가본나라: "+result;
-            
+             
             //5번
            var color=document.getElementsByName("tcolor");
            var radio=document.querySelector('.e');
 
            for(let i=0;i<color.length;i++){
             color[i].onclick=function(){
-                radio.style.color=color[i].value;
-                
+                radio.style.color=color[i].value; 
             }
         }
     }
