@@ -11,24 +11,26 @@
     <link href="../css/lottoStyle.css" rel="stylesheet">
     <title>Document</title>
     <style>
-        /* .lotto{
-            background-color: rgb(255, 255, 0);
-        } */
+        .lotto{
+            float: left;
+            
+        } 
+
     </style>
 </head>
 
 <script>
     $(function(){
-         rnd1=(parseInt)(Math.random()*256);
-         rnd2=(parseInt)(Math.random()*256);
-         rnd3=(parseInt)(Math.random()*256);
-        
-        $("div.lotto").css("background-color","rgb(rnd1,rnd2,rnd3)");
-        console.log($("div.lotto").css({
-            "background-color":"rgb(rnd1,rnd2,rnd3)"
-        }));
+         
+        $("div.lotto").each(function(idx,e){
+            rnd1=(parseInt)(Math.random()*256);
+            rnd2=(parseInt)(Math.random()*256);
+            rnd3=(parseInt)(Math.random()*256);
 
-        $("h2").text("rgb:"+rnd1+","+rnd2+","+rnd3);
+            $(e).css("background-color","rgb("+rnd1+","+rnd2+","+rnd3+")");
+            $("h2").append((idx+1)+"번째 rgb:"+rnd1+","+rnd2+","+rnd3+"<br>");
+        });
+        
     })
 </script>
 
@@ -40,7 +42,7 @@
     <div class="lotto"></div>
     <div class="lotto"></div>
     <div class="lotto"></div>
-
+    <br><br><br><br><br><br><br>
     <h2></h2>
 </body>
 </html>
