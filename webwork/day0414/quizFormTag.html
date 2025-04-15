@@ -25,21 +25,17 @@
                 $("#quiz_result").css("color",fontc);
 
                 var images="";
-                $("input[name='s_img']:checked").each(function(idx,e){
-                    
-                    var leng=$("input[name='s_img']").is(":checked");
-                    console.log(leng);
-                    if(leng==0){
-                        
+                var leng=$("input[name='s_img']").is(":checked");
+                if(leng==0){
                         $(".mydoll").text("인형을 고르지 않았습니다.");    
                     }else{
+                $("input[name='s_img']:checked").each(function(idx,e){
                         images+="<img src='../jquery_img/"+$(this).val()+".png'>";
                          $(".mydoll").html(images);
-                    }
-                })
-                
-            })
+                    })       
+                    }           
         })
+    })
     </script>
 </head>
 <body>

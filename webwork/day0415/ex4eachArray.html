@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Myeongjo&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+    <style>
+        div.a{
+            float: left;
+            width: 120px;height: 60px;
+            text-align: center;
+            line-height: 60px;
+            border: 1px solid gray;
+            cursor: pointer;
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        $(function(){
+            // 7개 색상배열
+            var colors=["red","green","#ffcccc","orange","#004499","lightgray","pink"];
+
+            // 배열로 반복문을 돌리고 싶을 때 $.each(배열명,함수(i,item))
+            // i:0 1 2 3 4.....  item red,green,.....
+            $.each(colors,function(idx,item){
+                $("div.a:eq("+idx+")").text(idx+":"+item).css("background-color",item);
+                // 또는 $("div.a").eq(idx).text(idx+":"+item).css("background-color",item);
+            })
+            // document
+            // $.each(colors,function(i,elt){
+            //     var s="<h2 style='color:"+elt+";width:200px;'>"+elt+"</h2>"
+            //     document.write(s);
+            // });
+
+        })
+    </script>
+</head>
+<body>
+    <h2>배열을 반복할때 $.each</h2>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <script>
+        // 이미지 document
+        var img_Foodarr=["1","3","5","7","9","11"];
+            $.each(img_Foodarr,function(idx,e){
+                var food="<img src='../Food/"+e+".jpg' width='100;'>"
+                document.write(food);
+            })
+    </script>
+</body>
+</html>

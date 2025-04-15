@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Myeongjo&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+    <style>
+        
+        #show>div{
+            width: 400px;
+            height: 70px;
+            line-height: 70px;
+            font-size: 2em;
+            border: 1px solid gray;
+        }
+        div.box{
+            border:2px solid orange;
+            margin-top: 20px;
+            width: 300px;
+            height: 130px;
+            font-family: 'Sunflower';
+            font-size: 1.5em;
+        }
+    </style>
+    <script>
+        $(function(){
+            // 배열을 객체 형태로도 가능
+            // var array=[{},{},{},{}];
+            var array=[{font:"Gowun Dodum",bcolor:"pink",fcolor:"blue"},
+                        {font:"Nanum Myeongjo",bcolor:"darkred",fcolor:"white"},
+                        {font:"Sunflower",bcolor:"teal",fcolor:"yellow"},
+                        {font:"Sunflower",bcolor:"coral",fcolor:"darkgreen"}
+                    ];
+                    var s="";
+                    $.each(array,function(idx,item){
+                        // #show 아래 div 추가하면서 style 적용
+                        // js5형태
+                        // s+="<div style='font-family:"+item.font+"; color:"+item.fcolor+"; background-color:"+item.bcolor+"'>"+item.font+"</div>"
+                        // js6형태
+                        s+=`<div style='font-family:${item.font}; color:${item.fcolor}; background-color:${item.bcolor}'>`;
+                        s+=item.font;                            
+                        s+="</div>";
+
+                    })
+                    // for문 빠져나오고 작성
+                    $("#show").html(s);
+        })
+    </script>
+</head>
+<body>
+    <div id="show"></div>
+    <div id="namecard"></div>
+    <script>
+        var ncard_arr=[{name:"이민호", hp:"010-111-2222",addr:"서울시 강남구"},
+        {name:"이지은", hp:"010-444-2332",addr:"서울시 강서구"},
+        {name:"이만호", hp:"010-343-1112",addr:"서울시 성북구"},
+        ]
+         $.each(ncard_arr,function(idx,e){
+            $("#namecard").append(
+                `<div class="box">
+                    name=${e.name}<br>
+                    hp=${e.hp}<br>
+                    addr=${e.addr}
+                </div>`
+            );
+         })
+    </script>
+</body>
+</html>

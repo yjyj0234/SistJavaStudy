@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Myeongjo&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+    <style>
+        .fg{
+            float: left;
+        }
+        .fg img{
+            border: 2px solid green;
+            border-radius: 20px;
+            padding: 10px;
+            height: 180px;
+            cursor: pointer;
+        }
+        .fg figcaption{
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        .large{
+            width: 400px;
+            height: 500px;
+            border: 10px inset gold;
+            position: absolute;
+            left: 400px;
+            top:250px;
+        }
+    </style>
+    <script>
+        
+        // 작은이미지에 마우스 올리면 45도 로테이트, 벗어나면 제자리로
+        // 작은이미지 클릭하면 해당 이미지가 큰이미지에 나온다
+        $(function(){
+            // 큰이미지에 작은이미지 중 첫번째 이미지를 배치
+                    
+            $("#large_img").attr("src",$("img:eq(0)").attr("src"))
+            $(".fg img").each(function(idx,e){
+                $(this).hover(function(){
+                    $(this).css("transform","rotate(45deg)")
+                },function(){
+                    $(this).css("transform","rotate(0deg)")
+                })
+                $(this).click(function(){
+                    $("#large_img").attr("src",$(this).attr("src"));
+                })
+            })
+        })
+        
+    </script>
+</head>
+<body>
+    <div id="show"></div>
+    <img id="large_img" class="large">
+    <script>
+        // 객체형 배열... 5개 이상
+        // name:src경로 ../Food/1.jpg   caption:제목 width:너비 표시(120~150)
+        var cartoons=[{"name":"../만화이미지/08.png","caption":"카브","width":"150"},
+                        {"name":"../만화이미지/13.png","caption":"하울","width":"150"},
+                        {"name":"../만화이미지/15.png","caption":"가오나시","width":"150"},
+                        {"name":"../만화이미지/16.png","caption":"토토로","width":"150"},
+                        {"name":"../만화이미지/03.png","caption":"키키","width":"150"}];
+                $.each(cartoons,function(idx,e){
+                    $("#show").append(
+                        `<figure class="fg">
+                            <img src="${e.name}" style width="${e.width}">
+                            <figcaption>
+                                ${e.caption}
+                            </figcaption>
+                        </figure>
+                        `
+                    )
+            })        
+    </script>
+</body>
+</html>
