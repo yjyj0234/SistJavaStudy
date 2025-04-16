@@ -16,7 +16,6 @@
             border: 2px solid green;
             border-radius: 20px;
             padding: 10px;
-            height: 180px;
             cursor: pointer;
         }
         .fg figcaption{
@@ -61,11 +60,13 @@
     <script>
         // 객체형 배열... 5개 이상
         // name:src경로 ../Food/1.jpg   caption:제목 width:너비 표시(120~150)
+        // name,caption,width: 대따옴표 안해도됨
         var cartoons=[{"name":"../만화이미지/08.png","caption":"카브","width":"150"},
                         {"name":"../만화이미지/13.png","caption":"하울","width":"150"},
                         {"name":"../만화이미지/15.png","caption":"가오나시","width":"150"},
                         {"name":"../만화이미지/16.png","caption":"토토로","width":"150"},
                         {"name":"../만화이미지/03.png","caption":"키키","width":"150"}];
+            
                 $.each(cartoons,function(idx,e){
                     $("#show").append(
                         `<figure class="fg">
