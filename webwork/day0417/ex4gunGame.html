@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Myeongjo&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+        }
+        #sunban_wrapper{
+            width: 800px;
+            margin: 0 auto;
+            margin-top: 200px;
+            
+        }
+        #control_wapper{
+            width: 300px;
+            height: 250px;
+        }
+        .sunban{
+            height: 150px;
+            width: 800px;
+            background: url("../jquery_img/sunban.png") no-repeat center bottom;
+            margin-bottom: 50px;
+        }
+        .sunban li{
+            float: left;
+            width: 120px;
+            height: 120px;
+            cursor: zoom-in;
+        }
+        .gun{
+            width:300px;
+            height: 250px;
+            background: url(../jquery_img/gun.png) no-repeat;
+            cursor: pointer;
+            /* 총글자 지우기:음수로 만들면 반대편으로 움직임 */
+            text-indent: -100px;
+        }
+        .gun:active{
+            background-position: right bottom;
+        }
+
+        #msg{
+            font-family: 'Sunflower';
+            position: absolute;
+            left: 700px;
+            top: 700px;
+            width:600px;
+            height: 80px;
+            font-size: 25px;
+            border: 10px solid pink;
+            text-align: center;
+            line-height: 70px;
+        }
+        body{
+            background: url("../jquery_img/bg.png");
+            /* 스크롤바 가리기 */
+            overflow: hidden;
+
+        }
+    </style>
+    <script>
+        $(function(){
+            var fire=new Audio("../jang.wav");
+            // 총이미지 클릭 시 소리 .play();
+            // .is(":hidden") ==>true/false 로 반환
+
+            //요구사항
+            //1.총클릭시 총소리(play)..12개의 인형(0~11)의 난수 발생 시킨다
+            // 2. .is(":hidden") : 이미지가 true or false로 반환(인형이 처리)
+            // 3. 해당 인덱스 인형이 이미 없을 경우 2번째 인형은 이미 처리되었습니다
+            // 만약 아니면 2번째 인형을 맞췄네요 메세지 출력, 인형은 hide
+            // 12개모두 맞추면 메세지 창에 YOU WIN!!! 출력
+            // 해당 지폐를 누르면 지폐 하나 사라지면서 인형12개 다시 나타남,메세지 창은 초기화
+            // 지폐 3개 다 사라지면 GAME OVER
+            
+            
+            var aleng="";
+            var bleng="";
+            var cnt=0;
+            
+            $(".gun").click(function(){
+                
+              rnd=parseInt(Math.random()*12);
+                fire.play();
+                    if($(".sunban li img:eq("+rnd+")").is(":hidden")){
+                        $("#msg").text(rnd+"번째 인형은 이미 처리 되었습니다.");
+                        cnt++;
+                    }else{
+                        $(".sunban li img:eq("+rnd+")").hide();
+                        $("#msg").text(rnd+ "번째 인형을 처리했습니다");
+                        cnt++;
+                        aleng=$(".sunban li img:hidden").length;
+                       
+                       if(aleng==12){
+                        $("#msg").html("YOU WIN!!!<br>사용한 총알 수:"+cnt);
+                        $(".gun").css({
+                            "pointer-events":"none",
+                            "cursor":"not-allowed"
+                        })
+                            if($(".money img:hidden").length==3){
+                                $("#msg").html("GAME OVER");
+                            }
+                       }
+                    }  
+                })
+               
+                $(".money img").click(function(){
+                $(this).hide();
+                bleng=$(".money img:hidden").length;
+                console.log($(".sunban li img:hidden").length);
+                $(".gun").css("pointer-events","auto");
+                $(".sunban img").show();
+                $("#msg").html("");
+                
+            })
+                
+        })
+            
+    </script>
+</head>
+<body>
+    <div id="sunban_wrapper">
+        <ul class="sunban">
+            
+            <li><img src="../jquery_img/01.png"></li>
+            <li><img src="../jquery_img/02.png"></li>
+            <li><img src="../jquery_img/03.png"></li>
+            <li><img src="../jquery_img/04.png"></li>
+            <li><img src="../jquery_img/05.png"></li>
+            <li><img src="../jquery_img/06.png"></li>
+        </ul>
+        <ul class="sunban">
+            <li><img src="../jquery_img/07.png"></li>
+            <li><img src="../jquery_img/08.png"></li>
+            <li><img src="../jquery_img/09.png"></li>
+            <li><img src="../jquery_img/10.png"></li>
+            <li><img src="../jquery_img/11.png"></li>
+            <li><img src="../jquery_img/12.png"></li>
+        </ul>
+    </div>
+    <div id="control_wrapper">
+        <div class="gun">총</div>
+        <ul class="money">
+            <li><img src="../jquery_img/money.png"></li>
+            <li><img src="../jquery_img/money.png"></li>
+            <li><img src="../jquery_img/money.png"></li>
+        </ul>
+    </div>
+
+    <div id="msg"></div>
+</body>
+</html>

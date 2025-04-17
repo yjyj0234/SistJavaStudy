@@ -20,6 +20,9 @@
         // 글의 각각의 제목을 누르면 모달창을 띄운다
         // 헤드부분에는 제목을 띄운다(자바스터디 모임)
         // 바디부분에는 이름(이지은), 그 아래 이미지를 띄운다
+        // 카톡 1:1 전송
+
+        // hover
         $(function(){
             $("tr td").hover(function(){
                 $(this).css({
@@ -31,6 +34,7 @@
                 $(this).css("background-color","");
                 $(this).siblings().css("background-color","");
             })
+        // click function
             $(document).on("click",".subject",function(){
                 $(this).attr("data-bs-toggle","modal").attr("data-bs-target","#myModal");
                 
