@@ -63,8 +63,8 @@
             background: url("../jquery_img/bg.png");
             /* 스크롤바 가리기 */
             overflow: hidden;
-
         }
+      
     </style>
     <script>
         $(function(){
@@ -87,37 +87,40 @@
             var cnt=0;
             
             $(".gun").click(function(){
-                
+               
               rnd=parseInt(Math.random()*12);
                 fire.play();
                     if($(".sunban li img:eq("+rnd+")").is(":hidden")){
                         $("#msg").text(rnd+"번째 인형은 이미 처리 되었습니다.");
                         cnt++;
                     }else{
-                        $(".sunban li img:eq("+rnd+")").hide();
-                        $("#msg").text(rnd+ "번째 인형을 처리했습니다");
-                        cnt++;
+                        $(".sunban li img:eq("+rnd+")").animate({opacity:'0.2'},300,function(){
+                            $(".sunban li img:eq("+rnd+")").hide();
+                            $("#msg").text(rnd+ "번째 인형을 처리했습니다");
+                            cnt++;
                         aleng=$(".sunban li img:hidden").length;
                        
                        if(aleng==12){
                         $("#msg").html("YOU WIN!!!<br>사용한 총알 수:"+cnt);
                         $(".gun").css({
                             "pointer-events":"none",
-                            "cursor":"not-allowed"
                         })
                             if($(".money img:hidden").length==3){
-                                $("#msg").html("GAME OVER");
+                                $("#msg").html("GAME OVER<br>사용한 총알 수:"+cnt);
                             }
                        }
+                        })
+                            
+                       
                     }  
                 })
                
                 $(".money img").click(function(){
                 $(this).hide();
                 bleng=$(".money img:hidden").length;
-                console.log($(".sunban li img:hidden").length);
                 $(".gun").css("pointer-events","auto");
                 $(".sunban img").show();
+                $(".sunban img").css("opacity","1");
                 $("#msg").html("");
                 
             })
