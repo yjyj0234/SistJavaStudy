@@ -87,16 +87,19 @@
             var cnt=0;
             
             $(".gun").click(function(){
-               
+               $("#msg").after("<img src='../jquery_img/bullet.png' style width='20' height='50'>");
+               if($("#msg img").length%10==0){
+                    $("#msg img").html+="<br>";
+               }
               rnd=parseInt(Math.random()*12);
                 fire.play();
                     if($(".sunban li img:eq("+rnd+")").is(":hidden")){
-                        $("#msg").text(rnd+"번째 인형은 이미 처리 되었습니다.");
+                        $("#msg").text((rnd+1)+"번째 인형은 이미 처리 되었습니다.");
                         cnt++;
                     }else{
-                        $(".sunban li img:eq("+rnd+")").animate({opacity:'0.2'},300,function(){
+                        $(".sunban li img:eq("+rnd+")").animate({opacity:'0.2'},100,function(){
                             $(".sunban li img:eq("+rnd+")").hide();
-                            $("#msg").text(rnd+ "번째 인형을 처리했습니다");
+                            $("#msg").text((rnd+1)+ "번째 인형을 처리했습니다");
                             cnt++;
                         aleng=$(".sunban li img:hidden").length;
                        
@@ -157,7 +160,7 @@
             <li><img src="../jquery_img/money.png"></li>
         </ul>
     </div>
-
+    
     <div id="msg"></div>
 </body>
 </html>
