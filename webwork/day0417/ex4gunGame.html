@@ -87,9 +87,11 @@
             var cnt=0;
             
             $(".gun").click(function(){
-               $("#msg").after("<img src='../jquery_img/bullet.png' style width='20' height='50'>");
-               if($("#msg img").length%10==0){
-                    $("#msg img").html+="<br>";
+               var bullet=$("#msg").after("<img src='../jquery_img/bullet.png' style='width:20px; height:50px;'>");
+               console.log($("#msg").after().siblings().length);
+               if($("#msg").next().html().length%10==3){
+                
+                    $("#msg").html+="<br>";
                }
               rnd=parseInt(Math.random()*12);
                 fire.play();

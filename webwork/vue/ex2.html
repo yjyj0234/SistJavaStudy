@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"> 
+        <button type="button" @click="eventFunc1(200)">버튼1이벤트 연습</button>
+        <br>
+        <button type="button" @click="eventFunc1('손현정,3000')">버튼2이벤트 연습</button>
+        <br>
+        <button type="button" @click="eventFunc1">버튼3이벤트 연습</button>
+        <br>
+        <!-- countNum 이라고 변수주시고 증가시키는 메서드 만들어보세요 -->
+        <button type="button" @click="increNum">{{countNum}}<button>
+    </div>
+    <script>
+        // const:상수
+        const app=Vue.createApp({
+            data(){
+                return{
+                    countNum:'10'
+                }
+            },
+            methods:{
+                // num값을 넘겨주는 함수
+                eventFunc1(num){
+                    return alert("클릭이벤트 발생시 값 전달받음 "+num);
+                },
+                // overloading 가능
+                eventFunc1(str,num){
+                    return alert("클릭이벤트 발생시 값 전달받음 "+num+":"+str);
+                },
+                eventFunc1(e){
+                    return alert("그냥 경고창");
+                },
+                increNum(){
+                    // this붙이기
+                    this.countNum++;
+                }
+            }
+        })
+        // createApp의 app을 mount(id가 'app'인것)
+        app.mount('#app')
+        
+    </script>
+    <!-- vue 는 body부분에 style도 같이 있음  -->
+    <style>
+
+    </style>
+</body>
+</html>

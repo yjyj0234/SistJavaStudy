@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 데이터를 관리해주는 곳 -->
+         <p>{{message}}</p>
+         <!-- style 방식도 바뀜 -->
+         <p v-bind:style="styleA">스타일바인딩</p>
+         <p>{{sw}}</p>
+         <h3>{{sw?"안녕하세요":"잘가"}}</h3>
+
+         <!-- 디렉티브:v접두사를 가진 모든속성 -->
+         <b v-bind:id="angel">Have a Nice Day</b>
+         <br>
+         <a v-if="flag">{{msg}}</a>
+         <p v-show="flag">지금 flag는 true 입니다</p>
+
+         <h5>v-for 구문연습</h5>
+         <ul>
+            <!-- key값 둬야함 -->
+             <!-- for each 방식이라 i값 주기 -->
+            <li v-for="(l,i) in leng":key="i">{{l}}</li>
+            
+         </ul>
+         <h5>클릭이벤트</h5>
+         <button type="button" v-on:click="popupAlert">경고창</button>
+                                <!-- v-on대신 @click도 가능 -->
+    </div>
+    <script>
+        // const:상수
+        const app=Vue.createApp({
+            data(){
+                return{
+                    // Object형식
+                    message:'오늘은 Vue공부 시작!!',
+                    styleA:'color:blue',
+                    sw:false, //sw가 뭐냐에 따라 <h3>의 html이 달라짐
+                    angel:"hello",
+                    msg:"오늘은 금요일",
+                    flag:true, //false로도 바꿔보기
+                    leng:['Java','Spring','Html','Vue'],
+                }
+            },
+             methods:{
+            popupAlert(){
+                return alert("경고창입니다")
+            }
+            }
+        })
+       
+        // createApp의 app을 mount(id가 'app'인것)
+        app.mount('#app')
+        
+    </script>
+    <!-- vue 는 body부분에 style도 같이 있음  -->
+    <style>
+        h3{background-color: silver;}
+        #hello{
+            color: purple;
+        }
+    </style>
+</body>
+</html>

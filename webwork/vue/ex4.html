@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"> 
+        <h3>이미지 변경하기</h3>
+        <img v-bind:src="imgname" width="200">
+        <hr>
+        <h4>버튼으로 이미지 변경..메소드 만들어 적용할것</h4>
+        <button type="button" @click="newimg1">이미지1</button>
+        <button type="button" @click="newimg2">이미지2</button>
+        <button type="button" @click="newimg3">이미지3</button>
+        <h3>텍스트로 변경하기</h3>
+        <input v-model="imgname">
+    </div>
+    <script>
+        // const:상수
+        const app=Vue.createApp({
+            data(){
+                return{
+                    imgname:'../jquery_img/01.png',
+                }
+            },methods:{
+                newimg1(myimg1){
+                    this.imgname='../jquery_img/02.png';
+                },newimg2(myimg2){
+                    this.imgname='../jquery_img/03.png';
+                },newimg3(myimg3){
+                    this.imgname='../jquery_img/04.png';
+                }
+            }
+        })
+        // createApp의 app을 mount(id가 'app'인것)
+        app.mount('#app')
+        
+    </script>
+    <!-- vue 는 body부분에 style도 같이 있음  -->
+    <style>
+
+    </style>
+</body>
+</html>
