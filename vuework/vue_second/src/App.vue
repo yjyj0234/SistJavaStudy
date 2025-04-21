@@ -10,7 +10,7 @@
      border: 2px solid gray; margin-top: 10px;">
     <h4>{{product.name}}</h4>
     <h4>{{product.company}}</h4>
-    <button type="button" @click="product.likes++">좋아요</button>
+    <button type="button" @click="productLikes(key)">좋아요</button>
     <span>좋아요 수: {{product.likes}}</span>
   </div>  
   <!-- <h3>{{message}}</h3>
@@ -41,7 +41,12 @@ export default {
     //  funcminus(){
     //       this.message--;
     //  }
-      
+     productLikes(key){
+        
+        this.products[key].likes++;
+        
+     }
+
   },
   components: {
 
