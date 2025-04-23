@@ -10,19 +10,7 @@ import java.sql.Statement;
 public class DbConnect {
 
 	static final String URL="jdbc:oracle:thin:@localhost:1521:XE";
-	static final String OracleDriver="oracle.jdbc.OracleDriver";
 	
-	
-	//오라클계정연결
-	public DbConnect() {
-		try {
-			Class.forName(OracleDriver);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("오라클 드라이버 실패: "+e.getMessage());
-		}
-	}
 	public Connection getConnection()
 	{
 		Connection conn=null;

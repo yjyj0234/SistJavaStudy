@@ -19,7 +19,7 @@ public class ConnectTestEx1 {
 		String sql="select * from sawon order by num";//사원테이블을 num의 오름차순 정렬하여 조회
 		
 		try {
-			conn=DriverManager.getConnection(URL, "yjyj0234", "a1234");  //커넥션으로 연결
+			conn=DriverManager.getConnection(URL, "yjyj0345", "a1234");  //커넥션으로 연결
 			System.out.println("오라클서버에 연결 성공!!!");
 			stmt=conn.createStatement();			//연결된 계정을 통해서 sql문에 전달
 			rs=stmt.executeQuery(sql);		//전달된 sql문을 result 객체를 통해 읽음

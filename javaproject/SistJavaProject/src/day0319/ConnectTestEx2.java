@@ -19,7 +19,7 @@ public class ConnectTestEx2 {
 				+"from board b,answer a where b.bno=a.bno";
 		
 		try {
-			conn=DriverManager.getConnection(URL, "yjyj0234", "a1234");
+			conn=DriverManager.getConnection(URL, "yjyj0345", "a1234");
 			System.out.println("오라클 연결 성공");
 			stmt=conn.createStatement();
 			rs=stmt.executeQuery(sql);

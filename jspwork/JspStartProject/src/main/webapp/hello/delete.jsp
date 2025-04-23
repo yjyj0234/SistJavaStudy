@@ -1,3 +1,5 @@
+<%@page import="hello.HelloDto"%>
+<%@page import="hello.HelloDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,8 +11,27 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <title>Insert title here</title>
     
-
 </head>
+<%
+	request.setCharacterEncoding("utf-8");
+	
+//num값에 따라 delete 해줘야 하므로 num 값은 무조건 있어야 함
+	String name=request.getParameter("name");
+	String addr=request.getParameter("addr");
+	String hp=request.getParameter("hp");
+	String num=request.getParameter("num");
+	
+	HelloDto dto=new HelloDto();
+	dto.setName(name);
+	dto.setAddr(addr);
+	dto.setHp(hp);
+	dto.setNum(num);
+	
+	HelloDao dao=new HelloDao();
+	dao.deleteHello(dto);
+
+	response.sendRedirect("helloList.jsp");
+%>
 <body>
 	
 </body>
