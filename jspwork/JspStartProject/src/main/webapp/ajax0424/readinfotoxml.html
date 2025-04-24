@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Myeongjo&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+<title>Insert title here</title>
+</head>
+<body>
+<h2>InfoToXml Ajax 함수 이용해서 읽기</h2>
+<button type="button" class="btn btn-success" id="btnInfo">InfoToXml</button>
+<div id="show"></div>
+<script>
+	$("#btnInfo").click(function(){
+		var s="";
+		$.ajax({
+			type:"get",
+			url:"infotoxml.jsp",
+			datatype:"xml",
+			success:function(data){
+				$(data).find("info").each(function(idx,e){
+					var e=$(e);
+					s+="등록번호 : "+e.attr("num")+"<br>";
+					s+="이름 : "+e.find("name").text()+"<br>";
+					s+="핸드폰번호 : "+e.find("hp").text()+"<br>";
+					s+="나이 : "+e.find("age").text()+"<br>";
+					s+="사진<br>"
+					s+="<img src='"+e.find("photo").text()+"' style='width:200px; height:300px;'><br>";
+					s+="====================================================<br>";
+				})
+				$("#show").html(s);
+			}
+		
+		})
+	})
+
+</script>
+	
+</body>
+</html>
