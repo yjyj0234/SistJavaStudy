@@ -1,7 +1,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.JSONArray"%>
-<%@page import="oracle.net.jdbc.TNSAddress.SOException"%>
+
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>

@@ -8,7 +8,7 @@ public class MemoDto {
 	private String writer;
 	private String content;
 	private String emot;
-	private Timestamp writerday;
+	private Timestamp writeday;
 	
 	
 	public String getNum() {
@@ -35,11 +35,11 @@ public class MemoDto {
 	public void setEmot(String emot) {
 		this.emot = emot;
 	}
-	public Timestamp getWriterday() {
-		return writerday;
+	public Timestamp getWriteday() {
+		return writeday;
 	}
-	public void setWriterday(Timestamp writerday) {
-		this.writerday = writerday;
+	public void setWriteday(Timestamp writeday) {
+		this.writeday = writeday;
 	}
 	
 	
