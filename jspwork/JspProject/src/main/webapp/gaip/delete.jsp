@@ -19,6 +19,7 @@
 		String num=request.getParameter("num");
 		dao.deleteGaip(num);
 		
+		response.sendRedirect("gaipList.jsp");
 	%>
 
 </script>

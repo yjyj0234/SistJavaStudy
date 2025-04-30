@@ -10,21 +10,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <title>Insert title here</title>
-    
-<script>
-	function deletemsg(){
-		var msg=confirm("메세지를 삭제합니다");
-		if(msg){
-			location.href="delete.jsp";
-		}else{
-			location.href="gaipList.jsp";
-		}
-		
-	}
-</script>	
-</head>
-<body>
-
 <%
 
 GaipDao dao=new GaipDao();
@@ -33,6 +18,25 @@ GaipDto dto= dao.getData(num);
 
 
 %>
+<script>
+
+	function deletemsg(num){
+		var msg=confirm("메세지를 삭제합니다");
+		if(msg){
+			location.href="delete.jsp?num="+num;
+			
+		}
+		//else굳이 없어도 됨(detailpage 그대로 있으면 되서)
+		<%-- else{
+			location.href="detailPage.jsp?num="+<%=dto.getNum()%>;
+		} --%>
+		
+	}
+</script>	
+</head>
+<body>
+
+
 
 
 
@@ -72,7 +76,7 @@ GaipDto dto= dao.getData(num);
 			<tr>
 				<td colspan="2" align="right">
 					<input type="button" class="btn btn-success" value="수정" onclick="location.href='updateForm.jsp?num=<%=dto.getNum() %>'">
-					<input type="button" class="btn btn-danger" value="삭제" onclick="deletemsg()">
+					<input type="button" class="btn btn-danger" value="삭제" onclick="deletemsg(<%=num%>)">
 					<input type="button" class="btn btn-info" value="목록" onclick="location.href='gaipList.jsp'">
 				</td>
 			</tr>
