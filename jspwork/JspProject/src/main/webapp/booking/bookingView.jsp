@@ -16,14 +16,24 @@
 	
 </style>
 <script>
-	function deleteBook() {
-		alert("hi");
+<%
+	String num=request.getParameter("num");
+	BookingDao dao=new BookingDao();
+	BookingDto dto=dao.getData(num);
+%>
+	function deleteBook(num) {
+		var a=confirm("해당 주문사항을 삭제하려면 눌러주세요");
+		if(a){
+			location.href="deleteBooking.jsp?num="+<%=dto.getNum()%>;
+			alert("삭제되었습니다.");
+		}
+			
 	}
 </script>
     <%
-    	String num=request.getParameter("num");
-		 BookingDao dao=new BookingDao();
-    	BookingDto dto=dao.getData(num);
+    	//num값 구해서 넘어오기 
+    	
+		
     	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
     	
     	String [] fp=dto.getFoodphoto().split(",");
@@ -51,16 +61,19 @@
 
 </head>
 <body>
-<div style="margin:100px 100px;width:800px;">
+<div style="margin:100px 100px;width:700px;">
 	<table class="table table-bordered">
 		<tr >
 			<th width="150" style="background-color:coral">예약자명</th>
 			<td><%=dto.getName() %></td>
-			<td rowspan="3"><%=dto.getGender() %></td>
+			<td rowspan="3"><img src="../image/bookimage/<%=dto.getGender().trim().equalsIgnoreCase("m")?"man":"woman" %>.png" width="100"><br><%=dto.getGender() %></td>
+			
+			
+			
 		</tr>
 		<tr>
 			<th style="background-color:coral">예약시간</th>
-			<td><%=dto.getBookday().substring(0,10) +" "+ dto.getBookday().substring(11,16)%></td>
+			<td><%=dto.getBookday().substring(0,10) +" "+ dto.getBookday().substring(11,16) %></td>
 		</tr>
 		<tr>
 			<th style="background-color:coral">인원 수</th>
@@ -80,7 +93,7 @@
 			<td> <h2>총 가격</h2><br><b><%=tot %>원</b></td>
 		</tr>
 		<button type="button" class="btn btn-danger" onclick="deleteBook()">삭제</button>
-		<button type="button" class="btn btn-info" onclick="location.href='bookingUpdateForm.jsp?num=<%=dto.getNum()%>'">수정</button>
+		<button type="button" class="btn btn-info" onclick="location.href='bookingUpdateForm.jsp?num=<%=num%>'">수정</button>
 		<button type="button" class="btn btn-secondary" onclick="location.href='bookingList.jsp'">목록</button>
 			
 		

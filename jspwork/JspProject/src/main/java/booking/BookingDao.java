@@ -104,4 +104,48 @@ public class BookingDao {
 		}
 		return dto;
 	}
+	public void deleteBooking(String num) {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="delete from booking where num=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+
+	}
+	public void updateBooking(BookingDto dto) {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="update booking set name=?,gender=?,bookday=?,inwon=?,foodphoto=?,foodprice=?,message=?,writeday=sysdate where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getGender());
+			pstmt.setString(3, dto.getBookday());
+			pstmt.setInt(4, dto.getInwon());
+			pstmt.setString(5, dto.getFoodphoto());
+			pstmt.setString(6, dto.getFoodprice());
+			pstmt.setString(7, dto.getMessage());
+			pstmt.setString(8, dto.getNum());
+			
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+		
+	}
 }

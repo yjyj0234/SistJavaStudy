@@ -1,3 +1,5 @@
+<%@page import="booking.BookingDao"%>
+<%@page import="booking.BookingDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +14,13 @@
 
 </head>
 <body>
-	
+	<%
+		String num=request.getParameter("num");
+		
+		BookingDao dao=new BookingDao();
+		dao.deleteBooking(num);
+		
+		response.sendRedirect("bookingList.jsp");
+	%>
 </body>
 </html>
