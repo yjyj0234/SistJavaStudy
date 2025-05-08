@@ -14,16 +14,6 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 <title>Insert title here</title>
-<script type="text/javascript">
-	function funDel(){
-		var c=confirm("삭제하시겠습니까?");
-		if(c){
-			location.href("delete.jsp?num="<%=%>);	
-		}
-	}
-</script>
-</head>
-<body>
 <%
 	String num=request.getParameter("num");
 	MymallDao dao=new MymallDao();
@@ -31,6 +21,17 @@
 	NumberFormat nf=NumberFormat.getCurrencyInstance();
 	
 %>
+<script type="text/javascript">
+	function funDel(){
+		var c=confirm("삭제하시겠습니까?");
+		if(c){
+			location.href="delete.jsp?num=<%=dto.getNum()%>";	
+		}
+	}
+</script>
+</head>
+<body>
+
 <div style="margin:100px 100px; width:800px;">
 <h3 class="bg-primary text-white p-1 rounded" ><%=dto.getNum() %>번 상품 정보</h3>
 	<table class="table table-bordered">
@@ -45,7 +46,7 @@
 		</tr>
 		<tr>
 			<th width="150" class="table-primary">가격</th>
-			<td><%=dto.getPrice() %>원</td>
+			<td><%=nf.format(dto.getPrice()) %></td>
 		</tr>
 		<tr>
 			<th width="150" class="table-primary">입고 날짜</th>
@@ -53,7 +54,7 @@
 		</tr>
 		
 	</table>
-	<button type="button" class="btn btn-warning">수정</button>
+	<button type="button" class="btn btn-warning" onclick="location.href='updateForm.jsp?num=<%=dto.getNum()%>'">수정</button>
 	<button type="button" class="btn btn-danger" onclick="funDel()">삭제</button>
 	<button type="button" class="btn btn-secondary" onclick="location.href='mallList.jsp'">목록</button>
 </div>

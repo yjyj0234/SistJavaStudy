@@ -1,4 +1,3 @@
-<%@page import="mymall.MymallDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -14,11 +13,15 @@
 </head>
 <body>
 	<%
-			String num=request.getParameter("num");
-			MymallDao dao=new MymallDao();
-			dao.deleteMymall(num);
-			
-			response.sendRedirect("mallList.jsp");
+		String loginok=(String)session.getAttribute("loginok");
+	
+	//로그아웃 상태일경우 loginForm으로
+		if(loginok==null || loginok.equals("")){%>
+					<jsp:include page="loginForm.jsp"/>
+		<%}else{
+			%>
+			<jsp:include page="logoutForm.jsp"/>	
+		<%}
 	%>
 </body>
 </html>

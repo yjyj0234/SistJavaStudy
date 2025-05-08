@@ -3,7 +3,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="oracle.db.DbConnect"%>
+<%@page import="mysql.db.DbConnect"%>
 									<!-- html->xml로 바꿔주기 -->
 <%@ page language="java" contentType="text/xml; charset=UTF-8"
     pageEncoding="UTF-8"%>

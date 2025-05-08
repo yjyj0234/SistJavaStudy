@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
-import oracle.db.DbConnect;
+import mysql.db.DbConnect;
 
 public class MymallDao {
 	DbConnect db= new DbConnect();
@@ -95,7 +95,44 @@ public class MymallDao {
 		}finally {
 			db.dbClose(rs, pstmt, conn);
 		}
-		
 		return dto;
+	}
+	public void deleteMymall(String num) {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		String sql="delete from mymall where num=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+	public void updateMymall(MymallDto dto) {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		String sql="update mymall set sangpum=?,photo=?,color=?,price=?,ipgoday=?,writeday=now() where num=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getSangpum());
+			pstmt.setString(2, dto.getPhoto());
+			pstmt.setString(3, dto.getColor());
+			pstmt.setInt(4, dto.getPrice());
+			pstmt.setString(5, dto.getIpgoday());
+			pstmt.setString(6, dto.getNum());
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+		
 	}
 }

@@ -1,4 +1,3 @@
-<%@page import="mymall.MymallDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -13,12 +12,33 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-			String num=request.getParameter("num");
-			MymallDao dao=new MymallDao();
-			dao.deleteMymall(num);
-			
-			response.sendRedirect("mallList.jsp");
-	%>
+	<form action="uploadAction.jsp" method="post" enctype="multipart/form-data">
+	<table class="table table-bordered" style="width:500px;">
+	<tr>
+		<th>이름</th>
+		<td>
+			<input type="text" name="name">
+		</td>
+	</tr>
+	<tr>
+		<th>재목</th>
+		<td>
+			<input type="text" name="subject">
+		</td>
+	</tr>
+	<tr>
+		<th>파일</th>
+		<td>
+			<input type="file" name="uploadfile">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+			<button type="submit">업로드</button>
+		</td>
+	</tr>
+	</table>
+		
+	</form>
 </body>
 </html>

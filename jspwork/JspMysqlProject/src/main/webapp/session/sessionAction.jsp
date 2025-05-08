@@ -1,4 +1,3 @@
-<%@page import="mymall.MymallDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -14,11 +13,19 @@
 </head>
 <body>
 	<%
-			String num=request.getParameter("num");
-			MymallDao dao=new MymallDao();
-			dao.deleteMymall(num);
-			
-			response.sendRedirect("mallList.jsp");
+		request.setCharacterEncoding("utf-8");
+		//세션이 있는지 확인 후 없으면 꽝
+		
+		//object라서 String으로 형변환 필수
+		String msg=(String)session.getAttribute("msg");
+		String travel=request.getParameter("travel");
+		
+		if(msg==null|| !msg.equals("happy")){%>
+			<h3 style="color:red;">시간초과로 꽝입니다</h3>			
+		<%}else{%>
+			<h3>축하합니다 <%=travel %> 상품 당첨!!!</h3>
+		<%}
 	%>
+	<a href="sessionStart.jsp">다시 선택하기</a>
 </body>
 </html>

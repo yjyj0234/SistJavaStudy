@@ -33,7 +33,7 @@
 	<button type="button" class="btn btn-warning" 
 	onclick="location.href='addForm.jsp'" >상품 추가</button>
 	<br><br>
-	<table class="table table-bordered">
+	<table class="table table-bordered" >
 		<tr class="table table-secondary">
 			<th width="80">번호</th>
 			<th width="180">상품명</th>

@@ -1,4 +1,3 @@
-<%@page import="mymall.MymallDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -14,11 +13,12 @@
 </head>
 <body>
 	<%
-			String num=request.getParameter("num");
-			MymallDao dao=new MymallDao();
-			dao.deleteMymall(num);
-			
-			response.sendRedirect("mallList.jsp");
+	//로그인에 대한 세션값 삭제
+	
+	session.removeAttribute("loginok");
+	
+	//메인으로 이동
+	response.sendRedirect("loginMain.jsp");
 	%>
 </body>
 </html>
