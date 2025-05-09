@@ -33,13 +33,21 @@
 		//멀티파트 생성
 		MultipartRequest multi=null;
 		try{
+			//생성자 파라미터
+			//request, 업로드폴더, 업로드사이즈,한글타입,
+			//같은 이름일 경우 뒤에 숫자 붙임
 			multi=new MultipartRequest(request,realFolder,filesize,"utf-8",new DefaultFileRenamePolicy());
+			
+			//입력값읽기
 			String writer=multi.getParameter("writer");
 			String subject=multi.getParameter("subject");
-			String imgname=multi.getFilesystemName("photo");
 			String content=multi.getParameter("content");
 			String pass=multi.getParameter("pass");
 			
+			//실제 업로드 이미지 이름 읽어오기
+			String imgname=multi.getFilesystemName("photo");
+			
+			//dto에담기
 			dto.setWriter(writer);
 			dto.setSubject(subject);
 			dto.setContent(content);

@@ -1,3 +1,5 @@
+<%@page import="uploadboard.UploadDao"%>
+<%@page import="uploadboard.UploadDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -31,23 +33,29 @@
 
 </script>
 </head>
+<%
+	String num=request.getParameter("num");
+	UploadDao dao= new UploadDao();
+	UploadDto dto=dao.getData(num);
+	
+%>
 <body>
 		<div style="margin:100px 100px; width:500px;">
 								<!-- get method는 오류남 -->
-		<form action="addAction.jsp" method="post" enctype="multipart/form-data">
+		<form action="updateAction.jsp" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="num" value="<%=num%>">
 			<table class="table table-bordered">
 				<tr>
 					<th class="table-warning">작성자</th>
 					<td>
-						<input type="text" name="writer" class="form-control"
-						style="width:150px;" required="required">
+						<b><%=dto.getWriter() %></b>
 					</td>
 				</tr>
 				<tr>
 					<th class="table-warning">제목</th>
 					<td>
 						<input type="text" name="subject" class="form-control"
-						style="width:350px;" required="required">
+						style="width:350px;" required="required" value="<%=dto.getSubject() %>">
 					</td>
 				</tr>
 				<tr>
@@ -68,19 +76,18 @@
 				<tr>
 					<td colspan="2">
 						<textarea style="width:500px; height:150px;" class="form-control" name="content"
-						 required="required"></textarea>
+						 required="required"><%=dto.getContent() %></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<button type="submit" class="btn btn-outline-info">저장하기</button>
-						<button type="button" class="btn btn-outline-warning" onclick="location.href='boardList.jsp'">목록보기</button>
-						
+						<button type="submit" class="btn btn-outline-info">수정하기</button>
+						<button type="submit" class="btn btn-outline-warning" onclick="history.back()">이전</button>
 					</td>
 				</tr>
 			</table>
 		</form>
-		<img id="showimg" style="max-width: 300px;" src="">
+		<img id="showimg" style="max-width: 300px;" src="../save/<%=dto.getImgname() %>" >
 	</div>
 </body>
 </html>
