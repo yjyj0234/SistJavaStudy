@@ -69,6 +69,7 @@
                port="8080" protocol="HTTP/1.1"
                connectionTimeout="20000"
                redirectPort="8443"
+	       URIEncoding="UTF-8"/>
                maxParameterCount="1000"
                />
     -->
@@ -162,7 +163,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="JspMysqlProject" path="/JspMysqlProject" reloadable="true" source="org.eclipse.jst.jee.server:JspMysqlProject"/><Context docBase="JspProject" path="/JspProject" reloadable="true" source="org.eclipse.jst.jee.server:JspProject"/></Host>
+      <Context docBase="JspMysqlProject" path="/JspMysqlProject" reloadable="true" source="org.eclipse.jst.jee.server:JspMysqlProject"/></Host>
     </Engine>
   </Service>
 </Server>

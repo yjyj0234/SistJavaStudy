@@ -4,7 +4,10 @@
         <p>자식이 입력한 메세지: {{ message }}</p>
 
         <!-- v-model과 @send 이벤트 연동 -->
-        <ChildApp v-model="message" @send="sendHandle"/>
+         <!-- send를 받으면 "sendHandle이 동작한다다" -->
+        <ChildApp @send="sendHandle"/>
+        <News />
+        <Weather />
     </div>
 </template>
 
@@ -15,7 +18,10 @@ import ChildApp from './ChildApp.vue';
     const message=ref('안녕~~~');
 
     const sendHandle=(msg)=>{
-        alert(`자식이 보낸 메시지: ${msg}`);
+        // msg : 자식한테서 날아온 값
+        // alert(`자식이 보낸 메시지: ${msg}`);
+        // console.log('msg', msg)
+        message.value=msg
     }
 </script>
 
