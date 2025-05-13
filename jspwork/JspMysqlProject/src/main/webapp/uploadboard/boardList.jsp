@@ -104,7 +104,7 @@
 				<td><%=list.size()-i %></td>
 				<!-- 제목 클릭시 content보기로 간다  a태그 사용-->
 				<td>
-					<a href="detailView.jsp?num=<%=dto.getNum()%>" style="text-decoration:none; color:black;" ><%=dto.getSubject() %></a>
+					<a href="detailView.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage %>" style="text-decoration:none; color:black;" ><%=dto.getSubject() %></a>
 				</td>
 				<td><%=dto.getWriter() %></td>
 				<td><%=sdf.format(dto.getWriteday()) %></td>

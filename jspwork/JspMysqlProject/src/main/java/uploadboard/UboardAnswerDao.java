@@ -77,4 +77,75 @@ public class UboardAnswerDao {
 	}
 	
 	//삭제
+	public void deleteAnswer(String idx) {
+		UboardAnswerDto dto=new UboardAnswerDto();
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="delete from uboardanswer where idx=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, idx);
+			
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+	
+	//수정폼띄우기
+	public UboardAnswerDto getAnswerData(String idx) {
+		UboardAnswerDto dto= new UboardAnswerDto();
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from uboardanswer where idx=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, idx);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				dto.setNum(rs.getString("num"));
+				dto.setIdx(rs.getString("idx"));
+				dto.setNickname(rs.getString("nickname"));
+				dto.setContent(rs.getString("content"));
+				dto.setWriteday(rs.getTimestamp("writeday"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return dto;
+		
+	}
+	//수정
+	public void updateAnswer(UboardAnswerDto dto) {
+	
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="update uboardanswer set nickname=?,content=? where idx=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getNickname());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getIdx());
+			
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+	
 }

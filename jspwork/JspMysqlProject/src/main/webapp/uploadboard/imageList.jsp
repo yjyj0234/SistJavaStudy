@@ -92,11 +92,7 @@
 				}
 			%>
 			</tr>	
-				
-			
 		</table>
-		
-		
 		<div style="text-align: right;">
 			<button type="button" class="btn btn-outline-success" onclick="location.href='addForm.jsp'">글쓰기</button>
 			</div>
