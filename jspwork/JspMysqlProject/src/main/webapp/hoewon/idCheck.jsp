@@ -23,8 +23,8 @@
 				<b>아이디를 입력해주세요</b><br>
 				<input type="text" name="mid" class="form-control"
 				style="width: 130px;" required="required">
-				<input type="hidden" name="key" value="yes">
-				<button type="submit" class="btn btn-danger" style="margin-left: 10px;">중복체크</button>
+				<input type="hidden" name="key" value="yes"><br>
+				<button type="submit" class="btn btn-danger btn-sm" style="margin-left: 10px;">중복체크</button>
 				</form>
 			</div>	
 		<%}else{
