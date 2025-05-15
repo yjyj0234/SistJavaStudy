@@ -1,4 +1,5 @@
 
+<%@page import="hoewon.hoewonDao"%>
 <%@page import="guest.guestDto"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
@@ -15,6 +16,14 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 <title>Insert title here</title>
+<style type="text/css">
+	i.delete{
+		cursor: pointer;
+	}
+	i.update{
+		cursor: pointer;
+	}
+</style>
 </head>
 <body>
 	<%
@@ -74,27 +83,57 @@
 			<b>총 <%=totalCount %>개의 방명록글</b>		
 		<%}
 	%>
+	
 	<%
-		
 		for(int i=0; i<list.size();i++){
 			guestDto dto=list.get(i);
+			hoewonDao hdao=new hoewonDao();
+			String name=hdao.getHoewonName(dto.getMyid());
 			%>
 			<table class="table table-bordered" 
 			style="border-color: darkgreen; width:600px;">
-				<tr height="120">
+				<tr height="220">
 				 <td style="width:500px;">
-				 	<b font-size="12"><%=dto.getMyid() %></b>
+				 	<b font-size="12"><%=name%>(<%=dto.getMyid() %>)</b>
 				 	<div style="text-align: right; font-size: 10px; color: gray;">
 				 	<%=sdf.format(dto.getWriteday()) %></div>
 				 	<hr>
-				 	<span font-size="10"><%=dto.getContent() %></span>
+				 	<span font-size="10"><%=dto.getContent().replace("\n", "<br>") %></span>
 				 	
 				 </td>
-				 <td style="text-align: right; width: 150px;">				 
-				 <img alt="" src="../image/연예인사진/<%=dto.getPhoto() %>" 
-				 style="width: 150px; float:right;">
+				 <td style="text-align: right; width: 150px;">
+				 <%
+				 //이미지 출력
+				 if(!dto.getPhoto().equals("no")){%>
+					<img alt="" src="../save/<%=dto.getPhoto() %>" 
+				 	style="width: 150px; height:200px; float:right;">	 
+				 <%}else{%>
+					<img alt="" src="../image/logoImg/noimage.png"
+					style="width: 150px; height:200px; float:right;">					 
+				 <%}
+				 
+				 %>				 
 
-				</td>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<!-- 본인이 쓴 글에만 수정삭제버튼 보이게 -->
+						<%
+							String loginok=(String)session.getAttribute("loginok");
+							String sessionid=(String)session.getAttribute("mid");
+							//로그인중이면서 로그인한 아이디와 글쓴 아이디가 같을 경우에만 보이게
+							if(loginok!=null&& sessionid.equals(dto.getMyid())){%>
+							<div style="text-align: right;">
+								<i class="bi bi-pencil-square update" style="color: cornflowerblue;"></i>
+								<i class="bi bi-trash3-fill delete" style="color: darkred;"
+								onclick="location.href='deleteguest.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>'"></i>
+							</div>
+							
+							
+							<%}
+						%>
+					</td>
 				</tr>
 				
 			</table>

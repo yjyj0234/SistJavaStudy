@@ -110,4 +110,49 @@ public class guestDao {
 		}
 		return list;
 	}
+	public void deleteGuest(String num) {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="delete from guest where num=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+	public guestDto getData(String num) {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="select * from guest where num=?";
+		guestDto dto= new guestDto();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				dto.setNum(rs.getString("num"));
+				dto.setMyid(rs.getString("myid"));
+				dto.setPhoto(rs.getString("photo"));
+				dto.setContent(rs.getString("content"));
+				dto.setWriteday(rs.getTimestamp("writeday"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return dto;
+	}
 }
