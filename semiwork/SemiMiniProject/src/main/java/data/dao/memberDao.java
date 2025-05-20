@@ -124,6 +124,7 @@ public class memberDao {
 		 String sql="select * from member where num=?";
 		 try {
 			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				dto.setNum(rs.getString("num"));
@@ -186,4 +187,51 @@ public class memberDao {
 		
 	}
 	 //수정
+	 public void memberUpdate(memberDto dto) {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="update member set name=?,pass=?,email=? where num=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getPass());
+			pstmt.setString(3, dto.getEmail());
+			pstmt.setString(4, dto.getNum());
+			
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+	 
+	 //로그인 아이디와 비밀번호 체크
+	 public boolean isIdPass(String id, String pass) {
+		 boolean check=false;
+		 Connection conn=db.getConnection();
+		 PreparedStatement pstmt=null;
+		 ResultSet rs=null;
+		 String sql="select count(*) from member where id=? and pass=?";
+		 try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pass);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt(1)==1) {
+					check=true;  //비번이 틀릴경우 0, 초기값이 false라서 굳이 else안해도됨
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		 return check;
+	 }
 }

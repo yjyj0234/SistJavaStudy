@@ -12,6 +12,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<%
+		//세션에 저장된 로그인ok읽기(액션에서)
+		String loginok=(String)session.getAttribute("loginok");
+		
+		if(loginok==null){%>
+			<jsp:include page="loginform.jsp"/>
+			
+		<%}else{%>
+			<jsp:include page="logoutform.jsp"/>
+			
+		<%}
+			
+		//로그인 성공시
+		
+	%>	
 </body>
 </html>

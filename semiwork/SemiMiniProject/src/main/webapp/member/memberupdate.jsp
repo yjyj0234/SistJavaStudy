@@ -1,3 +1,6 @@
+<%@page import="org.apache.tomcat.util.http.ResponseUtil"%>
+<%@page import="data.dao.memberDao"%>
+<%@page import="data.dto.memberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -12,6 +15,44 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+		request.setCharacterEncoding("utf-8");
+		String num=request.getParameter("num");
+		memberDao dao=new memberDao();
+		memberDto dto=dao.getData(num);
+		
+		String pass=request.getParameter("pass");
+		String pass2=request.getParameter("pass2");
+		String name=request.getParameter("name");
+		
+		String email1=request.getParameter("email1");
+		String email2=request.getParameter("email2");
+		
+		String email=email1+"@"+email2;
+		
 	
+		
+		
+		/* boolean b=dao.isPassCheck(num, pass); */
+		System.out.println(dto.getPass());
+		if(dto.getPass().equals(pass)){
+		
+			dto.setPass(pass2);
+			dto.setName(name);
+			dto.setEmail(email);
+			
+			dao.memberUpdate(dto);
+			
+			response.sendRedirect("../index.jsp?main=member/mypage.jsp");
+			
+			
+		}else{%>
+			<script type="text/javascript">
+				alert("비밀번호가 일치하지 않습니다");
+				history.back();
+			</script>
+		<%}
+		
+	%>
 </body>
 </html>

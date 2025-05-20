@@ -1,4 +1,5 @@
-<%@page import="data.dao.memberDao"%>
+<%@page import="data.dao.guestAnswerDao"%>
+<%@page import="data.dto.guestAnswerDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -13,20 +14,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-	//세션으로부터 아이디 얻기
-	String myid=(String)session.getAttribute("myid");
-	
-	//db에서 id에 해당하는 이름 얻기
-	memberDao dao=new memberDao();
-	String name=dao.getName(myid);
-%>
-	<div style="margin:100px 120px; width:700px;">
-		<b><%=name%>님 로그인 중</b>&nbsp;
-		<img alt="" src="image/쇼핑몰사진/14.jpg" align="right" width="400"><br><br>
+	<%
+		request.setCharacterEncoding("utf-8");
 		
-		<button type="button" class="btn btn-danger" onclick="location.href='login/logoutaction.jsp'">로그아웃</button>
+		String num=request.getParameter("num");
+		String myid=request.getParameter("myid");
+		String content=request.getParameter("content");
 		
-	</div>
+		guestAnswerDto dto=new guestAnswerDto();
+		dto.setNum(num);
+		dto.setMyid(myid);
+		dto.setContent(content);
+		guestAnswerDao dao=new guestAnswerDao();
+		dao.insertGuestAnswer(dto);
+		
+		response.sendRedirect("../index.jsp?main=guest/guestlist.jsp");
+	%>
 </body>
 </html>

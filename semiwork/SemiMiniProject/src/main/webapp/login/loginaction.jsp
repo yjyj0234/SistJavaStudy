@@ -1,3 +1,4 @@
+<%@page import="data.dao.memberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -12,6 +13,34 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+		String id= request.getParameter("id");
+		String pass= request.getParameter("pass");
+		
+		//체크박스 세이브체크(체크하면 on 안하면 null)
+		String cbsave=request.getParameter("savechk");
+		
+		memberDao dao=new memberDao();
+		boolean b=dao.isIdPass(id, pass);
+		
+		//아이디와 비번이 맞으면 3개의 세션 저장 후 로그인 메인으로
+		
+		if(b){
+			//세션 저장
+			session.setMaxInactiveInterval(60*60*8);//8시간 동안(생략하면 30분)
+			session.setAttribute("loginok", "yes");
+			session.setAttribute("myid", id);
+			session.setAttribute("saveok", cbsave==null?null:"yes");
+			
+			//로그인 메인
+			response.sendRedirect("../index.jsp?main=login/loginmain.jsp");
+		}else{%>
+		<script type="text/javascript">
+			alert("아이디나 비밀번호가 일치하지 않습니다");
+			history.back();
+		</script>
+		<%}
+	%>
 	
 </body>
 </html>

@@ -37,7 +37,7 @@
 			
 			dao.insertGuest(dto);
 			
-			response.sendRedirect("guestlist.jsp");
+			response.sendRedirect("../index.jsp?main=guest/guestlist.jsp");
 			
 		}catch(Exception e){
 			

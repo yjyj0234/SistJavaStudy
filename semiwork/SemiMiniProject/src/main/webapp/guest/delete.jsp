@@ -18,7 +18,7 @@
 <body>
 	<%
 		String num=request.getParameter("num");
-		String sessionid=(String)session.getAttribute("mid");	
+		String sessionid=(String)session.getAttribute("myid");	
 	
 		guestDao dao=new guestDao();
 		guestDto dto=dao.getData(num);
@@ -26,6 +26,7 @@
 		
 		String imgName=dao.getData(num).getPhoto();
 		String uploadPath=getServletContext().getRealPath("/save");
+		String currentPage=request.getParameter("currentPage");
 		
 		//파일생성
 		File file=new File(uploadPath+"/"+imgName);
@@ -43,16 +44,10 @@
 			%>
 				<script type="text/javascript">
 					alert("삭제되었습니다");
-					location.href="guestlist.jsp";
+					location.href="../index.jsp?main=guest/guestlist.jsp&currentPage=<%=currentPage%>";
 				</script>
-				
-							
 			<%}
-		
-			
 	%>
-			
-		
 	</script>
 	
 </body>

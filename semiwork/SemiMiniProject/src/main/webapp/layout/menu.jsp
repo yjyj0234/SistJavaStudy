@@ -37,8 +37,16 @@
 	<%
 	//프로젝트 경로 구하기
 	String root=request.getContextPath();
+	
+	//로그인에 관한 세션
+	String loginok=(String)session.getAttribute("loginok");
+	
+	//아이디세션
+	String myid=(String)session.getAttribute("myid");
+	
+	
 	%>
-	<title>Responsive Drop Down Menu jQuery CSS3 Using Icon Symbol</title>
+	<title>ssy</title>
 	<link rel="stylesheet" type="text/css" href="<%=root %>/menu/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="<%=root %>/menu/css/menu.css">
     
@@ -47,7 +55,7 @@
 
 </head>
 <body>
-<div style="font-size:22px; text-align:center; color:#000; font-weight:bold; height:100px; padding-top:50px;">Responsive Drop Down Menu jQuery CSS3 Using Icon Symbol</div>
+<div style="font-size:22px; text-align:center; color:#000; font-weight:bold; height:100px; padding-top:50px;"></div>
 <div id="wrap">
 	<header>
 		<div class="inner relative">
@@ -59,10 +67,17 @@
 					<li class="parent">
 						<a href="#">Member</a>
 						<ul class="sub-menu">
-							<li><a href="index.jsp?main=member/memberlist.jsp"><i class="icon-wrench"></i> 회원목록</a></li>
+						
+						<!-- 회원목록은 관리자로 로그인했을 때만 보이게 -->
+						<%
+							if(loginok!=null&&myid.equals("admin")){%>
+								<li><a href="index.jsp?main=member/memberlist.jsp"><i class="icon-wrench"></i> 회원목록</a></li>		
+							<%}
+						%>
 							<li><a href="index.jsp?main=member/memberform.jsp"><i class="icon-credit-card"></i>  회원가입</a></li>
-							<li><a href="#"><i class="icon-gift"></i> 로그인</a></li>
 							<li><a href="index.jsp?main=member/mypage.jsp"><i class="icon-gift"></i>마이페이지</a></li>
+							<li><a href="index.jsp?main=login/loginmain.jsp"><i class="icon-gift"></i> 로그인</a></li>
+							
 							
 							<li>
 								<a class="parent" href="#"><i class="icon-file-alt"></i> Pages</a>
@@ -75,7 +90,7 @@
 							</li>
 						</ul>
 					</li>
-					<li><a href="<%=root%>/guest/guestform.jsp">방문인사</a></li>
+					<li><a href="index.jsp?main=guest/guestlist.jsp">방문인사</a></li>
 					<li class="parent">
 						<a href="#">게시판</a>
 						<ul class="sub-menu">
@@ -84,7 +99,13 @@
 							<li><a href="#">Smart게시판</a></li>
 						</ul>
 					</li>
-					<li><a href="<%=root%>/shop/shoplist.jsp">SHOP</a></li>
+					<li><a href="<%=root%>/shop/shoplist.jsp">SHOP</a>
+						<ul class="sub-menu">
+							<li><a href="#">ShopForm</a></li>
+							<li><a href="#">shoppingMall</a></li>
+							<li><a href="index.jsp?main=shop/map.jsp">오시는 길</a></li>
+						</ul>
+					</li>
 				</ul>
 			</nav>
 			<div class="clear"></div>

@@ -29,7 +29,7 @@
 				%>
 					<script type="text/javascript">
 					alert("삭제되었습니다.");
-					location.href="../index.jsp?main=member/mypage.jsp";
+					location.href="../index.jsp";
 					</script>
 				<%}else{%>
 				

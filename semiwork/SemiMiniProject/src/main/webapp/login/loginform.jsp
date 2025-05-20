@@ -13,26 +13,27 @@
 </head>
 	<%
 	//세션에서 아이디와 체크값 얻기
-	String myid=(String)session.getAttribute("idok");
-	String saveid=(String)session.getAttribute("saveok");
+	String saveok=(String)session.getAttribute("saveok");
 	
-	boolean save=true;
+	//아이디저장에 체크를 눌렀을때만 아이디값 불러오기
+	String myid="";
 	
-	if(saveid==null){
-		myid="";
-		save=false; //체크하지 않을때만 false 그이외에는 초기값이 true이므로 true가 된다
+	
+	if(saveok!=null){
+		myid=(String)session.getAttribute("myid");
+		
 	}
-%>
+	%>
 <body>
 
 <div style="margin:100px 120px; width:700px;">
 		<h2 class="alert alert-secondary">회원 로그인</h2>
-		<form action="loginAction.jsp" method="post">
+		<form action="login/loginaction.jsp" method="post">
 		<table>
 			<tr>
 			<td>
 			<input type="text" name="id" class="form-control"
-			style="width:450px;  margin-right: 20px;" placeholder="아이디" required="required" value="<%=myid%>">
+			style="width:450px;  margin-right: 20px;" placeholder="아이디" required="required" value="<%=myid %>">
 			</td>
 			<td rowspan="2">
 			<button type="submit" class="btn btn-primary btn-lg" style="width:150px; height: 150px;">로그인</button><br>
@@ -47,7 +48,7 @@
 			</tr>
 		</table>
 			
-			<input type="checkbox" name="savechk" <%=save?"checked":"" %>>아이디 저장
+			<input type="checkbox" name="savechk" <%=saveok==null?"":"checked" %>>아이디 저장
 		</form>
 	</div>
 			<img alt="" src="image/쇼핑몰사진/4.jpg" style="position: absolute; top:150px; left: 900px; width: 300px;">

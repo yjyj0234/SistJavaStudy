@@ -1,3 +1,4 @@
+<%@page import="data.dao.memberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -17,11 +18,34 @@
 <%
 	//프로젝트 경로 구하기
 	String root=request.getContextPath();
+	//로그인 세션
+	String loginok=(String)session.getAttribute("loginok");
+	//id
+	String myid=(String)session.getAttribute("myid");
+	
+	//dao,id=>name
+	memberDao dao=new memberDao();
+	String name=dao.getName(myid);
+	
 %>
 <body>
-	<a href="<%=root%>/" style="color: black;">
-		
+	
+		<a href="<%=root%>/" style="color: black; position: absolute;">
 		SSY.COM
-	</a>
+		</a>
+		<div style="float: right; padding-right: 50px; height: 50px;">
+		<%
+			if(loginok==null){%>
+				<button type="button" class="btn btn-success btn-sm" 
+				 onclick="location.href='index.jsp?main=login/loginmain.jsp'">로그인</button>				
+			<%}else{%>
+			<b style="font-size: 10pt;"><%=name %>님이 로그인하였습니다.</b>
+				<button type="button" class="btn btn-danger btn-sm"
+				onclick="location.href='index.jsp?main=login/logoutaction.jsp'">로그아웃</button>
+			<%}
+		%>
+	</div>
+	
+	
 </body>
 </html>

@@ -1,5 +1,8 @@
 
 
+<%@page import="data.dao.memberDao"%>
+<%@page import="data.dto.guestAnswerDto"%>
+<%@page import="data.dao.guestAnswerDao"%>
 <%@page import="data.dto.guestDto"%>
 <%@page import="data.dao.guestDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -24,11 +27,52 @@
 	i.update{
 		cursor: pointer;
 	}
+	i.ansdel{
+		cursor: pointer;
+	}
 </style>
+<script type="text/javascript">
+	
+	$(function(){
+		//댓글부분 무조건 안보이게	
+		$("div.answer").hide();
+		//댓글 클릭 시 보였다 안보였다
+		$("span.answer").click(function(){
+			$(this).parent().find("div.answer").slideToggle();
+		});
+		$(document).on("click","i.ansdel",function(){
+				
+			 var a=confirm("삭제하시겠습니까?");
+			if(a){
+				var idx=$(this).attr("idx");
+
+				$.ajax({
+					type:"get",
+					url:"guest/answerdelete.jsp",
+					dataType:"html",  //void라 html
+					data:{"idx":idx},
+					success:function(){
+						alert("삭제되었습니다");
+						location.reload();
+					},statusCode:{
+						404:function(){
+							alert("파일이 없음");
+						},500:function(){
+							alert("코드 다시 확인");
+						}
+					}
+				})	
+			}
+		 })
+		});
+		
+	
+</script>
+
 </head>
 <body>
 	<%
-		guestDao dao=new guestDao();
+		guestDao dao=new guestDao(); 
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
 		int totalCount=dao.getTotalCount();
@@ -71,7 +115,11 @@
 		  
 		  //전체데이타
 		  List<guestDto> list=dao.getPageList(startNum, perPage);
-		
+		  
+		  //세션 데이터
+		String loginok=(String)session.getAttribute("loginok");
+		String sessionid=(String)session.getAttribute("myid");
+		memberDao mdao=new memberDao();
 	%>
 	<jsp:include page="guestform.jsp"/>
 	<hr width="1000">
@@ -88,13 +136,12 @@
 	<%
 		for(int i=0; i<list.size();i++){
 			guestDto dto=list.get(i);
-			
-			
 			%>
 			<table class="table table-bordered" 
 			style="border-color: darkgreen; width:600px;">
 				<tr height="220">
 				 <td style="width:500px;">
+				 
 				 	<b font-size="12">(<%=dto.getMyid() %>)</b>
 				 	<div style="text-align: right; font-size: 10px; color: gray;">
 				 	<%=sdf.format(dto.getWriteday()) %></div>
@@ -106,29 +153,105 @@
 				 <%
 				 //이미지 출력
 				 if(!dto.getPhoto().equals("no")){%>
-					<img alt="" src="../save/<%=dto.getPhoto() %>" 
-				 	style="width: 150px; height:200px; float:right;">	 
+					<img alt="" src="save/<%=dto.getPhoto() %>" 
+				 	style="width: 120px; height:150px; float:right;">	 
 				 <%}else{%>
-					<img alt="" src="../image/logoImg/noimage.png"
-					style="width: 150px; height:200px; float:right;">					 
+					<img alt="" src="image/logoImg/noimage.png"
+					style="width: 120px; height:150px; float:right;">					 
 				 <%}
 				 
-				 %>				 
-
+				 %>				
 					</td>
 				</tr>
+				
+				<!-- 댓글 -->
+			<tr>
+				<td>
+				<%
+					//각 방명록 원글에 달린 댓글목록 가져오기
+					guestAnswerDao adao=new guestAnswerDao();
+					List<guestAnswerDto> alist=adao.getAllGuestAnswers(dto.getNum());
+				%>
+				<span class="answer" style="cursor: pointer; float: left;">댓글 : <%=alist.size() %></span>
+				<div class="answer">
+					<%
+						if(loginok!=null){%>
+							<div class="answerform">
+								<form action="guest/answerinsert.jsp" method="post"> 
+									<input type="hidden" name="num" value="<%=dto.getNum()%>">
+									<input type="hidden" name="myid" value="<%=sessionid%>">
+									<input type="hidden" name="currentPage" value="<%=currentPage%>">
+									
+									<table>
+										<tr>
+										<td>
+											<textarea style="width: 470px; height: 70px;"
+											name="content" required="required" class="form-control">
+											</textarea>
+										</td>
+										<td>
+											<button type="submit" class="btn btn-info"
+											style="width: 60px; height: 60px;">등록
+											</button>
+										</td>
+										</tr>
+									</table>
+								</form>
+				</div>
+						<%}
+					%>
+					<div class="answerlist">
+						<table style="width: 500px;">
+							<%
+								for(guestAnswerDto adto:alist){%>
+									<tr>
+										<td>
+											<%
+											String aname=mdao.getName(adto.getMyid()); 
+											%>
+											<b style="font-size: 0.8em; float: left;"><%=aname %></b>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<%
+												//글작성자와 댓글 쓴 작성자가 같을경우
+												if(sessionid.equals(adto.getMyid())){%>
+													<span style="color: lightgreen; float: left; font-size: 0.7em;"><b>(작성자)</b></span>
+												<%}
+											%>
+											<br>
+											<span style="float: left;"><%=adto.getContent().replace("\n", "<br>") %></span>
+											<span style="font-size: 0.7em; color: gray; float: right;">
+											<%=sdf.format(adto.getWriteday()) %>
+											</span>
+											<%
+									/* 댓글삭제는 본인댓글에만 보이게 */
+												if(loginok!=null&&adto.getMyid().equals(sessionid)){%>
+													<span style="float: right;"><i class="bi bi-trash3-fill ansdel"
+													idx="<%=adto.getIdx()%>"></i></span>
+												<%}
+													
+											%>
+										</td>
+									</tr>
+								<%}
+							%>
+						</table>
+					</div>
+				</div>
+				</td>
+			</tr>
+			
+				
 				<tr>
 					<td colspan="2">
-						<!-- 본인이 쓴 글에만 수정삭제버튼 보이게 -->
+						<!-- 본인이 쓴 글에만 수정 삭제버튼 보이게 -->
 						<%
-							String loginok=(String)session.getAttribute("loginok");
-							String sessionid=(String)session.getAttribute("mid");
+							/* String loginok=(String)session.getAttribute("loginok"); */
 							//로그인중이면서 로그인한 아이디와 글쓴 아이디가 같을 경우에만 보이게
 							if(loginok!=null&& sessionid.equals(dto.getMyid())){%>
 							<div style="text-align: right;">
 								<i class="bi bi-pencil-square update" style="color: cornflowerblue;"></i>
 								<i class="bi bi-trash3-fill delete" style="color: darkred;"
-								onclick="location.href='delete.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>'"></i>
+								onclick="location.href='guest/delete.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>'"></i>
 							</div>
 							
 							
@@ -148,7 +271,7 @@
           if(startPage>1)
           {%>
         	  <li class="page-item">
-        	    <a class="page-link" href="guestlist.jsp?currentPage=<%=startPage-1%>"
+        	    <a class="page-link" href="index.jsp?main=guest/guestlist.jsp?currentPage=<%=startPage-1%>"
         	    style="color: black;">
         	      이전
         	    </a>
@@ -160,11 +283,11 @@
        			if(pp==currentPage)
        			{%>
        				<li class="page-item active">
-       				  <a class="page-link" href="guestlist.jsp?currentPage=<%=pp%>"><%=pp %></a>
+       				  <a class="page-link" href="index.jsp?main=guest/guestlist.jsp?currentPage=<%=pp%>"><%=pp %></a>
        				</li>
        			<%}else{%>
        				<li class="page-item">
-       				  <a class="page-link" href="guestlist.jsp?currentPage=<%=pp%>"><%=pp %></a>
+       				  <a class="page-link" href="index.jsp?main=guest/guestlist.jsp?currentPage=<%=pp%>"><%=pp %></a>
        				</li>
        			<%}
        		}
@@ -173,7 +296,7 @@
        		if(endPage<totalPage)
        		{%>
        			<li class="page-item">
-        	    <a class="page-link" href="guestlist.jsp?currentPage=<%=endPage+1%>"
+        	    <a class="page-link" href="index.jsp?main=guest/guestlist.jsp?currentPage=<%=endPage+1%>"
         	    style="color: black;">
         	      다음
         	    </a>

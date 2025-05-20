@@ -18,7 +18,7 @@
 	//프로젝트 경로 구하기
 	String root=request.getContextPath();
 %>
-<div style="width: 1200px; height: 500px; border: 1px solid gray;
+<div style="width: 1200px; height: 500px; 
 			position: absolute;
 			top: 10%;
 			left: 5%;

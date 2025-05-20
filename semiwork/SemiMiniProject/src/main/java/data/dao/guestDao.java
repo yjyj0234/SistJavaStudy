@@ -17,7 +17,7 @@ public class guestDao {
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		
-		String sql="insert into guest values(null,?,?,?,now())";
+		String sql="insert into coffee.guest values(null,?,?,?,now())";
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getMyid());
@@ -37,7 +37,7 @@ public class guestDao {
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs= null;
-		String sql="select * from guest order by num desc";
+		String sql="select * from coffee.guest order by num desc";
 		try {
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
@@ -64,7 +64,7 @@ public class guestDao {
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select count(*) from guest";
+		String sql="select count(*) from coffee.guest";
 		try {
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
@@ -86,7 +86,7 @@ public class guestDao {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		
-		String sql="select * from guest order by num desc limit ?,?";
+		String sql="select * from coffee.guest order by num desc limit ?,?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -115,7 +115,7 @@ public class guestDao {
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		
-		String sql="delete from guest where num=?";
+		String sql="delete from coffee.guest where num=?";
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, num);
@@ -132,7 +132,7 @@ public class guestDao {
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select * from guest where num=?";
+		String sql="select * from coffee.guest where num=?";
 		guestDto dto= new guestDto();
 		try {
 			pstmt=conn.prepareStatement(sql);

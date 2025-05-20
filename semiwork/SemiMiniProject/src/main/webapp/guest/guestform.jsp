@@ -48,14 +48,14 @@
 	<%
 		//로그인상태 
 		String loginok=(String)session.getAttribute("loginok");
-		String id=(String)session.getAttribute("mid");
+		String id=(String)session.getAttribute("myid");
 		
 		
 	
 		if(loginok!=null){%>
 		<div style="margin: 90px 100px;">
 		<img id="showimg">
-			<form action="guestproc.jsp" method="post"
+			<form action="guest/guestproc.jsp" method="post"
 			enctype="multipart/form-data">
 			
 			<!-- hidden으로 아이디 넣기 -->

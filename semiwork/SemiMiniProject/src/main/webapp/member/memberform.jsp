@@ -78,7 +78,7 @@
 			<th width="100" class="table-info">비밀번호</th>
 			<td class="input-group">
 				<input type="password" name="pass" class="form-control"
-				required="required" style="max-width: 160px;" placeholder="비밀번호">
+				required="required" style="max-width: 160px;" placeholder="비밀번호">&nbsp;&nbsp;
 				<input type="password" name="pass2" class="form-control"
 				required="required" style="max-width: 160px;" placeholder="비밀번호확인">
 			</td>
