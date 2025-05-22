@@ -1,5 +1,4 @@
-<%@page import="data.dao.guestAnswerDao"%>
-<%@page import="data.dto.guestAnswerDto"%>
+<%@page import="data.dao.boardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -15,22 +14,25 @@
 </head>
 <body>
 	<%
-		request.setCharacterEncoding("utf-8");
-		
+		String pass=request.getParameter("pass");
 		String num=request.getParameter("num");
-		String myid=request.getParameter("myid");
-		String content=request.getParameter("content");
-		String currentPage=request.getParameter("currentPage");
+		boardDao dao=new boardDao();
 		
-		guestAnswerDto dto=new guestAnswerDto();
-		dto.setNum(num);
-		dto.setMyid(myid);
-		dto.setContent(content);
-		guestAnswerDao dao=new guestAnswerDao();
-		dao.insertGuestAnswer(dto);
+		boolean b=dao.isEqualPass(num, pass);
+		if(b){
+			dao.deleteBoard(num);
+			response.sendRedirect("../index.jsp?main=board/boardlist.jsp");
+		}else{%>
+			<script type="text/javascript">
+				alert("비밀번호가 일치하지 않습니다.");
+				history.back();
+			</script>
+		<%}
 		
 		
-		response.sendRedirect("../index.jsp?main=guest/guestlist.jsp?currentPage="+currentPage);
+		System.out.println(pass);
 	%>
+	
+	
 </body>
 </html>

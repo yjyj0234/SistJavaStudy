@@ -80,5 +80,52 @@ public class guestAnswerDao {
 			db.dbClose(pstmt, conn);
 		}
 	}
+	//idx에 대한 dto
+	public String getData(String idx) {
+		//수정할게 하나밖에 없어서 따로 dto안불러도 됨
+		String content="";
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select content from coffee.guestanswer where idx=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, idx);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				content=rs.getString("content");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+				
+		return content;
+	}
+	//수정
+	public void updateGuestAnswer(guestAnswerDto dto) {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="update coffee.guestanswer set content=? where idx=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getContent());
+			pstmt.setString(2, dto.getIdx());
+			
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
 	
+	}
 }

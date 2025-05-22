@@ -17,6 +17,7 @@
 <meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Myeongjo&family=Sunflower:wght@300&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 <title>Insert title here</title>
@@ -27,7 +28,7 @@
 	i.update{
 		cursor: pointer;
 	}
-	i.ansdel{
+	i.ansdel,i.aedit{
 		cursor: pointer;
 	}
 </style>
@@ -64,7 +65,41 @@
 				})	
 			}
 		 })
+		//댓글 수정창 클릭시 모달에 idx,content
+		$("i.aedit").click(function(){
+			var idx=$(this).attr("idx");
+			//alert(idx);
+			
+			//댓글 수정창의 idx에 넣어주기
+			$("#idx").val(idx);
+			$.ajax({
+				type:"get",
+				dataType:"json",
+				url:"guest/answercontent.jsp",
+				data:{"idx":idx},
+				success:function(res){
+					$("#idx").val(res.idx);
+					$("#ucontent").val(res.ctnt);
+				}
+			});
 		});
+		$("#btnupdate").click(function(){
+			 var idx=$("#idx").val();
+			 var content=$("#ucontent").val();
+			
+			 $.ajax({
+				 type:"post",
+				 url:"guest/answerupdate.jsp",
+				 dataType:"html",
+				 data:{"idx":idx,"content":content},
+				 success:function(){
+					 location.reload();
+					 
+				 }
+			 });
+			 
+		}) 
+	});
 		
 	
 </script>
@@ -225,8 +260,15 @@
 											<%
 									/* 댓글삭제는 본인댓글에만 보이게 */
 												if(loginok!=null&&adto.getMyid().equals(sessionid)){%>
+												
 													<span style="float: right;"><i class="bi bi-trash3-fill ansdel"
 													idx="<%=adto.getIdx()%>"></i></span>
+													
+													<!-- 수정버튼 -->
+													<span><i class="bi bi-pencil-square aedit" idx="<%=adto.getIdx() %>" 
+													style="float: right; margin-right: 5px;" 
+													data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+													</span>
 												<%}
 													
 											%>
@@ -309,7 +351,28 @@
      
 		
 	</div>
-	
+	<!-- 모달 -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">댓글수정</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="updateform">
+        	<input type="text" id="idx">
+        	<input type="text" id="ucontent" class="form-control" style="width: 400px;">
+        </div>
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-primary" id="btnupdate">수정</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
 	
 </body>
 </html>
