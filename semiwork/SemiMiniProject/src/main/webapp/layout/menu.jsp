@@ -101,8 +101,13 @@
 					</li>
 					<li><a href="<%=root%>/shop/shoplist.jsp">SHOP</a>
 						<ul class="sub-menu">
-							<li><a href="#">ShopForm</a></li>
-							<li><a href="#">shoppingMall</a></li>
+							 <%
+					       if(loginok!=null && myid.equals("admin")){%>
+					    	   
+					    	   <li><a href="index.jsp?main=shop/addform.jsp">ShopForm</a></li>
+					       <%}
+					     %>
+							<li><a href="index.jsp?main=shop/shoplist.jsp">shoppingMall</a></li>
 							<li><a href="index.jsp?main=shop/map.jsp">오시는 길</a></li>
 						</ul>
 					</li>

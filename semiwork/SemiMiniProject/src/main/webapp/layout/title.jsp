@@ -1,3 +1,4 @@
+<%@page import="data.dao.ShopDao"%>
 <%@page import="data.dao.memberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -12,8 +13,46 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-	
+a{
+color: black;
+	text-decoration: none;
+}
+
+div.cart{
+  float: right;
+  cursor: pointer;
+}
+
+.carticon{
+  font-size: 30px;
+  
+}
+
+div.cart .cartcount{
+  
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  float: right;
+  background-color: red;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  font-size: 15px;
+  position: relative;
+  left: -15px;
+  top: 10px;
+}
+
+
 </style>
+<script type="text/javascript">
+  $(function(){
+	  $("div.cart").click(function(){
+		  location.href="index.jsp?main=shop/mycart.jsp";
+	  });
+  })
+</script>
 </head>
 <%
 	//프로젝트 경로 구하기
@@ -27,6 +66,10 @@
 	memberDao dao=new memberDao();
 	String name=dao.getName(myid);
 	
+	 //shopdao
+	  ShopDao sdao=new ShopDao();
+	  //카트개수
+	  int cartSize=sdao.getCartList(myid).size();
 %>
 <body>
 	
@@ -42,8 +85,13 @@
 			<b style="font-size: 10pt;"><%=name %>님이 로그인하였습니다.</b>
 				<button type="button" class="btn btn-danger btn-sm"
 				onclick="location.href='index.jsp?main=login/logoutaction.jsp'">로그아웃</button>
+			<div class="cart">
+     			<i class="bi bi-cart carticon"></i>
+          		<span class="cartcount"><%=cartSize %></span>
+     		</div>
 			<%}
 		%>
+		
 	</div>
 	
 	

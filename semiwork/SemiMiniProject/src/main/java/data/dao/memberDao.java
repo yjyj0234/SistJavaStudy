@@ -64,6 +64,36 @@ public class memberDao {
 		 
 		 return name;
 	 }
+	 
+	//아이디에 따른 시퀀스
+		public String getNum(String id)
+		{
+			String num="";
+			
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			String sql="select * from member where id=?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs=pstmt.executeQuery();
+				
+				if(rs.next())
+					num=rs.getString("num");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			
+			return num;
+		}
+		
+		
 	 public void insertMember(memberDto dto) {
 		 Connection conn=db.getConnection();
 		 PreparedStatement pstmt=null;
