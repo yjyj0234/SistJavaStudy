@@ -31,4 +31,75 @@ function KGpay(){
                 '에러내용: ' + rsp.error_msg);
         }
     });
-} 
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    min-width: 150px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.dropdown-menu li {
+    padding: 8px 12px;
+}
+
+.dropdown-menu li a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Bootstrap 드롭다운 표시 방식으로 변경 */
+.dropdown:hover .dropdown-menu {
+    display: none;
+}
+
+.dropdown.show .dropdown-menu {
+    display: block;
+}
+
+/* 드롭다운 토글 버튼 스타일 */
+.nav-link.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 드롭다운 토글 버튼 클릭 이벤트
+        var dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(function(toggle) {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                var parent = this.parentElement;
+                parent.classList.toggle('show');
+            });
+        });
+
+        // 드롭다운 외부 클릭시 닫기
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.dropdown')) {
+                var dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(function(dropdown) {
+                    dropdown.classList.remove('show');
+                });
+            }
+        });
+    });
+</script> 
