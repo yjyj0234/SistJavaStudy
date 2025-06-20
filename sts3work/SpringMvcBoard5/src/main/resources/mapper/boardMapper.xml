@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.board.data.BoardDaoInter">
+	<!-- 카운트라 리턴타입이 int(파라메터도 없음) 세미콜론 없어도됨-->
+	<select id="selectCountOfBoard" resultType="int">
+		select count(*) from board
+	</select>
+	
+	<insert id="insertOfBoard" parameterType="bdto">
+		insert into board (writer,subject,content,writeday) values (#{writer},#{subject},#{content},now())	
+	</insert>
+	<select id="selectAllOfBoard" resultType="bdto">
+		select * from board order by num
+	</select>
+	<select id="selectOneDataOfBoard" parameterType="String" resultType="bdto">
+		select * from board where num=#{num}
+	</select>
+	<!-- insert, update는 void라서 resultType이 없다 -->
+	<update id="updateDataOfBoard" parameterType="bdto" >
+		update board set writer=#{writer}, subject=#{subject}, content=#{content} where num=#{num}
+	</update>
+	<delete id="deleteDataOfBoard" parameterType="String">
+		delete from board where num=#{num}
+	</delete>
+</mapper>
