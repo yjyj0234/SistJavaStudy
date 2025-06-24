@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.mvc.dao.MemberDaoInter" >
+<!-- id중복체크를 0또는 1로 확인 ->int -->
+	<select id="idCheckOfMember" resultType="int" parameterType="String">
+		select count(*) from member where id=#{id}
+	</select>
+	<insert id="newOfMember" parameterType="Member">
+		insert into member values(null,#{name},#{id},#{pass},#{hp},now())
+	</insert>
+</mapper>

@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Myeongjo&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<title>Insert title here</title>
+<style type="text/css">
+	a {
+		text-decoration: none !important;
+		color: black !important;
+	}
+</style>
+</head>
+<c:set var="root" value="<%=request.getContextPath() %>"/>
+<body>
+	<a href="${root }/home">Home</a>&nbsp;&nbsp;
+	<a href="${root }/login/form">login</a>&nbsp;&nbsp;
+	<a href="${root }/member/list">Member</a>&nbsp;&nbsp;
+	<a href="${root }/board/list">Board</a>&nbsp;&nbsp;
+	<a href="${root }/shop/list">Myshop</a>	&nbsp;&nbsp;
+</body>
+</html>

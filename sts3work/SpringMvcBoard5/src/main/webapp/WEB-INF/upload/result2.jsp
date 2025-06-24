@@ -13,6 +13,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h2>${title }</h2>
+	<h2>업로드한 이미지들</h2>
+	<c:forEach var="img1" items="${files }">
+		<img alt="" src="../image/${img1 }" width="200">
+	</c:forEach>
+	<h5>${path }</h5>
 </body>
 </html>
