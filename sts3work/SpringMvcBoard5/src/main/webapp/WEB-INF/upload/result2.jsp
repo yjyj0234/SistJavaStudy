@@ -13,12 +13,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%-- <c:redirect url="list"></c:redirect> --%>
-	<a href="list">스프링게시판 연습</a><br>
-	<a href="car/list">자동차 리스트</a><br>
-	<a href="upload/form1">이미지업로드 1개</a><br>
-	<a href="upload/form2">이미지업로드 여러개</a>
-	
-	
+
 </body>
 </html>

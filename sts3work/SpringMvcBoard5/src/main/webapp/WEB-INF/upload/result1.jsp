@@ -13,12 +13,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%-- <c:redirect url="list"></c:redirect> --%>
-	<a href="list">스프링게시판 연습</a><br>
-	<a href="car/list">자동차 리스트</a><br>
-	<a href="upload/form1">이미지업로드 1개</a><br>
-	<a href="upload/form2">이미지업로드 여러개</a>
-	
+	<h2>제목:${title}</h2>
+	<h2>업로드한 이미지 명 : ${fileName }</h2>
+	<h2>업로드한 실제경로 : ${path }</h2>
+	<h2>업로드한 이미지</h2>
+	<c:if test="${fileName=='no' }">
+		<b>이미지 없음</b>
+	</c:if>
+	<c:if test="${fileName!='no' }">
+		<img alt="" src="../image/${fileName }" style="width: 300px;">
+	</c:if>
 	
 </body>
 </html>
