@@ -56,13 +56,13 @@ div.info {
 
 div.main {
 	
-	width: 1300px;
+	width: 1000px;
 	height: 650px;
 	font-size: 12pt;
 	font-family: 'Sunflower';
-	left: 280px;
+	left: 400px;
 	top: 330px;
-	
+	text-align: center;
 }
 
 

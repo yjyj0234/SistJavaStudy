@@ -13,6 +13,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>로그인 폼</h1>
+	<form action="loginprocess" method="post">
+		<table class="table table-bordered" style="width: 300px;">
+			<caption align="top"><b>로그인</b></caption>
+			<tr>
+				<th>아이디</th>
+				<td>
+					<input type="text" name="id" class="form-control"
+					style="width: 150px;" required="required">
+				</td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td>
+					<input type="password" name="pass" class="form-control"
+					style="width: 150px;" required="required">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" class="btn btn-info" value="로그인">
+					<input type="button" class="btn btn-secondary" value="회원가입"
+					onclick="location.href='../member/form'">
+				</td>
+			</tr>
+		</table>
+		
+	</form>
 </body>
 </html>

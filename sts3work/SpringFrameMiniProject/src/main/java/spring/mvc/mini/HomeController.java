@@ -30,11 +30,7 @@ public class HomeController {
 	//·Î±×ÀÎÆû
 	@GetMapping("/login/form")
 	public String loginform() {
-		return "/login/loginform";
+		return "/login/loginmain";
 	}
-	//¸â¹ö¸®½ºÆ®
-	@GetMapping("/member/list")
-	public String memberform() {
-		return "/member/memberlist";
-	}
+	
 }

@@ -1,5 +1,8 @@
 package spring.mvc.dao;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,6 +27,62 @@ public class MemberDao implements MemberDaoInter {
 	public void insertMember(MemberDto dto) {
 		// TODO Auto-generated method stub
 		session.insert("newOfMember", dto);
+	}
+
+
+	@Override
+	public List<MemberDto> getAllMembers() {
+		// TODO Auto-generated method stub
+		return session.selectList("AllListOfMember");
+	}
+
+
+	@Override
+	public int loginCheck(String id, String pass) {
+		// TODO Auto-generated method stub
+		HashMap<String, String> map=new HashMap<String, String>();
+		map.put("id", id);
+		map.put("pass", pass);
+		//map도 같이 저장해서 넘김 
+		return session.selectOne("loginCheckOfMember", map);
+	}
+
+
+	@Override
+	public MemberDto getMember(String num) {
+		// TODO Auto-generated method stub
+		return session.selectOne("selectOneOfMember", num);
+	}
+
+
+	@Override
+	public int updatePassCheck(String num, String pass) {
+		// TODO Auto-generated method stub
+		HashMap<String, String> map=new HashMap<String, String>();
+		map.put("num", num);
+		map.put("pass", pass);
+		return session.selectOne("passCheckOfMember",map);
+	}
+
+
+	@Override
+	public void updateMember(MemberDto dto) {
+		// TODO Auto-generated method stub
+		session.update("updateOfMember", dto);
+	}
+
+
+	@Override
+	public void deleteMember(String num) {
+		// TODO Auto-generated method stub
+		session.delete("delMyPageOfMember",num);
+	}
+
+
+	@Override
+	public void banMember(String num) {
+		// TODO Auto-generated method stub
+		session.delete("banOfMember", num);
 	}
 
 }

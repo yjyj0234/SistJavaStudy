@@ -12,23 +12,10 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <title>Insert title here</title>
 </head>
-<c:set var="root" value="<%=request.getContextPath() %>"/>
 <body>
-	<a href="${root }/">
-		<img alt="" src="${root }/image/SemiImg/mycar4.png" width="200" height="100">
-	</a>
-	<span>
-	
-		<c:if test="${sessionScope.loginok==null }">
-			<button type="button" class="btn btn-success btn-sm"
-			onclick="location.href='${root}/login/form'">Login</button>
-		</c:if>
-		<c:if test="${sessionScope.loginok!=null }">
-			<b style="font-size: 12pt;">${sessionScope.myid }님 환영합니다.</b>
-			<button type="button" class="btn btn-success btn-sm"
-			onclick="location.href='${root}/login/logoutprocess'">Logout</button>
-		</c:if>
-	
-	</span>
+<script type="text/javascript">
+	alert("아이디 또는 비밀번호가 맞지 않습니다");
+	history.back();
+</script>
 </body>
 </html>

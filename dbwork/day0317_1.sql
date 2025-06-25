@@ -301,8 +301,16 @@ select name,job,nvl(age,20),nvl(handphone,'***-****-****') from info2;
 --Rollup 함수
 --자동으로 소개(정교수는 페이 얼마 조교수는 페이 얼마인지)/합계를 구해주는 함수
 --groupby절에 주어진 조건으로 소계 구해준다
-select deptno,position,sum(pay) from professor group by position,rollup(deptno);
-select position, count(*),sum(pay) from professor group by rollup(position);
+SELECT
+    STUSCORE.BAN,
+    total,
+    SUM(total), -- 해당 그룹의 총점 합계 (ROLLUP에 의해 총계가 나옴)
+    AVG(total)  -- 해당 그룹의 총점 평균
+FROM
+    stuscore
+GROUP BY
+    STUSCORE.BAN,
+    ROLLUP(total);
 
 --cube 전체 총합계 까지 출력하려면 rollup처럼 각 소계에 총계까지 
 select deptno, count(*),sum(pay) from professor group by cube(deptno);

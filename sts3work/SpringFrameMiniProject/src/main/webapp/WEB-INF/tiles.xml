@@ -2,6 +2,7 @@
 <!DOCTYPE tiles-definitions PUBLIC
 "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<!-- 타일 정의 -->
 <tiles-definitions>
 	<!-- 첫번째 레이아웃 // template: 파일 경로 -->
 	<definition name="layout1" template="/WEB-INF/layout/layout1.jsp">
@@ -16,8 +17,8 @@
 		<put-attribute name="title2" value="/WEB-INF/layout/title2.jsp"/>
 		<put-attribute name="menu" value="/WEB-INF/layout/menu.jsp"/>
 		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"/>
-		
 	</definition>
+	
 	<!-- home.tiles라는 포워드를 통해서 main 프레임띄우기? -->
 	<!-- <definition name="home.tiles" extends="layout1">
 		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"/>
@@ -31,11 +32,15 @@
 		<put-attribute name="main" value="/WEB-INF/board/boardlist.jsp"/>
 	</definition> -->
 	
-	<!-- wild card macro -->
+	<!-- wild card macro /폴더명/파일명(WEB-INF폴더에있는 /폴더/파일)-->
+	<!-- extends="layout1": layout1 레이아웃을 상속 
+	layout1이 가진 title, menu, info, main 속성을 기본으로 가져옴 -->
 	<definition name="/*/*" extends="layout1">
-											<!-- 폴더명/파일명.jsp -->
+	<!-- <put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp">:
+	 상속받은 layout1의 main 속성을 재정의 -->
 		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"></put-attribute>
 	</definition>
+	<!-- return 할때 sub 붙이기 -->
 	<definition name="/sub/*/*" extends="layout2">
 											<!-- 폴더명/파일명.jsp -->
 		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"></put-attribute>
