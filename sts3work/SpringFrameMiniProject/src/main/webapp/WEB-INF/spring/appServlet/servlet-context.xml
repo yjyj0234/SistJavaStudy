@@ -27,7 +27,7 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/res/**" location="/resources/" />
 	<resources mapping="/image/**" location="/WEB-INF/image/" />
-
+	<resources mapping="/photo/**" location="/WEB-INF/photo/" />
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 <!-- 	<beans:bean

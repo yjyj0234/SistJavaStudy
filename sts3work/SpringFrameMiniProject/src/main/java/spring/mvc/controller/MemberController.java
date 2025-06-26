@@ -101,7 +101,9 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/home";
 	}
+	//@ResponseBody 응답을 위해 필요
 	@GetMapping("/member/ban")
+	@ResponseBody
 	public void ban(@RequestParam String num) {
 		
 		dao.banMember(num);

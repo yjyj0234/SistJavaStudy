@@ -19,13 +19,12 @@
 </head>
 <body>
 <script type="text/javascript">
-	$(function(){
-		$("#bye").click(function(){
-						
-				alert("삭제되었습니다.");
-		})
-		
-	})
+	function confirmdel(num){
+		var c=confirm("탈퇴하시겠습니까?");
+		if(c){
+			location.href="delete?num="+num;
+		}
+	}
 </script>
 	<div style="width: 700px;">
 		<table class="table table-boredered">
@@ -44,7 +43,7 @@
 							<button type="button" class="btn btn-outline-secondary"
 							onclick="location.href='updateform?num=${dto.num}'">수정</button><br><br>
 							<button type="button" class="btn btn-outline-danger" id="bye"
-							onclick="location.href='delete?num=${dto.num}'">탈퇴</button>
+							onclick="confirmdel('${dto.num}')">탈퇴</button>
 						</td>
 					</tr>
 					<tr>
