@@ -13,31 +13,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="insert" method="post" enctype="multipart/form-data">
+	<form action="update" method="post" enctype="multipart/form-data">
 		<!-- 답글 때문에 hidden값 넣어줘야함 -->
-		<input type="hidden" name="num" value="${num }">
+		<input type="hidden" name="num" value="${dto.num }">
 		<input type="hidden" name="currentPage" value="${currentPage }">
-		<input type="hidden" name="regroup" value="${regroup }">
-		<input type="hidden" name="restep" value="${restep }">
-		<input type="hidden" name="relevel" value="${relevel }">
 		
 		<table class="table table-bordered" style="width: 500px;">
 			<caption align="top"><b>
-				<c:if test="${num==0 }">새글쓰기</c:if>
-				<c:if test="${num!=0 }">답글쓰기</c:if>			
+				수정폼			
 			</b></caption>
 			<tr>
 				<th width="100">작성자</th>
 				<td>
 					<input type="text" name="writer" class="form-control"
-					style="width: 120px;" required="required">
+					style="width: 120px;" required="required" value="${dto.writer }">
 				</td>
 			</tr>
 			<tr>
 				<th width="100">제목</th>
 				<td>
 					<input type="text" name="subject" class="form-control"
-					style="width: 300px;" required="required" value="${subject }">
+					style="width: 300px;" required="required" value="${dto.subject }">
 				</td>
 			</tr>
 			<tr>
@@ -45,18 +41,18 @@
 				<td>
 									<!-- 같은 이름(photo)으로 하면 업로드안됨 -->
 					<input type="file" name="upload" class="form-control"
-					style="width: 180px;" multiple="multiple">
+					style="width: 280px;" multiple="multiple">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
 					<textarea style="width: 480px; height: 100px;"
-					name="content" class="form-control" required="required"></textarea>
+					name="content" class="form-control" required="required">${dto.content }</textarea>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="submit" class="btn btn-outline-secondary">저장</button>
+					<button type="submit" class="btn btn-outline-secondary">수정</button>
 				</td>
 			</tr>
 		</table>

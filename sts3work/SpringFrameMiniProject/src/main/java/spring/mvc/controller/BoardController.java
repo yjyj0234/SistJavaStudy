@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,13 +19,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import spring.mvc.dao.AnswerDao;
 import spring.mvc.dao.BoardDao;
+import spring.mvc.dto.AnswerDto;
 import spring.mvc.dto.BoardDto;
 
 @Controller
 public class BoardController {
 	@Autowired
 	BoardDao dao;
+	@Autowired
+	AnswerDao adao;
 	
 	@GetMapping("/board/list")
 	public ModelAndView blist(
@@ -111,14 +116,18 @@ public class BoardController {
 		model.addObject("relevel", relevel);
 		model.addObject("currentPage", currentPage);
 		
+		//출력테스트
+		System.out.println(currentPage+","+num);  //새글이면null,답글이면 숫자
+		
 		//제목에 답글일 경우 해당제목 넣어보기
 		String  subject="";
+		
 		//답글이다=num이 0보다 크다
-		/*
-		 * if(num>0) {
-		 *	 
-		 * }
-		 */
+		 if(num>0) {
+			 subject=dao.getOneData(num).getSubject();
+					 
+		 }
+		model.addObject("subject", subject);
 		
 		model.setViewName("/board/writeform");
 		return model;
@@ -172,18 +181,111 @@ public class BoardController {
 	public ModelAndView content(
 			@RequestParam int num,
 			@RequestParam int currentPage
+			
 			) {
 		ModelAndView model= new ModelAndView();
 		//조회수
 		dao.updateReadCount(num);
+		List<AnswerDto> alist=adao.getAllAnswers(num);
 		
 		BoardDto dto= dao.getOneData(num);
 		model.addObject("dto", dto);
 		model.addObject("currentPage", currentPage);
 		
+		model.addObject("alist", alist);
 		
 		model.setViewName("/board/content");
 		
 		return model;
 	}
+	
+	//수정폼
+	@GetMapping("/board/updateform")
+	public ModelAndView updateform(@RequestParam int num,
+			@RequestParam int currentPage) {
+		ModelAndView model = new ModelAndView();
+		BoardDto dto=dao.getOneData(num);
+		model.addObject("dto", dto);
+		model.addObject("currentPage",currentPage);
+		model.setViewName("/board/formupdate");
+		return model;
+	}
+	
+	@PostMapping("/board/update")
+	public String update(@ModelAttribute BoardDto dto,
+			@RequestParam ArrayList<MultipartFile> upload,
+			@RequestParam int currentPage,
+			HttpSession session) {
+		
+		//업로드할 실제경로(프로젝트에 가상폴더 만듦),맵핑주소x
+		String path=session.getServletContext().getRealPath("/WEB-INF/photo");
+		System.out.println(path);
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
+		
+		String photo="";
+		//사진선택 안하면 "no"
+		//선택하면 날짜 붙인 파일에 db에는 ,로 구분하면서 나열
+		//get(0) 객체 안에 여러파일이 있을 때 첫번째 파일을 가져오는기능
+		if(upload.get(0).getOriginalFilename().equals("")) {
+			photo=null;
+		}else {
+			
+			//수정전의 이전의 사진들 지우고
+			String old_photo=dao.getOneData(dto.getNum()).getPhoto();
+			
+			//,분리
+			String [] old_fname=old_photo.split(",");
+			for(String f:old_fname) {
+				File file=new File(path+"\\"+f);
+				file.delete();
+			}
+			
+			//업로드에 올라온 멀티파트파일을 f라 하겠다
+			for(MultipartFile f:upload) {
+								//오늘날짜+_+실제파일명
+				String fname=sdf.format(new Date())+"_"+f.getOriginalFilename();
+				photo+=fname+",";
+				
+				//업로드
+				try {
+					f.transferTo(new File(path+"\\"+fname));
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			//photo 마지막 , 제거
+			photo=photo.substring(0, photo.length()-1);
+		}
+		//dto에 photo 넣어주고 insert
+		dto.setPhoto(photo);
+		dao.updateBoard(dto);
+		
+		return "redirect:content?num="+dto.getNum()+"&currentPage="+currentPage;
+	}
+	@GetMapping("/board/delete")
+	public String delete(@RequestParam int num,
+			HttpSession session, @RequestParam int currentPage
+			) {
+		String path= session.getServletContext().getRealPath("/WEB-INF/photo");
+		BoardDto dto=dao.getOneData(num);
+		
+		String [] photos=dto.getPhoto().split(",");
+		
+		//사진이 존재할때
+		if(!photos.equals("no")) {
+			for(String f:photos) {
+				File file=new File(path+"\\"+f);
+				file.delete();
+			}
+				
+		}
+
+		dao.deleteBoard(num);
+		return "redirect:list?currentPage="+currentPage;
+	}
+	
 }

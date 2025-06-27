@@ -33,4 +33,14 @@
 	<update id="updateReadCountOfBoard" parameterType="int">
 		update reboard set readcount=readcount+1 where num=#{num}
 	</update>
+	
+	<!-- 수정(할때 사진 관련 조건문 삽입:insert에서 null 이면 no로 저장되도록 설정되어있음) -->
+	<update id="updateOfBoard" parameterType="Board">
+		update reboard set writer=#{writer},subject=#{subject},content=#{content}
+		<if test="photo!=null">,photo=#{photo}</if> where num=#{num}
+	</update>
+	
+	<delete id="deleteOfBoard" parameterType="int">
+		delete from reboard where num=#{num}
+	</delete>
 </mapper>

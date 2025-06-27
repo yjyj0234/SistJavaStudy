@@ -91,4 +91,16 @@ public class BoardDao implements BoardDaoInter {
 		session.update("updateReadCountOfBoard", num);
 	}
 
+	@Override
+	public void updateBoard(BoardDto dto) {
+		// TODO Auto-generated method stub
+		session.update("updateOfBoard",dto);
+	}
+
+	@Override
+	public void deleteBoard(int num) {
+		// TODO Auto-generated method stub
+		session.delete("deleteOfBoard", num);
+	}
+
 }
