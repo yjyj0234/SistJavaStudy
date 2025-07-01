@@ -9,4 +9,11 @@
 	<select id="selectAllOfAnswer" resultType="Answer" parameterType="int">
 		select * from reanswer where num=#{num}
 	</select>
+	
+	<select id="PassCheckOfAnswer" parameterType="HashMap" resultType="int">
+		select count(*) from reanswer where idx=#{idx} and pass=#{pass}
+	</select>
+	<delete id="DeleteOfAnswer" parameterType="int">
+		delete from reanswer where idx=${idx}	
+	</delete>
 </mapper>

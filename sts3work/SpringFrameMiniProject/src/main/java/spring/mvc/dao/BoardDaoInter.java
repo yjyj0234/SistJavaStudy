@@ -14,4 +14,5 @@ public interface BoardDaoInter {
 	public void updateReadCount(int num);
 	public void updateBoard(BoardDto dto);
 	public void deleteBoard(int num); 
+	public List<BoardDto> getAjaxList();
 }

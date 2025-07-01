@@ -40,7 +40,13 @@
 		<if test="photo!=null">,photo=#{photo}</if> where num=#{num}
 	</update>
 	
+	<!-- 삭제 -->
 	<delete id="deleteOfBoard" parameterType="int">
 		delete from reboard where num=#{num}
 	</delete>
+	
+	<!-- 페이징 없는 전체 출력 -->
+	<select id="SelectAllOfBoard" resultType="Board">
+		select * from reboard order by num desc
+	</select>
 </mapper>

@@ -11,12 +11,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <title>Insert title here</title>
-<style type="text/css">
-	a {
-		text-decoration: none !important;
-		color: black !important;
-	}
-</style>
+
 </head>
 <c:set var="root" value="<%=request.getContextPath() %>"/>
 <body>
@@ -25,5 +20,6 @@
 	<a href="${root }/member/list">Member</a>&nbsp;&nbsp;
 	<a href="${root }/board/list">Board</a>&nbsp;&nbsp;
 	<a href="${root }/shop/list">Myshop</a>	&nbsp;&nbsp;
+	<a href="${root }/board/list1">AjaxBoard</a>
 </body>
 </html>

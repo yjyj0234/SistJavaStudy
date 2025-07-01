@@ -55,6 +55,13 @@
 							<img alt="" src="../image/re.png">
 						</c:if> 
 						<a href="content?num=${dto.num }&currentPage=${currentPage}">${dto.subject }</a>
+						
+						<!-- 댓글갯수출력 -->
+						<c:if test="${dto.acount>0 }">
+							<a href="content?num=${dto.num }&currentPage=${currentPage}#answer"
+							style="color: red; ">[${dto.acount }]</a>
+						</c:if>
+						
 						<!-- 사진이 있을 경우 아이콘 표시 -->
 						<c:if test="${dto.photo!='no' }">
 							<i class="bi bi-images"></i>

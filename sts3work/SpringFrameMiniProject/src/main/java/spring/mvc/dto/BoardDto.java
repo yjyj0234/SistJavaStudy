@@ -2,6 +2,8 @@ package spring.mvc.dto;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class BoardDto {
 	private int num;
 	private String writer;
@@ -12,7 +14,9 @@ public class BoardDto {
 	private int restep;
 	private int relevel;
 	private int readcount;
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
 	private Timestamp writeday;
+	private int acount; //´ñ±Û°¹¼ö
 	
 	public int getNum() {
 		return num;
@@ -73,6 +77,12 @@ public class BoardDto {
 	}
 	public void setWriteday(Timestamp writeday) {
 		this.writeday = writeday;
+	}
+	public int getAcount() {
+		return acount;
+	}
+	public void setAcount(int acount) {
+		this.acount = acount;
 	}
 	
 }

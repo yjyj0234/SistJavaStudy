@@ -43,10 +43,10 @@ div.menu {
 }
 
 div.info {
-	width: 180px;
+	width: 200px;
 	height: 200px;
 	line-height: 10px;
-	font-size: 15pt;
+	font-size: 10pt;
 	top: 400px;
 	padding: 20px 10px;
 	border: 5px solid purple;
@@ -64,7 +64,14 @@ div.main {
 	top: 330px;
 	text-align: center;
 }
-
+ a,a:hover {
+	color: black;
+	text-decoration: none;
+}
+div.layout a{
+	color: black;
+	text-decoration: none;
+}
 
 </style>
 </head>

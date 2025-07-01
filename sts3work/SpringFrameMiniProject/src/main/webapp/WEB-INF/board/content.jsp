@@ -11,8 +11,38 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+$(function(){
+    $("i.adel").click(function(){
+        var idx=$(this).attr("idx");
+        var p=prompt("비밀번호 입력하시오");
+        if(p==null){
+            return;
+        }else{
+            $.ajax({
+                type:"get",
+                dataType:"json",
+                url:"adelete",
+                data:{
+                    "idx":idx,
+                    "pass":p
+                }, 
+                success:function(res){
+                    if(res.check==0){
+                        alert("비밀번호가 맞지 않습니다.");
+                    }else{
+                        alert("완료.");
+                        location.reload();
+                    }
+                }
+            }); 
+        } 
+    }); 
+}); 
+</script>
 </head>
 <body>
+
 	<table class="table table-bordered" style="width: 600px;">
 		<tr>
 			<td align="top">
@@ -41,14 +71,17 @@
 					</c:forTokens>
 				</c:if>
 			</div>
+			
+			<!-- content -->
 				<pre style="text-align: left;">${dto.content }
 				</pre>
-				<c:if test="${dto.photo!=no }">
-			<c:forTokens var="im" items="${dto.photo }" delims=",">
+				<c:if test="${dto.photo!='no' }">
+					<c:forTokens var="im" items="${dto.photo }" delims=",">
 				<a href="../photo${im }"><img src="../photo/${im }"
 				style="width: 200px; height: 200px;"> </a>
-			</c:forTokens>
-		</c:if>
+					</c:forTokens>
+				</c:if>
+				
 			</td>
 		</tr>
 		
@@ -63,15 +96,15 @@
 						<input type="hidden" value="${currentPage }" name="currentPage">
 						<div >
 						<c:forEach var="adto" items="${alist }">
-						<div class="input-group" >
-							<b style="float: left;">${adto.nickname }</b>&nbsp;&nbsp;
-							${adto.content }
+							<div class="input-group" >
+								<b style="float: left;">${adto.nickname }</b>&nbsp;&nbsp;
+								${adto.content }
+								</div>
+							<div style="float: right;">
+							<fmt:formatDate value="${adto.writeday }" pattern="yyyy-MM-dd hh:mm"/>
+							<button type="button" class="btn btn-warning btn-sm">수정</button>
+							<i class="bi bi-trash3 adel" idx="${adto.idx }"></i>
 							</div>
-						<div style="float: right;">
-						<fmt:formatDate value="${adto.writeday }" pattern="yyyy-MM-dd hh:mm"/>
-						<button type="button" class="btn btn-warning btn-sm">수정</button>
-						<button type="button" class="btn btn-danger btn-sm">삭제</button>
-						</div>
 						</c:forEach>
 						
 					</div>

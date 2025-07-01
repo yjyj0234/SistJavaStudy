@@ -79,11 +79,16 @@ public class BoardController {
 		  //예를들어 총글갯수가 23   1페이지: 23  2페이지:18  3페이지: 13.....
 		  no=totalCount-(currentPage-1)*perPage;
 		  
-		  //전체데이타
+		//전체데이터
 	    List<BoardDto> list=dao.getList(startNum, perPage);
 		  
+	    //List에 각 글에 대한 댓글 갯수 추가하기
+	    for(BoardDto bd:list) {
+	    	bd.setAcount(adao.getAllAnswers(bd.getNum()).size());
+	    }
+	    
 	    //출력에 필요한 변수들을 request에 저장
-	    model.addObject("list", list);
+	    model.addObject("list", list);	//댓글에 포함해서 전달
 	    model.addObject("startPage", startPage);
 	    model.addObject("endPage", endPage);
 	    model.addObject("totalPage", totalPage);
@@ -283,9 +288,15 @@ public class BoardController {
 			}
 				
 		}
-
 		dao.deleteBoard(num);
 		return "redirect:list?currentPage="+currentPage;
+	}
+
+	//ajax로 이동해서...
+	@GetMapping("/board/list1")
+	public String list1() {
+		return "/board/ajaxlist";
+		
 	}
 	
 }

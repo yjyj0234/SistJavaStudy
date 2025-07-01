@@ -103,4 +103,10 @@ public class BoardDao implements BoardDaoInter {
 		session.delete("deleteOfBoard", num);
 	}
 
+	@Override
+	public List<BoardDto> getAjaxList() {
+		// TODO Auto-generated method stub
+		return session.selectList("SelectAllOfBoard");
+	}
+
 }
