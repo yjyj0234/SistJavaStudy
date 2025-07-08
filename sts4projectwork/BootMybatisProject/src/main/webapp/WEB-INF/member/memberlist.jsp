@@ -16,6 +16,6 @@
 	<div>
 		<jsp:include page="../../layout/header.jsp"/>
 	</div>
-	회원가입폼
+	<h1>${count }</h1>
 </body>
 </html>
