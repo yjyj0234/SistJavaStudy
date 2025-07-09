@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.tags.shaded.org.apache.bcel.generic.NEW;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 import boot.data.dto.MemberDto;
 import boot.data.service.MemberService;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 public class MemberController {
@@ -92,4 +95,50 @@ public class MemberController {
 		
 		return "member/mypage";
 	}
+	
+	//마이페이지에서 프로필 사진만 변경하고자 할때
+	@PostMapping("/member/updatephoto")
+	@ResponseBody
+	public void updatePho(String num,MultipartFile photo,
+			HttpSession session) {
+		//업로드될 경로 구하기
+		String path=session.getServletContext().getRealPath("/membersave");
+		System.out.println(path);
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
+		String fileName=sdf.format(new Date())+photo.getOriginalFilename();
+		
+		//업로드
+		try {
+			photo.transferTo(new File(path+"\\"+fileName));
+			//db수정
+			service.updatePhoto(num, fileName);
+			
+			//상단 프로필 사진도 변경
+			session.setAttribute("loginphoto", fileName);
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	//num값 가져와서 데이터 불러오기
+	/*
+	 * @GetMapping("/member/getdata") public Model getDataByNum(String num,Model
+	 * model) { MemberDto dto=service.getDataByNum(num); model.addAttribute("ldto",
+	 * dto); return model; }
+	 */
+	
+	//수정
+	//넘어가는 값이 void여도 ajax때문에 @ResponseBody를 써줘야한다 
+	@PostMapping("/member/update")
+	@ResponseBody
+	public void memberUpdate(@ModelAttribute MemberDto dto,HttpSession session) {
+		//TODO: process POST request
+		
+		service.updateMember(dto);
+		//세션에 저장된 이름도 수정
+		session.setAttribute("loginname", dto.getName());
+	}
+	
+	
 }

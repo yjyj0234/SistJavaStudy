@@ -56,4 +56,32 @@ public class MemberService implements MemberServiceInter {
 		return mapperInter.getDataById(id);
 	}
 
+	@Override
+	public MemberDto getDataByNum(String num) {
+		// TODO Auto-generated method stub
+		return mapperInter.getDataBynum(num);
+		
+	}
+
+	@Override
+	public void updateMember(MemberDto dto) {
+		// TODO Auto-generated method stub
+		mapperInter.updateMember(dto);
+	}
+
+	@Override
+	public void deleteMember(String num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updatePhoto(String num, String photo) {
+		// TODO Auto-generated method stub
+		Map<String, String> map=new HashMap<>();
+		map.put("num", num);
+		map.put("photo", photo);
+		mapperInter.updatePhoto(map);
+	}
+	
 }

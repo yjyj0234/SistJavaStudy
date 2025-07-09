@@ -78,10 +78,12 @@
 				<a href="${root }/member/list">회원목록</a>
 			</li>
 		</C:if>
-		<li>
-			<!-- requestparameter 통일 -->
-			<a href="${root }/member/mypage?idx=${sessionScope.myid}">마이페이지</a>
-		</li>
+		<C:if test="${sessionScope.loginok!=null }">
+			<li>
+				<!-- requestparameter 통일 -->
+				<a href="${root }/member/mypage?idx=${sessionScope.myid}">마이페이지</a>
+			</li>
+		</C:if>
 		<li>
 			<a href="${root }/board/list">회원게시판</a>
 		</li>
