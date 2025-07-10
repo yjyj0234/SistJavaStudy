@@ -81,10 +81,13 @@ public class BoardService implements BoardServiceInter {
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
 		String fileName=sdf.format(new Date())+upload.getOriginalFilename();
 		
+		String oldImg=dao.getOne(dto.getNum()).getPhoto();
 		//dto파일명 저장
 		if(upload.isEmpty()) {
 			dto.setPhoto("no");
 		}else {
+			deleteFile(path, oldImg);
+
 			dto.setPhoto(fileName);
 			
 			//실제 파일 업로드
