@@ -1,0 +1,17 @@
+server:
+  port: 8085
+spring:
+  thymeleaf:
+    cache: false
+#mysql_setting
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/rain?serverTimezone=Asia/Seoul
+    username: yjyj0345
+    password: a1234
+#mybatis
+mybatis:
+  type-aliases-package: thyme.data.dto
+  mapper-locations:
+  - /mapper/**/*.xml
+
