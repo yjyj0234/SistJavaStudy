@@ -52,4 +52,24 @@ public class ShopService {
 		List<ShopDto> list= inter.getAllDatas();
 		return list;
 	}
+	
+	public ShopDto getData(int num) {
+		return inter.getData(num);
+	}
+	
+	public void deleteShop(@RequestParam("num")int num,HttpSession session) {
+		//기존파일명
+		String oldFile=inter.getData(num).getPhoto();
+		//실제 파일경로
+		String realPath=session.getServletContext().getRealPath("/save");
+		
+		File file=new File(realPath+"/"+oldFile);
+		if(file.exists()) {
+			file.delete();
+		}
+		
+		inter.deleteShop(num);  //db삭제
+		
+	}
+
 }

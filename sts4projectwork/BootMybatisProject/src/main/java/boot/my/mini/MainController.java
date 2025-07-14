@@ -12,8 +12,5 @@ public class MainController {
 		return "main/mainpage";
 	}
 	
-	@GetMapping("/board/list")
-	public String boardlist() {
-		return "board/boardlist";
-	}
+
 }

@@ -41,4 +41,18 @@ public class ShopController {
 		service.insertMyshop(dto, upload, session);
 		return "redirect:list";
 	}
+	@GetMapping("/shop/detail")
+	public String shopDetail(@RequestParam("num") int num,Model model) {
+		ShopDto dto=service.getData(num);
+		model.addAttribute("dto", dto);
+		return "shop/shopdetail";
+	}
+	
+	@GetMapping("/shop/delete")
+	public String shopDelete(@RequestParam("num") int num,
+			HttpSession session) {
+		service.deleteShop(num, session);
+		return "redirect:list";
+				
+	}
 }
