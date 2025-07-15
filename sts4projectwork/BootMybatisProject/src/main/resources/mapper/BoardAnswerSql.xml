@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boot.data.mapper.BoardAnswerMapperInter">
+	<insert id="insertAnswer" parameterType="mbanswer">
+		insert into mbanswer values(null,#{num},#{name},#{myid},#{content},now())
+	</insert>
+	<select id="getAllAnswers" resultType="mbanswer">
+		select * from mbanswer where num=#{num} order by idx asc;
+	</select>
+	<select id="getAnswer" resultType="mbanswer" parameterType="int">
+		select * from mbabswer where idx=#{idx} 
+	</select>
+	<update id="updateAnswer" parameterType="mbanswer">
+		update mbanswer set content=#{content} where idx=#{idx}
+	</update>
+	<delete id="deleteAnswer" parameterType="int">
+		delete from mbanswer where idx=#{idx}
+	</delete>
+</mapper>

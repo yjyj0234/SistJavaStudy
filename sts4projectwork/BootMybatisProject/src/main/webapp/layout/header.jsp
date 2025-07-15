@@ -89,7 +89,7 @@
 <C:set var="root" value="<%=request.getContextPath() %>"/>
 <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="${root }">
+    <a class="navbar-brand" href="${root }/">
       <img src="${root }/logoImg/img4.jpg" alt="로고">
     </a>
     <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -142,6 +142,7 @@
   </div>
 </nav>
 <!-- 모바일/태블릿용 로그인 버튼 (네비게이션 아래) -->
+<!--  큰 화면(large screen) 이상에서는 보이지 않음, 오른쪽 정렬에 약간의 패딩이 적용됨을 의미 -->
 <div class="d-lg-none text-end p-2">
   <C:if test="${sessionScope.loginok==null }">
     <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#myLoginModal">

@@ -101,4 +101,20 @@ public class BoardController {
 		
 		return "redirect:list";
 	}
+	
+	//디테일 페이지로 가기
+	@GetMapping("/board/detail")
+	public ModelAndView detail(@RequestParam int num,
+			@RequestParam(value = "currentPage",defaultValue = "1") int currentPage) {
+		ModelAndView model= new ModelAndView();
+		
+		//조회수
+		service.updateReadCount(num);
+		BoardDto dto=service.getData(num);
+		model.addObject("dto", dto);
+		model.addObject("currentPage", currentPage);
+		model.setViewName("board/detailpage");
+		
+		return model;
+	}
 }

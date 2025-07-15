@@ -50,8 +50,24 @@
 	
 	<C:if test="${sessionScope.loginok!=null }">
 	<button type="button" class="btn btn-outline-success"
-	onclick="location.href='writeform'">글쓰기</button>
+	onclick="location.href='writeform'" style="margin-bottom: 10px;">글쓰기</button>
 	</C:if>
+	<!-- 검색창 -->
+	<form action="list" style="display: flex ;">
+		<div style="width: 800px;" class="input-group">
+			<select style="width: 150px;" class="form-control" name="searchcolumn">
+				<option value="subject">제목</option>
+				<option value="content">내용</option>
+				<option value="name">작성자</option>
+				<option value="myid">아이디</option>
+			</select>&nbsp;&nbsp;
+			<input type="text" name="searchword" class="form-control"
+			style="width: 500px;" value="${param.searchword }">&nbsp;&nbsp;
+			<button type="submit" class="btn btn-outline-primary">검색</button>
+			<button type="button" class="btn btn-outline-warning"
+			onclick="location.href='list?searchcolumn=myid&searchword=${sessionScope.myid}'">내가 쓴 글 보기</button>
+		</div>
+	</form>
 	<br><br>
 	<table class="table table-bordered lists" style="width: 1000px;">
 		<tr>
@@ -74,7 +90,8 @@
 				<tr>
 					<td align="center">${no }</td>
 					<C:set var="no" value="${no-1 }"></C:set>
-					<td>${dto.subject }
+					<td><a href="detail?num=${dto.num }&currentPage=${currentPage}" 
+					style="text-decoration: none;">${dto.subject }</a>
 					<C:if test="${dto.uploadfile!='no' }">
 						<i class="bi bi-highlights" style="color: gray;"></i>
 					</C:if>
