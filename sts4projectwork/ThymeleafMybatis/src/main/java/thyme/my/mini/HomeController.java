@@ -12,9 +12,5 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("/board/list")
-	public String boardList() {
-		return "board/list";
-	}
-	
+
 }

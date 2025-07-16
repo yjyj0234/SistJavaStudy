@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/layoutmain}">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Myeongjo&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<title>Insert title here</title>
+<script type="text/javascript">
+	$(function(){
+		comment_list();
+		$("#btncommentsend").click(function(){
+			let num=[[${dto.num}]];
+			let comment=$("#comment").val();
+			$.ajax({
+				type:"get",
+				dataType:"text",
+				url:"./addcomment",
+				data:{"num":num,"comment":comment},
+				success:function(){
+					alert("success.");
+					comment_list();
+					$("#comment").val("");
+				}
+			});
+		});
+	});
+	/* 리턴타입o->json //넘어오는 res:배열 */
+	function comment_list(){
+		let num=[[${dto.num}]];
+		$.ajax({
+			type:"get",
+			dataType:"json",
+			url:"./commentlist",
+			data:{"num":num},
+			success:function(res){
+				let a=`댓글리스트(${res.length}개)`;
+				let s=``;
+				$.each(res,function(idx,item){
+					s+=`<div style="margin:10px 10px 10px;">
+					${item.comment}
+					<span style="color:gray; font-size:0.9em;">
+					${item.writeday}</span>
+					</div>
+					`;
+					
+				});
+				$(".comment-list").html(a);
+				$("div.comments").html(s);
+			}
+		});
+	};
+</script>
+</head>
+<body>
+<div layout:fragment="content" th:object="${dto}">
+	<table style="width: 600px; margin: 0 auto;" class="table table-bordered">
+	<caption align="top" style="text-align: center;"><h3>차량 상세 정보</h3></caption>
+		<tr>
+			<th width="100">
+				차종
+			</th>
+			<td>
+				[[*{carname}]]
+			</td>
+			<td rowspan="5">
+			<span>
+			<img th:src="@{/carsave/{file}(file=${dto.carphoto})}" style="max-width: 300px;">
+			</span>
+			</td>
+		</tr>
+		<tr>
+			<th width="100">
+				색상
+			</th>
+			<td>
+				[[*{carcolor}]]
+				<div th:style="|width:30px; height:30px; background-color:${dto.carcolor}; margin:0 auto;|"></div>
+			</td>
+		</tr>
+		<tr>
+			<th width="100">
+				가격
+			</th>
+			<td>
+				[[*{carprice}]]
+			</td>
+		</tr>
+		<tr>
+			<th width="100">
+				구입일
+			</th>
+			<td>
+				[[*{guipday}]]
+			</td>
+		</tr>
+		<tr>
+			<th width="100">
+				등록일
+			</th>
+			<td>
+				<span th:text="${#calendars.format(dto.writeday,'yyyy-MM-dd HH:mm')}"></span>
+			</td>
+		</tr>
+	</table><br>
+	<!-- 댓글 -->
+	<div class="comment-list">
+		
+	</div>
+	<div class="input-group" style="width: 600px; margin: 0 auto;">
+		<h6>댓글</h6>
+		<input type="text" class="form-control" id="comment"
+		style="width: 300px;">&nbsp;&nbsp;
+		<button type="button" class="btn btn-success" id="btncommentsend">저장</button>
+	</div>
+	<div class="comments">
+	</div>
+	<br>
+	<button type="button" class="btn btn-info"
+	th:onclick="|location.href='@{./carupdate(num=${dto.num})}'|">수정하기</button>
+	<button type="button" class="btn btn-danger"
+	th:onclick="|location.href='@{./delete(num=${dto.num})}'|">삭제</button>
+	<button type="button" class="btn btn-success"
+	onclick="location.href='list'">목록</button>
+	
+</div>
+</body>
+</html>

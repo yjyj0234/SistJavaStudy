@@ -14,8 +14,42 @@ layout:decorate="~{layout/layoutmain}">
 </head>
 <body>
 <div layout:fragment="content">
-	<h1>보드리스트 입니다</h1>
-	<img src="/SemiImg/eventimg5.png" style="width: 500px;">
+	<h1>자동차목록 출력</h1>
+	<img src="/SemiImg/eventimg5.png" style="width: 300px;"><br>
+	<h3>등록된 자동차 수 : [[${count}]]</h3>
+	<button type="button" class="btn btn-outline-success"
+	onclick="location.href='caradd'">자동차 등록</button>
+	<table style="width: 700px; margin: 0 auto;" class="table table-bordered">
+		<tr>
+			<th width="80">번호</th>
+			<th width="120">차종</th>
+			<th width="120">색상</th>
+			<th width="150">가격</th>
+			<th width="230">구입일</th>
+		</tr>
+		<tr th:each="dto,iter:${list}">
+			<td>[[${iter.count}]]</td>
+			<td>
+			<a th:href="@{./detail(num=${dto.num})}"
+			th:style="'text-decoration:none;'">[[${dto.carname}]]</a>
+			</td>
+			<td>[[${dto.carcolor}]]
+			<div th:style="
+			    'width: 50px;'+
+			    'height:10px;'+
+			    'margin: 0 auto;'+
+			    'background-color:'+${dto.carcolor}+';'
+			">
+			</div>
+			</td>
+			<td>
+				<span th:text="${#numbers.formatCurrency(dto.carprice)}"></span>
+			</td>
+			<td>
+			[[${dto.guipday}]]
+			</td>
+		</tr>
+	</table>
 </div>
 </body>
 </html>
