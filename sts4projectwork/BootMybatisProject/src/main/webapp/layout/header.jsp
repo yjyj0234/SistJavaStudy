@@ -15,73 +15,151 @@
 <style type="text/css">
     body {
         font-family: 'Gowun Dodum', 'Nanum Myeongjo', 'Sunflower', sans-serif;
+        background: #f4f6fb;
+        color: #232323;
     }
     .navbar-custom {
-        background: #f8f9fa;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-        border-radius: 0 0 18px 18px;
-        padding: 0.5rem 2rem;
+        background: rgba(255,255,255,0.85);
+        box-shadow: 0 4px 24px rgba(30,34,90,0.10);
+        border-radius: 0 0 24px 24px;
+        padding: 0.7rem 2.5rem;
+        backdrop-filter: blur(6px);
+        border-bottom: 1.5px solid #e3e6ee;
     }
     .navbar-brand img {
-        height: 60px;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        height: 56px;
+        border-radius: 14px;
+        box-shadow: 0 2px 12px rgba(30,34,90,0.10);
+        transition: transform 0.18s;
+    }
+    .navbar-brand img:hover {
+        transform: scale(1.06) rotate(-2deg);
     }
     .nav-link {
-        color: #232323 !important;
-        font-weight: 500;
-        border-radius: 8px;
-        padding: 0.5rem 1.2rem !important;
-        transition: background 0.18s, color 0.18s;
+        color: #1e225a !important;
+        font-weight: 600;
+        border-radius: 10px;
+        padding: 0.55rem 1.3rem !important;
+        transition: background 0.18s, color 0.18s, box-shadow 0.18s;
         display: flex;
         align-items: center;
-        gap: 0.4em;
+        gap: 0.45em;
+        font-size: 1.08rem;
+        letter-spacing: 0.01em;
     }
     .nav-link:hover, .nav-link.active {
-        background: #232323 !important;
+        background: linear-gradient(90deg, #1e225a 60%, #4e54c8 100%) !important;
         color: #fff !important;
+        box-shadow: 0 2px 8px rgba(30,34,90,0.10);
     }
     .profile-card {
         background: #fff;
         color: #232323;
-        border-radius: 16px;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-        padding: 1rem 1.5rem;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(30,34,90,0.13);
+        padding: 1.1rem 1.7rem;
         min-width: 220px;
         display: flex;
         flex-direction: column;
         align-items: center;
         position: fixed;
-        top: 24px;
-        right: 32px;
+        top: 28px;
+        right: 36px;
         z-index: 2000;
+        border: 1.5px solid #e3e6ee;
+        transition: box-shadow 0.18s;
     }
     .profile-card .loginimg {
         border-radius: 50%;
-        width: 70px;
-        height: 70px;
+        width: 74px;
+        height: 74px;
         object-fit: cover;
-        margin-top: 0.5rem;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        margin-top: 0.7rem;
+        box-shadow: 0 2px 12px rgba(30,34,90,0.10);
+        border: 2.5px solid #e3e6ee;
     }
     .profile-card .btn {
         width: 100%;
-        margin-top: 0.5rem;
+        margin-top: 0.7rem;
+        font-weight: 600;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(30,34,90,0.08);
+        transition: background 0.18s, color 0.18s;
+    }
+    .profile-card .btn-outline-danger {
+        border-color: #ff5a5f;
+        color: #ff5a5f;
+    }
+    .profile-card .btn-outline-danger:hover {
+        background: #ff5a5f;
+        color: #fff;
     }
     .modal-content {
-        border-radius: 18px;
-        box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+        border-radius: 22px;
+        box-shadow: 0 8px 32px rgba(30,34,90,0.18);
+        border: 1.5px solid #e3e6ee;
     }
     .modal-header {
-        border-radius: 18px 18px 0 0;
-        background: #f8f9fa;
-        color: #232323;
+        border-radius: 22px 22px 0 0;
+        background: #f4f6fb;
+        color: #1e225a;
+        border-bottom: 1.5px solid #e3e6ee;
     }
     .modal-title {
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 1.25rem;
     }
     .modal-footer {
-        border-radius: 0 0 18px 18px;
+        border-radius: 0 0 22px 22px;
+        border-top: 1.5px solid #e3e6ee;
+    }
+    .btn-outline-success {
+        border-color: #4e54c8;
+        color: #4e54c8;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: background 0.18s, color 0.18s;
+    }
+    .btn-outline-success:hover {
+        background: #4e54c8;
+        color: #fff;
+    }
+    .btn-outline-dark {
+        border-radius: 8px;
+        font-weight: 600;
+    }
+    .btn-danger, .btn-outline-danger {
+        border-radius: 8px;
+        font-weight: 600;
+    }
+    .navbar-toggler {
+        border-radius: 8px;
+        border: 1.5px solid #e3e6ee;
+    }
+    .navbar-toggler:focus {
+        box-shadow: 0 0 0 2px #4e54c8;
+    }
+    /* 모바일 프로필카드 개선 */
+    .d-lg-none .profile-card {
+        position: static !important;
+        box-shadow: none !important;
+        background: #f4f6fb !important;
+        color: #232323 !important;
+        min-width: 0 !important;
+        padding: 0.7rem 1.2rem !important;
+        border: none !important;
+    }
+    /* 반응형 개선 */
+    @media (max-width: 991.98px) {
+        .navbar-custom {
+            padding: 0.7rem 1rem;
+        }
+        .profile-card {
+            top: 18px;
+            right: 10px;
+            min-width: 180px;
+            padding: 0.8rem 1.1rem;
+        }
     }
 </style>
 </head>

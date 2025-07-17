@@ -15,7 +15,32 @@
 	.lists{
 		margin: 0 auto;
 	}
-   
+    /* 현대적 다크 테이블 스타일 */
+    .table.lists {
+        background: #232323;
+        border-radius: 14px 14px 0 0;
+        overflow: hidden;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+    }
+    .table th {
+        background: #181818;
+        color: #fff;
+        border-bottom: 2px solid #333;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+    .table td {
+        background: #232323;
+        color: #f5f5f5;
+        border-color: #333;
+        vertical-align: middle;
+    }
+    .table tr {
+        transition: background 0.18s;
+    }
+    .table tr:hover {
+        background: #292929;
+    }
     /* 페이지네이션 다크 스타일 */
     .pagination {
         --bs-pagination-bg: #232323;
@@ -37,7 +62,7 @@
         transition: background 0.18s, color 0.18s, box-shadow 0.18s;
     }
     .page-link:hover, .page-item.active .page-link {
-        background: #006bd6;
+        background: #fff;
         color: #181818;
         border-color: #fff;
         box-shadow: 0 2px 8px rgba(0,0,0,0.12);
@@ -50,24 +75,8 @@
 	
 	<C:if test="${sessionScope.loginok!=null }">
 	<button type="button" class="btn btn-outline-success"
-	onclick="location.href='writeform'" style="margin-bottom: 10px;">글쓰기</button>
+	onclick="location.href='writeform'">글쓰기</button>
 	</C:if>
-	<!-- 검색창 -->
-	<form action="list" style="display: flex ;">
-		<div style="width: 800px;" class="input-group">
-			<select style="width: 150px;" class="form-control" name="searchcolumn">
-				<option value="subject">제목</option>
-				<option value="content">내용</option>
-				<option value="name">작성자</option>
-				<option value="myid">아이디</option>
-			</select>&nbsp;&nbsp;
-			<input type="text" name="searchword" class="form-control"
-			style="width: 500px;" value="${param.searchword }">&nbsp;&nbsp;
-			<button type="submit" class="btn btn-outline-primary">검색</button>
-			<button type="button" class="btn btn-outline-warning"
-			onclick="location.href='list?searchcolumn=myid&searchword=${sessionScope.myid}'">내가 쓴 글 보기</button>
-		</div>
-	</form>
 	<br><br>
 	<table class="table table-bordered lists" style="width: 1000px;">
 		<tr>
@@ -90,8 +99,7 @@
 				<tr>
 					<td align="center">${no }</td>
 					<C:set var="no" value="${no-1 }"></C:set>
-					<td><a href="detail?num=${dto.num }&currentPage=${currentPage}" 
-					style="text-decoration: none;">${dto.subject }</a>
+					<td>${dto.subject }
 					<C:if test="${dto.uploadfile!='no' }">
 						<i class="bi bi-highlights" style="color: gray;"></i>
 					</C:if>
