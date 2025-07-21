@@ -49,7 +49,7 @@ function QuizApp() {
         }>
         <input type="radio" name='color' value='black' 
         defaultChecked/>검정 &nbsp;
-        <input type="radio" name='color' value='red' 
+        <input type="radio" name='color' value='red' defaultValue='red'
        />빨강 &nbsp;
         <input type="radio" name='color' value='green' 
        />초록 &nbsp;
