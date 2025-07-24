@@ -1,0 +1,30 @@
+*{
+  font-family: 'Times New Roman', Times, serif;
+  margin: auto;
+}
+ul.menu{
+  font-size: 20px;
+  
+  height: 100px;
+  line-height: center;
+  float: left;
+  display: flex;
+}
+ul li{
+  width: 150px;
+ border: 1px solid gray;
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: lightgray;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px gray;
+  margin-bottom: 10px;
+}
+img.main_photo{
+  position: absolute;
+  top: 10px;
+  left: 1200px;
+  width: 150px;
+  height: 150px;
+}
+

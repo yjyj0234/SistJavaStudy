@@ -37,7 +37,7 @@ const ThreeApp = () => {
         나이: <input type="text" name='age' defaultValue={inputs.age} onChange={changeData}/>
     </h3>
     </div>
-
+    
   )
 }
 

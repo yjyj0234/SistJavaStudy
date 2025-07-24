@@ -48,6 +48,7 @@ function SevenApp() {
   const handleDelete = (idx)=>{
     
     setBoard(board.filter((item,i)=>(i!==idx)));
+    
   }
   return (
     <div>

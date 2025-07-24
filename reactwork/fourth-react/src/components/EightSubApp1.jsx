@@ -2,7 +2,7 @@ import React from 'react'
 
 const EightSubApp1 = (props) => {
     const p=props;
-    const arrImg=Array.from({length:5},(element,i)=>String(i+21));
+    /* const arrImg=Array.from({length:5},(element,i)=>String(i+21)); */
     
 
   return (
@@ -16,9 +16,7 @@ const EightSubApp1 = (props) => {
       <select className='form-control' name='photo' onChange={p.onChange}>
         {/* option은 1~10번까지만 배열로 생성할것 */}
             {
-                arrImg.map((num)=>(
-                    <option key={num} value={num}>{num}</option>
-                ))
+                [...new Array(10)].map((a,idx)=>(<option key={idx}>{`${idx+21}`}</option>))
             }
             
         
