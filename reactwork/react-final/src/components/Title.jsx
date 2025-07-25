@@ -5,7 +5,7 @@ const title = () => {
   return (
     <div>
       <img src={titleimg} alt="" /><br />
-      <b>React Spring_boot Project</b>
+      <b style={{ fontSize: '40px' }}>React Spring_boot Project</b>
     </div>
   )
 }

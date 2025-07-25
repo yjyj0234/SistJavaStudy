@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  
 }
 * {
   font-family: 'Times New Roman', Times, serif;
@@ -10,14 +11,19 @@
 .menu{
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
   margin-bottom: 2rem;
+  margin-top: 2rem;
+  font-size: 25px;
 }
 .menu li {
   list-style: none;
   cursor: pointer; 
 }
 .menu a {
-  color: black;
-  
+  color: white;
+  border : 1px solid darkblue;
+  background-color: darkblue;
+  border-radius: 30px;
+  padding: 10px 20px;
 }

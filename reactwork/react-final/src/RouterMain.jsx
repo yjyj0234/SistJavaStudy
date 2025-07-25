@@ -1,10 +1,10 @@
 import React from 'react'
 import { About, Menu, Title, Main } from './components'
 import { Route, Routes } from 'react-router-dom'
-import Shop from './shop/Shop'
 import Member from './member/Member'
 import Login from './login/Login'
 import Board from './board/Board'
+import { Shop, ShopDetail, ShopForm } from './shop'
 
 const RouterMain = () => {
   return (
@@ -14,7 +14,12 @@ const RouterMain = () => {
       <div>
         <Routes>
             <Route path='/' element={<Main/>}/>
+
+            {/* Shop */}
             <Route path='/shop/list' element={<Shop/>}/>
+            <Route path='/shop/form' element={<ShopForm/>}/>
+            <Route path='/shop.detail/:num' element={<ShopDetail/>}/>
+
             <Route path='/board/list' element={<Board/>}/>
             <Route path='/member/form' element={<Member/>}/>
             <Route path='/login' element={<Login/>}/>
