@@ -18,7 +18,7 @@ const RouterMain = () => {
             {/* Shop */}
             <Route path='/shop/list' element={<Shop/>}/>
             <Route path='/shop/form' element={<ShopForm/>}/>
-            <Route path='/shop.detail/:num' element={<ShopDetail/>}/>
+            <Route path='/shop/detail/:num' element={<ShopDetail/>}/>
 
             <Route path='/board/list' element={<Board/>}/>
             <Route path='/member/form' element={<Member/>}/>

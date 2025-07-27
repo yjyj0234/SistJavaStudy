@@ -25,7 +25,7 @@ function FirstApp() {
             <br /><br /><br />
             {/* public 영역의 이미지 가져오기 */}
             <img src='/logoImg/thor.png' style={{width:'200px'}}></img>
-            <img src="../logoImg/a.png" style={styleimg1}/>
+            <img src="/logoImg/a.png" style={styleimg1}/>
             
             
         </div>  
