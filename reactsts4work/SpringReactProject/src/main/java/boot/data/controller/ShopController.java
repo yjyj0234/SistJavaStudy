@@ -77,9 +77,20 @@ public class ShopController {
 		return shopService.getAllShopDatas();
 	}
 	
+	/*
+	 * //detail
+	 * 
+	 * @GetMapping("/detail/{num}") public ShopDto detail(@PathVariable("num")
+	 * Integer num) { return shopService.getOneShopProduct(num); }
+	 */
 	//detail
-	@GetMapping("/detail/{num}")
-	public ShopDto detail(@PathVariable("num") Integer num) {
+	@GetMapping("/detail")
+	public ShopDto detail(@RequestParam("num") Integer num) {
 		return shopService.getOneShopProduct(num);
+	}
+	//delete 할 때 : @DeleteMapping 
+	@DeleteMapping("/delete")
+	public void delete(@RequestParam("num") Integer num, HttpSession session) {
+		shopService.deleteShop(num, session);
 	}
 }
