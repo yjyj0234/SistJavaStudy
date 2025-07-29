@@ -1,6 +1,6 @@
 import React from 'react'
 import { About, Menu, Title, Main } from '../components'
-import { Route, Routes } from 'react-router-dom'
+import { Outlet, Route, Routes } from 'react-router-dom'
 
 import Login from '../login/Login'
 import Board from '../board/Board'
@@ -25,8 +25,10 @@ const RouterMain = () => {
             </Route>
 
             <Route path='/board/list' element={<Board/>}/>
-
-            <Route path='/member'>
+        {/* outlet의 뜻 : 중첩된 라우트를 렌더링하기 위한 자리
+        부모 라우트가 고정된 레이아웃을 제공하고,
+         그 레이아웃 안의 특정 영역에 자식 라우트의 내용이 동적으로 표시되도록 해줌 */}
+            <Route path='/member' element={<Outlet/>}>
               <Route index element={<MemberList/>}/>
               <Route path='form' element={<JoinForm/>}/>
               <Route path='list' element={<MemberList/>}/>

@@ -44,7 +44,11 @@ const JoinForm = () => {
         const url="http://localhost:8090/member/insert";
         axios.post(url,{myname,myid,mypass})
         .then(()=>{
-            navi('/member/list');
+          alert('회원가입이 완료되었습니다.')
+          setMyname('');
+          setMyid('');
+          setMypass('');
+            navi('/');
         })
     }
   }
