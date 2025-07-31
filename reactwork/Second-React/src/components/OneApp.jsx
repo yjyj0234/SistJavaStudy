@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import './mystyle.css'
-import styled from 'styled-components';
+import './Mystyle.css'
 
 function OneApp() {
     //초기상태는 '',0,0,0 으로 한다
@@ -12,18 +11,7 @@ function OneApp() {
     const [react,setReact]=useState();
     const [sum,setSum]=useState(0);
     const [avg,setAvg]=useState(0);
-    //style
-    const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: #BF4F74;
-`;
-
-// Create a Wrapper component that'll render a <section> tag with some styles
-    const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
-`;
+   
   return (
     <div>
     

@@ -10,9 +10,9 @@ import ThreeApp from './components/ThreeApp.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
    {/*  <App /> */}
-   {/* <OneApp/> */}
-  {/* <TwoApp/>    */}
-  {/* <QuizApp/> */}
-    <ThreeApp/>
-  </StrictMode>,
+{/*    {<OneApp/>}*/} 
+{/*  {<TwoApp/>   } */}
+  {<QuizApp/>}
+{/*     <ThreeApp/>
+ */}  </StrictMode>,
 )

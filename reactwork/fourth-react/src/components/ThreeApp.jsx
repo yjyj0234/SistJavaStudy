@@ -5,7 +5,7 @@ import AddReactionIcon from '@mui/icons-material/AddReaction';
 const ThreeApp = () => {
     //객체 처리 변수
     const [inputs,setInputs]=useState({
-        name:'제니',
+        name:'홍길동',
         addr:'서울시',
         age:'20'
     })

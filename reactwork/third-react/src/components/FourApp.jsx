@@ -32,7 +32,6 @@ const imgPArr=['3','4','5','2','8','12'];
         }
       </ul>
       <hr />
-
         {/* colors를 div로 출력할것(box) */}
         {colorList}
         <hr style={{clear:'both'}}/>
